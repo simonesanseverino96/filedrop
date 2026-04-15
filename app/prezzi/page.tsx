@@ -13,7 +13,7 @@ const plans = [
     color: 'border-white/10',
     badge: null,
     features: [
-      { text: 'Upload fino a 2GB', ok: true },
+      { text: 'Upload fino a 5GB', ok: true },
       { text: 'Link valido 7 giorni', ok: true },
       { text: 'Max 5 download', ok: true },
       { text: 'Protezione password', ok: true },
