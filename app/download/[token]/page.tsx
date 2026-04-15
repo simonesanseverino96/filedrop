@@ -6,8 +6,9 @@ export const metadata: Metadata = {
   description: 'Scarica i file condivisi in modo sicuro con FileDrop.',
 }
 
-export default function DownloadPage({ params }: { params: { token: string } }) {
-  return (
+export default async function DownloadPage({ params }: { params: Promise<{ token: string }> }) {
+  const { token } = await params
+    return (
     <main className="min-h-screen relative overflow-hidden">
       {/* Background orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -36,7 +37,7 @@ export default function DownloadPage({ params }: { params: { token: string } }) 
       </header>
 
       <div className="relative z-10 max-w-lg mx-auto px-6 pt-16 pb-20">
-        <DownloadClient token={params.token} />
+        <DownloadClient token={ token } />
       </div>
     </main>
   )
