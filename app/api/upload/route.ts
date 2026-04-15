@@ -5,7 +5,7 @@ import { addDays } from 'date-fns'
 import { supabaseAdmin } from '@/lib/supabase'
 import { UploadConfig } from '@/types'
 
-export const config = { api: { bodyParser: false } }
+
 
 const MAX_SIZE = 2 * 1024 * 1024 * 1024 // 2GB
 const MAX_FILES = 20
