@@ -32,6 +32,7 @@ export default function DashboardPage() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [transfers, setTransfers] = useState<Transfer[]>([])
   const [loading, setLoading] = useState(true)
+  const [checkoutLoading, setCheckoutLoading] = useState<string | null>(null)
 
   useEffect(() => {
     loadData()
@@ -59,6 +60,27 @@ export default function DashboardPage() {
     setLoading(false)
   }
 
+  const handleCheckout = async (plan: string) => {
+    setCheckoutLoading(plan)
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { window.location.href = '/login'; return }
+
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan, accessToken: session.access_token }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+      else alert(data.error || 'Errore nel checkout')
+    } catch {
+      alert('Errore di connessione')
+    } finally {
+      setCheckoutLoading(null)
+    }
+  }
+
   const handleManageSubscription = async () => {
     const res = await fetch('/api/stripe/portal', { method: 'POST' })
     const data = await res.json()
@@ -83,7 +105,6 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Header */}
       <header className="border-b border-white/5">
         <div className="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3">
@@ -118,18 +139,24 @@ export default function DashboardPage() {
             </div>
             <div className="flex gap-2">
               {plan === 'free' ? (
-                <a href="/prezzi" className="px-4 py-2 bg-accent text-ink rounded-lg text-sm font-display font-600 hover:bg-accent-dim transition-colors">
-                  Passa a Pro →
-                </a>
+                <button
+                  onClick={() => handleCheckout('pro')}
+                  disabled={checkoutLoading === 'pro'}
+                  className="px-4 py-2 bg-accent text-ink rounded-lg text-sm font-display font-600 hover:bg-accent-dim transition-colors disabled:opacity-50"
+                >
+                  {checkoutLoading === 'pro' ? 'Caricamento...' : 'Passa a Pro →'}
+                </button>
               ) : (
-                <button onClick={handleManageSubscription} className="px-4 py-2 bg-surface-2 text-muted hover:text-paper border border-white/5 rounded-lg text-sm font-body transition-colors">
+                <button
+                  onClick={handleManageSubscription}
+                  className="px-4 py-2 bg-surface-2 text-muted hover:text-paper border border-white/5 rounded-lg text-sm font-body transition-colors"
+                >
                   Gestisci abbonamento
                 </button>
               )}
             </div>
           </div>
 
-          {/* Limiti piano */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/5">
             {[
               { label: 'Max upload', value: formatBytes(planConfig.maxTotalSizeMB * 1024 * 1024) },
@@ -143,6 +170,20 @@ export default function DashboardPage() {
               </div>
             ))}
           </div>
+
+          {/* Upgrade a Business se Pro */}
+          {plan === 'pro' && (
+            <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+              <p className="text-sm text-muted font-body">Vuoi più spazio e API access?</p>
+              <button
+                onClick={() => handleCheckout('business')}
+                disabled={checkoutLoading === 'business'}
+                className="px-4 py-2 bg-surface-2 text-paper hover:bg-white/10 border border-white/10 rounded-lg text-sm font-display font-600 transition-colors disabled:opacity-50"
+              >
+                {checkoutLoading === 'business' ? 'Caricamento...' : 'Passa a Business →'}
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Storico trasferimenti */}
@@ -159,9 +200,13 @@ export default function DashboardPage() {
               <p className="text-muted font-body text-sm mb-4">
                 Lo storico dei trasferimenti è disponibile dal piano Pro.
               </p>
-              <a href="/prezzi" className="inline-block px-5 py-2.5 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
-                Passa a Pro — 4.99€/mese →
-              </a>
+              <button
+                onClick={() => handleCheckout('pro')}
+                disabled={checkoutLoading === 'pro'}
+                className="inline-block px-5 py-2.5 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors disabled:opacity-50"
+              >
+                {checkoutLoading === 'pro' ? 'Caricamento...' : 'Passa a Pro — 4.99€/mese →'}
+              </button>
             </div>
           ) : transfers.length === 0 ? (
             <div className="bg-surface border border-white/5 rounded-2xl p-8 text-center">
