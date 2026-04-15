@@ -8,12 +8,12 @@ export default function Footer() {
               <path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="#0a0a0f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <span className="font-display text-sm font-600 text-paper">FileDrop</span>
+          <span className="font-display text-sm font-600 text-paper">VaultTransfer</span>
         </div>
         <p className="text-xs text-muted font-body text-center">
           File eliminati automaticamente alla scadenza · Nessun tracciamento · Server in Europa
         </p>
-        <p className="text-xs text-muted font-body">© 2024 FileDrop</p>
+        <p className="text-xs text-muted font-body">© 2024 VaultTransfer</p>
       </div>
     </footer>
   )

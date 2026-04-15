@@ -24,7 +24,7 @@ export default function Home() {
                 <path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="#0a0a0f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="font-display text-xl font-700 tracking-tight text-paper">FileDrop</span>
+            <span className="font-display text-xl font-700 tracking-tight text-paper">VaultTransfer</span>
           </div>
           <div className="flex items-center gap-2 text-xs text-muted font-body">
             <span className="w-2 h-2 rounded-full bg-accent inline-block animate-pulse-slow" />
