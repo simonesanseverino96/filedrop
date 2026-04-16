@@ -1,80 +1,64 @@
-import type { Metadata } from 'next'
-import Script from 'next/script'
-import HeaderWrapper from '@/components/HeaderWrapper'
-import CookieBanner from '@/components/CookieBanner'
-import './globals.css'
+import { NextRequest, NextResponse } from 'next/server'
+import { supabaseAdmin } from '@/lib/supabase'
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://vaultransfer.com'
+// Questo endpoint viene chiamato ogni ora da Vercel Cron
+// Elimina i trasferimenti scaduti e i relativi file dallo Storage
+export async function GET(req: NextRequest) {
+  // Verifica il secret per sicurezza
+  const authHeader = req.headers.get('Authorization')
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: 'Non autorizzato' }, { status: 401 })
+  }
 
-export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: {
-    default: 'VaultTransfer — Invia file in modo sicuro e gratuito',
-    template: '%s | VaultTransfer',
-  },
-  description: 'Trasferisci file fino a 2GB gratis. Link cifrati con scadenza automatica, protezione password e limite di download. Nessun account richiesto. GDPR compliant.',
-  keywords: [
-    'trasferimento file sicuro',
-    'inviare file gratis',
-    'condividere file online',
-    'invia file grande',
-    'file sharing sicuro',
-    'trasferire file cifrati',
-    'link download scadenza',
-    'inviare file senza registrazione',
-    'alternativa wetransfer',
-    'inviare file protetti password',
-  ],
-  authors: [{ name: 'VaultTransfer' }],
-  creator: 'VaultTransfer',
-  publisher: 'VaultTransfer',
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '48x48' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
-    ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
-  },
-  openGraph: {
-    title: 'VaultTransfer — Invia file in modo sicuro e gratuito',
-    description: 'Trasferisci file fino a 2GB gratis. Link cifrati, scadenza automatica, protezione password.',
-    type: 'website',
-    url: baseUrl,
-    siteName: 'VaultTransfer',
-    locale: 'it_IT',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'VaultTransfer — Invia file in modo sicuro e gratuito',
-    description: 'Trasferisci file fino a 2GB gratis. Link cifrati, scadenza automatica, protezione password.',
-  },
-  alternates: { canonical: baseUrl },
-}
+  try {
+    const supabase = supabaseAdmin()
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID
-  return (
-    <html lang="it">
-      <body>
-        {adsenseId && (
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        )}
-        <HeaderWrapper />
-        {children}
-        <CookieBanner />
-      </body>
-    </html>
-  )
+    // Recupera i trasferimenti scaduti con i loro file
+    const { data: expired, error } = await supabase
+      .from('transfers')
+      .select('id, transfer_files(storage_path)')
+      .lt('expires_at', new Date().toISOString())
+
+    if (error) throw error
+    if (!expired || expired.length === 0) {
+      return NextResponse.json({ cleaned: 0, message: 'Nessun trasferimento scaduto' })
+    }
+
+    let deletedFiles = 0
+    let deletedTransfers = 0
+
+    // Elimina i file dallo Storage per ogni trasferimento scaduto
+    for (const transfer of expired) {
+      const files = transfer.transfer_files as any[]
+      if (files && files.length > 0) {
+        const paths = files.map((f: any) => f.storage_path).filter(Boolean)
+        if (paths.length > 0) {
+          const { error: storageError } = await supabase.storage
+            .from('filedrop')
+            .remove(paths)
+
+          if (!storageError) deletedFiles += paths.length
+        }
+      }
+    }
+
+    // Elimina i record dal DB (CASCADE elimina anche transfer_files)
+    const { count } = await supabase
+      .from('transfers')
+      .delete({ count: 'exact' })
+      .lt('expires_at', new Date().toISOString())
+
+    deletedTransfers = count || 0
+
+    console.log(`Cleanup: ${deletedTransfers} trasferimenti, ${deletedFiles} file eliminati`)
+
+    return NextResponse.json({
+      cleaned: deletedTransfers,
+      filesDeleted: deletedFiles,
+      message: `Eliminati ${deletedTransfers} trasferimenti e ${deletedFiles} file`,
+    })
+  } catch (err: any) {
+    console.error('Cleanup error:', err)
+    return NextResponse.json({ error: err.message }, { status: 500 })
+  }
 }
