@@ -76,7 +76,7 @@ export default function Header() {
                 {user.plan === 'free' ? 'Free' : user.plan === 'pro' ? '⭐ Pro' : '🏢 Business'}
               </span>
 
-              <div className="relative">
+              <div className="relative" onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setMenuOpen(false) }}>
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
                   className="flex items-center gap-2 px-3 py-1.5 bg-surface border border-white/10 rounded-xl text-sm font-body text-paper hover:border-accent/30 transition-colors"
@@ -92,8 +92,6 @@ export default function Header() {
                 </button>
 
                 {menuOpen && (
-                  <>
-                    <div className="fixed inset-0 z-40" onClick={() => setMenuOpen(false)} />
                     <div className="absolute right-0 top-full mt-2 w-48 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
                       <a href="/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-body text-paper hover:bg-white/5 transition-colors">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -123,7 +121,6 @@ export default function Header() {
                         Esci
                       </button>
                     </div>
-                  </>
                 )}
               </div>
             </div>
