@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { createBrowserClient } from '@supabase/ssr'
 import { formatBytes, formatExpiry } from '@/lib/utils'
 import { PLANS, PlanType } from '@/lib/plans'
+import ApiKeysSection from '@/components/ApiKeysSection'
 
 const supabase = createBrowserClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -227,6 +228,10 @@ export default function DashboardPage() {
             </div>
           )}
         </div>
+
+        {/* API Keys — solo piano Business */}
+        {plan === 'business' && <ApiKeysSection />}
+
       </div>
     </main>
   )
