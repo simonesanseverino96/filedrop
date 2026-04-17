@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { transferId, files, config, totalSize } = await req.json() as {
+    const { transferId, files, config, totalSize, accessToken } = await req.json() as {
       transferId: string
       files: Array<{
         id: string
@@ -30,6 +30,14 @@ export async function POST(req: NextRequest) {
       }>
       config: UploadConfig
       totalSize: number
+      accessToken?: string
+    }
+
+    // Recupera l'utente loggato se presente
+    let userId: string | null = null
+    if (accessToken) {
+      const { data: { user } } = await supabaseAdmin().auth.getUser(accessToken)
+      if (user) userId = user.id
     }
 
     if (!files || files.length === 0) {
@@ -61,6 +69,7 @@ export async function POST(req: NextRequest) {
       message: config.message || null,
       sender_email: config.senderEmail || null,
       total_size: totalSize,
+      user_id: userId,
     })
 
     if (transferError) {

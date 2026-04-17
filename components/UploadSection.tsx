@@ -7,6 +7,12 @@ import { UploadConfig } from '@/types'
 import UploadSuccess from './UploadSuccess'
 import { supabase } from '@/lib/supabase'
 import { isBlockedFile, getBlockedReason } from '@/lib/blocklist'
+import { createBrowserClient } from '@supabase/ssr'
+
+const supabase = createBrowserClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 import { v4 as uuidv4 } from 'uuid'
 
 const MAX_SIZE = 2 * 1024 * 1024 * 1024
@@ -130,10 +136,14 @@ export default function UploadSection() {
         })
       )
 
+      // Passa il token se l'utente è loggato
+      const { data: { session } } = await supabase.auth.getSession()
+      const accessToken = session?.access_token ?? null
+
       const res = await fetch('/api/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ transferId, files: uploadedFiles, config, totalSize }),
+        body: JSON.stringify({ transferId, files: uploadedFiles, config, totalSize, accessToken }),
       })
 
       if (!res.ok) {
