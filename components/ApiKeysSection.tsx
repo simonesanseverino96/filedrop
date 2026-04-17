@@ -32,12 +32,16 @@ export default function ApiKeysSection() {
     return session?.access_token ?? null
   }
 
-  const fetchKeys = async () => {
-    try {
-      const token = await getToken()
-      const res = await fetch('/api/keys', {
-        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
-      })
+  const fetchKeys = async (retry = 0) => {
+  try {
+    const token = await getToken()
+    if (!token && retry < 3) {
+      setTimeout(() => fetchKeys(retry + 1), 500)
+      return
+    }
+    const res = await fetch('/api/keys', {
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+    })
       const data = await res.json()
       setKeys(data.keys || [])
     } catch {}
