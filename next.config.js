@@ -30,7 +30,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https://*.supabase.co https://pagead2.googlesyndication.com",
-              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com https://pagead2.googlesyndication.com",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com https://pagead2.googlesyndication.com https://fundingchoicesmessages.google.com https://*.google.com",
               "frame-src https://js.stripe.com https://hooks.stripe.com https://googleads.g.doubleclick.net",
               "object-src 'none'",
               "base-uri 'self'",
