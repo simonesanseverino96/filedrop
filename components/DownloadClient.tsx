@@ -1,4 +1,5 @@
 'use client'
+import ReportButton from './ReportButton'
 
 import { useEffect, useState } from 'react'
 import { formatBytes, formatExpiry } from '@/lib/utils'
@@ -304,6 +305,8 @@ export default function DownloadClient({ token }: { token: string }) {
       <p className="text-center text-xs text-muted font-body mt-4">
         🔒 Download sicuro via link firmato · valido 60 secondi
       </p>
+
+      <ReportButton token={token} />
     </div>
   )
 }

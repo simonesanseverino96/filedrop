@@ -5,6 +5,7 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { UploadConfig } from '@/types'
 import { uploadRatelimit } from '@/lib/ratelimit'
 import { sendUploadConfirmation } from '@/lib/email'
+import { isBlockedFile } from '@/lib/blocklist'
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'anonymous'
@@ -33,6 +34,12 @@ export async function POST(req: NextRequest) {
 
     if (!files || files.length === 0) {
       return NextResponse.json({ error: 'Nessun file ricevuto' }, { status: 400 })
+    }
+
+    // Blocca file pericolosi lato server
+    const blockedFile = files.find((f: any) => isBlockedFile(f.filename))
+    if (blockedFile) {
+      return NextResponse.json({ error: `File non consentito: ${blockedFile.filename}` }, { status: 400 })
     }
 
     const supabase = supabaseAdmin()

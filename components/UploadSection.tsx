@@ -6,6 +6,7 @@ import { formatBytes } from '@/lib/utils'
 import { UploadConfig } from '@/types'
 import UploadSuccess from './UploadSuccess'
 import { supabase } from '@/lib/supabase'
+import { isBlockedFile, getBlockedReason } from '@/lib/blocklist'
 import { v4 as uuidv4 } from 'uuid'
 
 const MAX_SIZE = 2 * 1024 * 1024 * 1024
@@ -39,6 +40,13 @@ export default function UploadSection() {
 
   const onDrop = useCallback((accepted: File[], rejected: any[]) => {
     if (rejected.length > 0) setError(`Alcuni file superano il limite di ${formatBytes(MAX_SIZE)}.`)
+    // Blocca file pericolosi
+    const blockedFiles = accepted.filter(f => isBlockedFile(f.name))
+    if (blockedFiles.length > 0) {
+      setError(getBlockedReason(blockedFiles[0].name) || 'File non consentito.')
+      return
+    }
+
     const newFiles = accepted.map(f => ({
       file: f, id: Math.random().toString(36).slice(2),
       progress: 0, speed: 0, timeLeft: 0, status: 'pending' as const,

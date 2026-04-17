@@ -39,18 +39,6 @@ export default function LoginPage() {
     if (!email) return
     setLoading(true)
     setError(null)
-    // // Rate limit check via API
-    // const rlRes = await fetch('/api/auth/ratelimit', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ email }),
-    // })
-    // if (!rlRes.ok) {
-    //   setError('Troppi tentativi di accesso. Riprova tra 15 minuti.')
-    //   setLoading(false)
-    //   return
-    // }
-
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
