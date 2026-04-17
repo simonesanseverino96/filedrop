@@ -27,9 +27,17 @@ export default function ApiKeysSection() {
 
   useEffect(() => { fetchKeys() }, [])
 
+  const getToken = async () => {
+    const { data: { session } } = await supabase.auth.getSession()
+    return session?.access_token ?? null
+  }
+
   const fetchKeys = async () => {
     try {
-      const res = await fetch('/api/keys')
+      const token = await getToken()
+      const res = await fetch('/api/keys', {
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+      })
       const data = await res.json()
       setKeys(data.keys || [])
     } catch {}
@@ -40,9 +48,13 @@ export default function ApiKeysSection() {
     if (!newKeyName.trim()) return
     setCreating(true)
     try {
+      const token = await getToken()
       const res = await fetch('/api/keys', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify({ name: newKeyName }),
       })
       const data = await res.json()
@@ -58,16 +70,20 @@ export default function ApiKeysSection() {
   const revokeKey = async (id: string) => {
     if (!confirm('Sei sicuro di voler revocare questa API key?')) return
     try {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) return
+      const token = await getToken()
+      if (!token) { alert('Sessione scaduta. Rieffettua il login.'); return }
 
       const res = await fetch('/api/keys', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, accessToken: session.access_token }),
+        body: JSON.stringify({ id, accessToken: token }),
       })
-      if (res.ok) fetchKeys()
-      else alert('Errore durante la revoca. Riprova.')
+      if (res.ok) {
+        fetchKeys()
+      } else {
+        const data = await res.json()
+        alert(data.error || 'Errore durante la revoca. Riprova.')
+      }
     } catch {
       alert('Errore di connessione.')
     }
@@ -89,7 +105,6 @@ export default function ApiKeysSection() {
         </div>
       </div>
 
-      {/* Revealed key alert */}
       {revealedKey && (
         <div className="mb-6 p-4 bg-accent/10 border border-accent/20 rounded-xl">
           <p className="text-xs text-accent font-body mb-2">⚠️ Copia questa key ora — non sarà più visibile!</p>
@@ -112,7 +127,6 @@ export default function ApiKeysSection() {
         </div>
       )}
 
-      {/* Create new key */}
       <div className="flex gap-3 mb-6">
         <input
           type="text"
@@ -131,7 +145,6 @@ export default function ApiKeysSection() {
         </button>
       </div>
 
-      {/* Keys list */}
       {loading ? (
         <div className="h-20 bg-surface-2 rounded-xl animate-pulse" />
       ) : keys.length === 0 ? (
@@ -162,7 +175,6 @@ export default function ApiKeysSection() {
         </div>
       )}
 
-      {/* Docs */}
       <div className="mt-6 pt-6 border-t border-white/5">
         <p className="text-xs text-muted font-body mb-3 uppercase tracking-widest">Documentazione rapida</p>
         <div className="space-y-3">
