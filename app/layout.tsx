@@ -74,6 +74,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HeaderWrapper />
         {children}
         <CookieBanner />
+        {/* Google Translate Widget */}
+        <div id="google_translate_element" style={{ position: 'fixed', bottom: '80px', right: '20px', zIndex: 9998 }} />
+        <script dangerouslySetInnerHTML={{ __html: `
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'it',
+              includedLanguages: 'en,ar,zh-CN,ja,fr,de,es,pt,ru,ko',
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+              autoDisplay: false
+            }, 'google_translate_element');
+          }
+        `}} />
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async />
       </body>
     </html>
   )
