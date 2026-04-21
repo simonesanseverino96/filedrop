@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Footer from '@/components/Footer'
+
 
 const faqs = [
   {
@@ -88,25 +88,6 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white flex flex-col">
-      {/* Nav */}
-      <nav className="border-b border-white/5 px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
-            <svg viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.5" className="w-4 h-4">
-              <path d="M8 2v5M5 5h6M4 10c0 2.2 1.8 4 4 4s4-1.8 4-4" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <span className="font-bold tracking-tight">VaultTransfer</span>
-        </Link>
-        <div className="flex items-center gap-6">
-          <Link href="/prezzi" className="text-sm text-white/50 hover:text-white transition-colors">Prezzi</Link>
-          <Link href="/faq" className="text-sm text-white transition-colors">FAQ</Link>
-          <Link href="/login" className="text-sm bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-1.5 rounded-lg transition-colors">
-            Accedi
-          </Link>
-        </div>
-      </nav>
-
       <main className="flex-1 max-w-3xl mx-auto px-6 py-20 w-full">
         {/* Header */}
         <div className="text-center mb-16">
@@ -184,7 +165,7 @@ export default function FAQPage() {
         </div>
       </main>
 
-      <Footer />
+   
     </div>
   )
 }

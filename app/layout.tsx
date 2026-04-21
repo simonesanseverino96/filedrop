@@ -3,6 +3,7 @@ import Script from 'next/script'
 import HeaderWrapper from '@/components/HeaderWrapper'
 import CookieBanner from '@/components/CookieBanner'
 import './globals.css'
+import Footer from '@/components/Footer'
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://vaultransfer.com'
 
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HeaderWrapper />
         {children}
         <CookieBanner />
+        <Footer />
 
       </body>
     </html>
