@@ -36,7 +36,7 @@ export default function Home() {
       </section>
 
       <Features />
-      <Footer />
+      
     </main>
   )
 }
