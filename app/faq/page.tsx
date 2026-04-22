@@ -52,7 +52,7 @@ const faqs = [
       },
       {
         q: 'Come funziona lo sconto annuale?',
-        a: 'Scegliendo la fatturazione annuale ottieni il 20% di sconto rispetto al piano mensile. Il pagamento avviene in un\'unica soluzione anticipata e il piano è attivo per 12 mesi.',
+        a: 'Scegliendo la fatturazione annuale ottieni un prezzo fisso di €45/anno per il piano Pro e €120/anno per il piano Business, con un risparmio significativo rispetto al mensile. Il pagamento avviene in un\'unica soluzione anticipata e il piano è attivo per 12 mesi.',
       },
       {
         q: 'Posso richiedere un rimborso?',
