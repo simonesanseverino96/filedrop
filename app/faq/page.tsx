@@ -69,7 +69,7 @@ const faqs = [
       },
       {
         q: 'Quali formati di file sono supportati?',
-        a: 'Supportiamo qualsiasi tipo di file: documenti, immagini, video, archivi ZIP, file di progetto, eseguibili, ecc. Non ci sono restrizioni sui formati.',
+        a: 'Supportiamo la maggior parte dei formati: documenti, immagini, video, archivi ZIP, file di progetto, ecc. Per motivi di sicurezza sono bloccati i file eseguibili (.exe, .bat, .sh, .msi, .dmg) e altri formati potenzialmente dannosi. Tutti i file caricati vengono scansionati automaticamente.',
       },
       {
         q: 'Il servizio funziona su tutti i dispositivi?',
