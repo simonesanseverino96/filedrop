@@ -33,7 +33,7 @@ export default function Footer() {
             <h4 className="text-xs font-semibold text-white/60 uppercase tracking-widest mb-4">Legale</h4>
             <ul className="space-y-2.5">
               <li><Link href="/privacy" className="text-sm text-white/40 hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/termini" className="text-sm text-white/40 hover:text-white transition-colors">Termini di Servizio</Link></li>
+              <li><Link href="/terms" className="text-sm text-white/40 hover:text-white transition-colors">Termini di Servizio</Link></li>
             </ul>
           </div>
 
