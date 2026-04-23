@@ -1,8 +1,10 @@
+import { useTranslations } from 'next-intl'
 import UploadSection from '@/components/UploadSection'
 import Features from '@/components/Features'
-import Footer from '@/components/Footer'
 
 export default function Home() {
+  const t = useTranslations('home')
+
   return (
     <main className="min-h-screen relative overflow-hidden">
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -19,24 +21,22 @@ export default function Home() {
           <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
             <path d="M6 1l1.12 2.27L10 3.77l-2 1.95.47 2.75L6 7.27l-2.47 1.2.47-2.75-2-1.95 2.88-.5L6 1z"/>
           </svg>
-          Nessun account richiesto · Gratis fino a 2GB
+          {t('badge')}
         </div>
 
         <h1 className="font-display text-5xl md:text-7xl font-800 leading-none tracking-tight mb-6">
-          Condividi file<br />
-          <span style={{ color: '#00e5a0' }}>senza compromessi.</span>
+          {t('headline')}<br />
+          <span style={{ color: '#00e5a0' }}>{t('headlineAccent')}</span>
         </h1>
 
         <p className="text-muted text-base md:text-lg max-w-lg mx-auto leading-relaxed font-body mb-12">
-          Link cifrati con scadenza automatica, protezione password, limite di download.
-          I tuoi file viaggiano sicuri — e spariscono quando decidi tu.
+          {t('description')}
         </p>
 
         <UploadSection />
       </section>
 
       <Features />
-      
     </main>
   )
 }

@@ -1,4 +1,9 @@
+import { useTranslations } from 'next-intl'
+
 export default function Features() {
+  const t = useTranslations('features')
+  const tHome = useTranslations('home')
+
   const features = [
     {
       icon: (
@@ -7,8 +12,8 @@ export default function Features() {
           <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
         </svg>
       ),
-      title: 'Cifrato in transito',
-      desc: 'Tutti i trasferimenti viaggiano su HTTPS con TLS 1.3. I tuoi file non vengono mai letti.',
+      title: t('items.encrypted.title'),
+      desc: t('items.encrypted.desc'),
     },
     {
       icon: (
@@ -17,8 +22,8 @@ export default function Features() {
           <polyline points="12 6 12 12 16 14"/>
         </svg>
       ),
-      title: 'Scadenza automatica',
-      desc: 'Scegli 24 ore, 7 o 30 giorni. Alla scadenza i file vengono eliminati definitivamente.',
+      title: t('items.expiry.title'),
+      desc: t('items.expiry.desc'),
     },
     {
       icon: (
@@ -26,8 +31,8 @@ export default function Features() {
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
       ),
-      title: 'Protezione password',
-      desc: 'Aggiungi una password: l\'hash viene conservato con bcrypt. La password non viene mai salvata in chiaro.',
+      title: t('items.password.title'),
+      desc: t('items.password.desc'),
     },
     {
       icon: (
@@ -35,8 +40,8 @@ export default function Features() {
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
       ),
-      title: 'Limite di download',
-      desc: 'Imposta il numero massimo di download. Superato il limite, il link si disattiva automaticamente.',
+      title: t('items.downloadLimit.title'),
+      desc: t('items.downloadLimit.desc'),
     },
     {
       icon: (
@@ -45,8 +50,8 @@ export default function Features() {
           <circle cx="12" cy="7" r="4"/>
         </svg>
       ),
-      title: 'Zero account',
-      desc: 'Nessuna registrazione. Nessuna email obbligatoria. Upload anonimo e immediato.',
+      title: t('items.noAccount.title'),
+      desc: t('items.noAccount.desc'),
     },
     {
       icon: (
@@ -56,18 +61,20 @@ export default function Features() {
           <line x1="12" y1="17" x2="12" y2="21"/>
         </svg>
       ),
-      title: 'GDPR Compliant',
-      desc: 'Nessun tracciamento. Nessuna profilazione. I dati restano in Europa.',
+      title: t('items.gdpr.title'),
+      desc: t('items.gdpr.desc'),
     },
   ]
 
   return (
     <section className="relative z-10 max-w-5xl mx-auto px-6 py-20">
       <div className="text-center mb-12">
-        <p className="text-xs text-muted uppercase tracking-widest font-body mb-3">Sicurezza by design</p>
-        <h2 className="font-display text-3xl md:text-4xl font-700 text-paper">
-          Costruito per chi non vuole compromessi
-        </h2>
+        <p className="text-xs text-muted uppercase tracking-widest font-body mb-3">
+           {tHome('securityTagline')}
+        </p>
+          <h2 className="font-display text-3xl md:text-4xl font-700 text-paper">
+            {tHome('featuresHeadline')}
+          </h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

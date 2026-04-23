@@ -1,0 +1,318 @@
+{
+  "common": {
+    "appName": "ボールトランスファー",
+    "secureConnection": "安全な接続"
+  },
+  "header": {
+    "pricing": "価格",
+    "login": "ログイン",
+    "register": "無料会員登録",
+    "dashboard": "ダッシュボード",
+    "upgradeToPro": "プロへのアップグレード",
+    "logout": "ログアウト",
+    "planFree": "無料",
+    "planPro": "プロ",
+    "planBusiness": "ビジネス"
+  },
+  "footer": {
+    "tagline": "高速で安全なファイル転送。GDPR準拠、ヨーロッパのサーバー。",
+    "sections": {
+      "product": "製品",
+      "legal": "リーガル",
+      "contact": "連絡先"
+    },
+    "links": {
+      "pricing": "価格",
+      "faq": "よくあるご質問",
+      "dashboard": "ダッシュボード",
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約"
+    },
+    "copyright": "© {year} VaultTransfer.無断複写・転載を禁じます。",
+    "badge": "🇪🇺 欧州サーバー - GDPR対応 - TLS 1.3"
+  },
+  "home": {
+    "badge": "アカウント不要 - 2GBまで無料",
+    "headline": "ファイルを共有する",
+    "headlineAccent": "妥協することなく。",
+    "description": "自動期限切れの暗号化リンク、パスワード保護、ダウンロード制限。あなたのファイルは安全に移動し、あなたが決めたときに消えます。",
+    "securityTagline": "デザインによるセキュリティ",
+    "featuresHeadline": "妥協を許さない人のために作られた"
+  },
+  "upload": {
+    "dropzone": {
+      "active": "ここにファイルをドロップする",
+      "idle": "ここにファイルをドラッグする",
+      "browse": "ブラウズ",
+      "hint": "またはデバイスから{browse} - 最大2GB - 20ファイル"
+    },
+    "file": {
+      "uploaded": "アップロード",
+      "error": "エラー",
+      "remaining": "V0__残り",
+      "completed": "完成"
+    },
+    "options": {
+      "toggle": "セキュリティ・オプション",
+      "expiry": "リンク有効期限",
+      "expiry1": "24時間",
+      "expiry7": "7日",
+      "expiry30": "30日",
+      "maxDownloads": "最大ダウンロード数（オプション）",
+      "maxDownloadsPlaceholder": "無制限",
+      "password": "保護パスワード（オプション）",
+      "message": "受信者へのメッセージ",
+      "messagePlaceholder": "メッセージを追加...",
+      "senderEmail": "Eメール（オプション）",
+      "emailPlaceholder": "you@example.com"
+    },
+    "button": {
+      "uploading": "アップロード...",
+      "upload": "リンクのアップロードと生成"
+    },
+    "summary": "ファイル数 {count} - 合計 {size}",
+    "error": {
+      "tooLarge": "一部のファイルは{limit}の制限を超えています。",
+      "blocked": "ファイルが許可されていません。",
+      "maxFiles": "最大{max}ファイル。",
+      "upload": "アップロード中のエラー",
+      "transfer": "転送作成エラー"
+    }
+  },
+  "uploadSuccess": {
+    "title": "移籍の準備はできている！",
+    "subtitle": "V0__ファイル（{size}） - {expiry}V3__で期限切れ",
+    "passwordSuffix": "- パスワード保護",
+    "linkLabel": "リンク",
+    "copy": "コピー",
+    "copied": "コピー",
+    "badges": {
+      "https": "HTTPS暗号化",
+      "expiry": "期限は{expiry}まで",
+      "password": "パスワードが必要",
+      "maxDownloads": "マックス{count}ダウンロード"
+    },
+    "newTransfer": "新たな移籍",
+    "expiry1": "24時間",
+    "expiry7": "7日",
+    "expiry30": "30日"
+  },
+  "download": {
+    "secureDownload": "🔒 署名入りリンクによる安全なダウンロード - 有効期限60秒",
+    "downloading": "ダウンロード...",
+    "downloadFile": "ダウンロードファイル → （英語",
+    "downloadAll": "すべてのファイルをダウンロードする",
+    "downloadInProgress": "ダウンロード中..."
+  },
+  "features": {
+    "items": {
+      "encrypted": {
+        "title": "輸送中の暗号化",
+        "desc": "すべての転送はTLS 1.3のHTTPSで行われます。あなたのファイルが読み取られることはありません。"
+      },
+      "expiry": {
+        "title": "自動期限切れ",
+        "desc": "24時間、7日間、30日間からお選びください。有効期限が切れると、ファイルは永久に削除されます。"
+      },
+      "password": {
+        "title": "パスワード保護",
+        "desc": "パスワードの追加：ハッシュはbcryptで保存されます。パスワードがプレーンテキストで保存されることはありません。"
+      },
+      "downloadLimit": {
+        "title": "ダウンロード制限",
+        "desc": "最大ダウンロード数を設定します。上限に達すると、リンクは自動的に解除されます。"
+      },
+      "noAccount": {
+        "title": "口座数ゼロ",
+        "desc": "登録不要。Eメール不要。匿名の即時アップロード。"
+      },
+      "gdpr": {
+        "title": "GDPR対応",
+        "desc": "追跡なし。プロファイリングなし。データはヨーロッパに保存されます。"
+      }
+    }
+  },
+  "report": {
+    "button": "不適切なコンテンツを報告する",
+    "title": "違法または不適切なコンテンツを報告する",
+    "reasonLabel": "報告の理由",
+    "reasonPlaceholder": "理由を選ぶ",
+    "reasons": {
+      "csam": "児童性的虐待資料（CSAM）",
+      "malware": "マルウェアまたはウイルス",
+      "copyright": "著作権違反",
+      "illegal": "違法コンテンツ",
+      "phishing": "フィッシングまたは詐欺",
+      "other": "その他"
+    },
+    "emailLabel": "Eメール（任意、アップデート用）",
+    "submit": "レポートを提出する",
+    "submitting": "提出...",
+    "cancel": "キャンセル",
+    "notice": "報告書は72時間以内に確認される。緊急の場合",
+    "sent": "報告書を提出しました。サービスの安全維持にご協力いただきありがとうございます。"
+  },
+  "login": {
+    "title": "ログイン",
+    "subtitle": "パスワードは必要ありません。",
+    "emailLabel": "電子メール",
+    "emailPlaceholder": "you@example.com",
+    "submit": "マジックリンクを送る",
+    "submitting": "送信...",
+    "noAccount": "アカウントをお持ちでないですか？自動的に作成されます。",
+    "backHome": "← ホームへ戻る",
+    "checkEmail": {
+      "title": "メールをチェックする！",
+      "message": "マジックリンクを {email} に送信しました。リンクをクリックしてログインしてください。"
+    }
+  },
+  "pricing": {
+    "badge": "シンプルで透明",
+    "title": "プランの選択",
+    "subtitle": "無料で始められ、お好きな時にアップグレードできます。",
+    "monthly": "毎月",
+    "annual": "年間",
+    "saveBadge": "年間最大{amount}ユーロの割引",
+    "perMonth": "/月",
+    "billedAnnually": "年間請求額",
+    "saveWithAnnual": "年間プランで年間{amount}ユーロを節約",
+    "free": "無料",
+    "plans": {
+      "free": {
+        "name": "無料",
+        "cta": "無料で始める"
+      },
+      "pro": {
+        "name": "プロ",
+        "badge": "一番人気",
+        "cta": "プロへのアップグレード"
+      },
+      "business": {
+        "name": "ビジネス",
+        "cta": "ビジネスへのアップグレード"
+      }
+    },
+    "features": {
+      "upload2gb": "1ファイルにつき2GBまでアップロード可能",
+      "upload50gb": "1ファイルにつき50GBまでアップロード可能",
+      "upload200gb": "1ファイルあたり200GBまでアップロード可能",
+      "link7days": "リンクは7日間有効",
+      "link30days": "リンク有効期間30日",
+      "linkNoExpiry": "有効期限のないリンク",
+      "ads": "広告バナー",
+      "noAds": "広告バナーなし",
+      "unlimitedDownloads": "無制限ダウンロード",
+      "customLinks": "カスタムリンク",
+      "downloadStats": "ダウンロード統計",
+      "passwordLinks": "リンクのパスワード",
+      "prioritySupport": "優先サポート"
+    },
+    "loading": "読み込み中...",
+    "error": "ネットワークエラーです。もう一度お試しください。",
+    "trust": {
+      "refund": "14日間の返金",
+      "stripe": "Stripeによる安全な支払い",
+      "cancel": "いつでもキャンセル",
+      "faq": "ご質問は？よくある質問を読む"
+    }
+  },
+  "faq": {
+    "badge": "よくある質問",
+    "title": "すべて",
+    "titleAccent": "知りたい",
+    "contact": "答えが見つからない？",
+    "contactLink": "お問い合わせ",
+    "cta": {
+      "ready": "準備はできたか？",
+      "seePlans": "プランを見る"
+    },
+    "categories": {
+      "general": "一般",
+      "security": "セキュリティ",
+      "plans": "プランとお支払い",
+      "technical": "テクニカル"
+    },
+    "items": {
+      "whatIs": {
+        "q": "VaultTransferとは何ですか？",
+        "a": "VaultTransferは安全なファイル転送サービスです。保護されたリンクを介して、受信者がアカウントを必要とせずに、誰にでも大容量のファイルを送信することができます。"
+      },
+      "register": {
+        "q": "利用するには会員登録が必要ですか？",
+        "a": "いいえ、登録なしで無料でファイルを送信できます。アカウントを作成すると、50GBまでのアップロード、カスタムリンク、ダウンロード統計などの高度な機能にアクセスできます。"
+      },
+      "expiry": {
+        "q": "ファイルはいつまで利用できますか？",
+        "a": "無料プランの場合、リンクの有効期限は7日間です。Proでは30日間です。Businessでは、カスタム有効期限を設定したり、無期限にファイルを保持することができます。"
+      },
+      "safe": {
+        "q": "私のファイルは安全ですか？",
+        "a": "はい。すべての転送はTLS 1.3のHTTPSで行われます。リンクの有効期限が切れると、ファイルは自動的に削除されます。サーバーはヨーロッパにあり、GDPRに完全に準拠しています。"
+      },
+      "whoCanSee": {
+        "q": "誰が私のファイルを見ることができますか？",
+        "a": "リンクを持っている人だけがファイルにアクセスできます。さらに保護するためにパスワードを追加することができます（有料プランで利用可能）。当社のスタッフがコンテンツにアクセスすることはありません。"
+      },
+      "scanned": {
+        "q": "ファイルの分析やスキャンは行われていますか？",
+        "a": "受信者を保護するために自動ウイルス対策スキャンを行いますが、商業目的や広告目的でファイルの内容を分析することはありません。"
+      },
+      "payment": {
+        "q": "どのような支払い方法がありますか？",
+        "a": "Stripe経由で主要なクレジットカードおよびデビットカード（Visa、Mastercard、American Express）をご利用いただけます。お支払いは安全で、カード情報は保存されません。"
+      },
+      "changePlan": {
+        "q": "プランはいつでも変更できますか？",
+        "a": "はい、いつでもアップグレード、ダウングレードが可能です。アップグレードの場合、料金の差額は残りの期間に対して比例して計算されます。ダウングレードの場合、現在のプランは有料期間の終了まで有効です。"
+      },
+      "annualDiscount": {
+        "q": "年間割引の仕組みは？",
+        "a": "年間課金を選択することで、Proプランは年間45ユーロ、Businessプランは年間120ユーロの固定価格となり、月払いに比べて大幅なコスト削減が可能です。お支払いは一括前払いで、プランは12ヶ月間有効です。"
+      },
+      "refund": {
+        "q": "返金を要求できますか？",
+        "a": "ご満足いただけない場合は、ご購入から14日以内であれば全額返金いたします。14日以降の部分的な返金はできません。"
+      },
+      "maxSize": {
+        "q": "最大ファイルサイズは？",
+        "a": "無料プラン：1ファイルあたり2GBプロプラン：50GB/ファイルビジネスプラン：1ファイルあたり200GB送信できるファイル数に制限はありません。"
+      },
+      "formats": {
+        "q": "どのようなファイル形式に対応していますか？",
+        "a": "ほとんどのフォーマットに対応しています：ドキュメント、画像、動画、ZIPアーカイブ、プロジェクトファイルなど。セキュリティ上の理由から、実行ファイル（.exe、.msi、.bat、.sh）、スクリプト（.ps1、.vbs、.js）、Officeマクロ（.docm、.xlsm、.pptm）、アプリパッケージ（.apk、.ipa、.deb）、およびその他の潜在的に有害な形式はブロックされています。"
+      },
+      "devices": {
+        "q": "サービスはすべてのデバイスで動作しますか？",
+        "a": "はい。VaultTransferは、最新のブラウザを搭載したあらゆるデバイスで動作します：PC、Mac、Android、iOSのスマートフォン、タブレット。アプリは必要ありません。"
+      }
+    }
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動されました。期限切れのダウンロードリンクをお探しですか？",
+    "backHome": "ホームへ戻る",
+    "seePlans": "プランを見る",
+    "help": "お困りですか？"
+  },
+  "cookie": {
+    "message": "お客様の利便性を向上させ、適切な広告を表示するためにクッキーを使用しています。承諾しますか？",
+    "accept": "受け入れる",
+    "decline": "減少"
+  },
+  "metadata": {
+    "titleDefault": "VaultTransfer - 無料で安全にファイルを送信",
+    "description": "2GBまでのファイルを無料で転送。自動期限切れ、パスワード保護、ダウンロード制限付きの暗号化リンク。アカウント不要。GDPR対応。",
+    "keywords": [
+      "secure file transfer",
+      "send files free",
+      "share files online",
+      "send large files",
+      "secure file sharing",
+      "transfer encrypted files",
+      "expiry download link",
+      "send files without registration",
+      "wetransfer alternative",
+      "send password protected files"
+    ]
+  }
+}

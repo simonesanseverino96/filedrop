@@ -1,65 +1,86 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useState } from 'react'
+
+const LOCALES = [
+  { code: 'en', label: 'English',    flag: '🇬🇧' },
+  { code: 'de', label: 'Deutsch',    flag: '🇩🇪' },
+  { code: 'fr', label: 'Français',   flag: '🇫🇷' },
+  { code: 'es', label: 'Español',    flag: '🇪🇸' },
+  { code: 'pt', label: 'Português',  flag: '🇵🇹' },
+  { code: 'it', label: 'Italiano',   flag: '🇮🇹' },
+  { code: 'ja', label: '日本語',      flag: '🇯🇵' },
+  { code: 'zh', label: '中文',        flag: '🇨🇳' },
+  { code: 'ar', label: 'العربية',    flag: '🇸🇦' },
+]
 
 export default function TranslateWidget() {
-  useEffect(() => {
-    // Aggiungi lo script Google Translate
-    const script = document.createElement('script')
-    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-    script.async = true
-    document.body.appendChild(script)
+  const [open, setOpen] = useState(false)
+  const [current, setCurrent] = useState(() => {
+    if (typeof document === 'undefined') return 'en'
+    const match = document.cookie.match(/NEXT_LOCALE=([^;]+)/)
+    return match?.[1] ?? 'en'
+  })
 
-    // Inizializza il widget
-    ;(window as any).googleTranslateElementInit = () => {
-      new (window as any).google.translate.TranslateElement(
-        {
-          pageLanguage: 'it',
-          includedLanguages: 'en,ar,zh-CN,ja,fr,de,es,pt,ru,ko',
-          layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false,
-        },
-        'google_translate_element'
-      )
-    }
+  const handleSelect = async (code: string) => {
+    setOpen(false)
+    if (code === current) return
 
-    // Rimuovi il banner Google Translate in alto
-    const style = document.createElement('style')
-    style.innerHTML = `
-      .goog-te-banner-frame { display: none !important; }
-      body { top: 0 !important; }
-      .goog-te-gadget { font-size: 0 !important; }
-      .goog-te-gadget .goog-te-combo {
-        font-size: 12px !important;
-        background: transparent !important;
-        border: 1px solid rgba(255,255,255,0.1) !important;
-        color: #6b7280 !important;
-        border-radius: 8px !important;
-        padding: 4px 8px !important;
-        cursor: pointer !important;
-        outline: none !important;
-        font-family: monospace !important;
-      }
-      .goog-te-gadget .goog-te-combo:hover {
-        border-color: #00e5a0 !important;
-        color: #f4f1eb !important;
-      }
-      .goog-logo-link { display: none !important; }
-      .goog-te-gadget span { display: none !important; }
-      #goog-gt-tt { display: none !important; }
-      .goog-te-balloon-frame { display: none !important; }
-    `
-    document.head.appendChild(style)
+    await fetch('/api/locale', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ locale: code }),
+    })
 
-    return () => {
-      document.body.removeChild(script)
-    }
-  }, [])
+    setCurrent(code)
+    window.location.reload()
+  }
+
+  const currentLocale = LOCALES.find(l => l.code === current) ?? LOCALES[0]
 
   return (
-    <div
-      id="google_translate_element"
-      className="flex items-center"
-    />
+    <div className="relative">
+      <button
+        onClick={() => setOpen(v => !v)}
+        className="flex items-center gap-1.5 px-2.5 py-1.5 bg-surface border border-white/10 rounded-xl text-xs font-body text-muted hover:border-accent/30 hover:text-paper transition-colors"
+      >
+        <span>{currentLocale.flag}</span>
+        <span>{currentLocale.code.toUpperCase()}</span>
+        <svg
+          width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+        >
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+
+      {open && (
+        <>
+          {/* Overlay per chiudere cliccando fuori */}
+          <div className="fixed inset-0 z-[9998]" onClick={() => setOpen(false)} />
+          <div className="absolute right-0 top-full mt-2 w-40 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden z-[9999]">
+            {LOCALES.map(locale => (
+              <button
+                key={locale.code}
+                onClick={() => handleSelect(locale.code)}
+                className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-xs font-body transition-colors text-left ${
+                  locale.code === current
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-muted hover:bg-white/5 hover:text-paper'
+                }`}
+              >
+                <span className="text-base">{locale.flag}</span>
+                <span>{locale.label}</span>
+                {locale.code === current && (
+                  <svg className="ml-auto" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                )}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   )
 }

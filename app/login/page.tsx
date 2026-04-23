@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { createBrowserClient } from '@supabase/ssr'
+import { useTranslations } from 'next-intl'
 
 export default function LoginPage() {
+  const t = useTranslations('login')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
@@ -15,23 +17,15 @@ export default function LoginPage() {
   )
 
   useEffect(() => {
-    // Gestisce il token nell'hash URL (flusso implicito)
     const hash = window.location.hash
     if (hash && hash.includes('access_token')) {
       supabase.auth.getSession().then(({ data }) => {
-        if (data.session) {
-          window.location.href = '/dashboard'
-        }
+        if (data.session) window.location.href = '/dashboard'
       })
     }
-
-    // Ascolta cambio stato auth
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_IN' && session) {
-        window.location.href = '/dashboard'
-      }
+      if (event === 'SIGNED_IN' && session) window.location.href = '/dashboard'
     })
-
     return () => subscription.unsubscribe()
   }, [])
 
@@ -46,18 +40,15 @@ export default function LoginPage() {
         shouldCreateUser: true,
       },
     })
-    if (error) {
-      setError(error.message)
-    } else {
-      setSent(true)
-    }
+    if (error) setError(error.message)
+    else setSent(true)
     setLoading(false)
   }
 
   return (
     <main className="min-h-screen flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
-<div className="bg-surface border border-white/5 rounded-2xl p-8">
+        <div className="bg-surface border border-white/5 rounded-2xl p-8">
           {sent ? (
             <div className="text-center">
               <div className="w-14 h-14 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-5">
@@ -66,22 +57,23 @@ export default function LoginPage() {
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
               </div>
-              <h2 className="font-display text-xl font-700 text-paper mb-2">Controlla la tua email!</h2>
+              <h2 className="font-display text-xl font-700 text-paper mb-2">
+                {t('checkEmail.title')}
+              </h2>
               <p className="text-sm text-muted font-body">
-                Abbiamo inviato un link magico a <span className="text-paper">{email}</span>.<br/>
-                Clicca il link per accedere — verrai reindirizzato automaticamente.
+                {t('checkEmail.message', { email })}
               </p>
             </div>
           ) : (
             <>
-              <h1 className="font-display text-2xl font-700 text-paper mb-2">Accedi</h1>
-              <p className="text-sm text-muted font-body mb-6">
-                Ti inviamo un link magico via email — nessuna password da ricordare.
-              </p>
-              <label className="text-xs text-muted uppercase tracking-widest font-body mb-2 block">Email</label>
+              <h1 className="font-display text-2xl font-700 text-paper mb-2">{t('title')}</h1>
+              <p className="text-sm text-muted font-body mb-6">{t('subtitle')}</p>
+              <label className="text-xs text-muted uppercase tracking-widest font-body mb-2 block">
+                {t('emailLabel')}
+              </label>
               <input
                 type="email"
-                placeholder="tu@esempio.com"
+                placeholder={t('emailPlaceholder')}
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleLogin()}
@@ -94,16 +86,16 @@ export default function LoginPage() {
                 disabled={loading || !email}
                 className="w-full py-3.5 bg-accent text-ink rounded-xl font-display font-600 text-sm hover:bg-accent-dim transition-all disabled:opacity-50"
               >
-                {loading ? 'Invio in corso...' : 'Invia link magico →'}
+                {loading ? t('submitting') : t('submit')}
               </button>
               <p className="text-center text-xs text-muted font-body mt-4">
-                Nessun account? Verrà creato automaticamente.
+                {t('noAccount')}
               </p>
             </>
           )}
         </div>
         <p className="text-center text-xs text-muted font-body mt-6">
-          <a href="/" className="hover:text-paper transition-colors">← Torna alla home</a>
+          <a href="/" className="hover:text-paper transition-colors">{t('backHome')}</a>
         </p>
       </div>
     </main>

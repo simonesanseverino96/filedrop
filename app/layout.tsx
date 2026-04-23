@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 import Script from 'next/script'
 import HeaderWrapper from '@/components/HeaderWrapper'
 import CookieBanner from '@/components/CookieBanner'
@@ -10,21 +12,16 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://vaultransfer.com'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'VaultTransfer — Invia file in modo sicuro e gratuito',
+    default: 'VaultTransfer — Send files securely and for free',
     template: '%s | VaultTransfer',
   },
-  description: 'Trasferisci file fino a 2GB gratis. Link cifrati con scadenza automatica, protezione password e limite di download. Nessun account richiesto. GDPR compliant.',
+  description: 'Transfer files up to 2GB for free. Encrypted links with automatic expiry, password protection and download limits. No account required. GDPR compliant.',
   keywords: [
-    'trasferimento file sicuro',
-    'inviare file gratis',
-    'condividere file online',
-    'invia file grande',
-    'file sharing sicuro',
-    'trasferire file cifrati',
-    'link download scadenza',
-    'inviare file senza registrazione',
-    'alternativa wetransfer',
-    'inviare file protetti password',
+    'secure file transfer',
+    'send files free',
+    'share files online',
+    'send large files',
+    'secure file sharing',
   ],
   authors: [{ name: 'VaultTransfer' }],
   creator: 'VaultTransfer',
@@ -44,25 +41,28 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
   openGraph: {
-    title: 'VaultTransfer — Invia file in modo sicuro e gratuito',
-    description: 'Trasferisci file fino a 2GB gratis. Link cifrati, scadenza automatica, protezione password.',
+    title: 'VaultTransfer — Send files securely and for free',
+    description: 'Transfer files up to 2GB for free. Encrypted links, automatic expiry, password protection.',
     type: 'website',
     url: baseUrl,
     siteName: 'VaultTransfer',
-    locale: 'it_IT',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VaultTransfer — Invia file in modo sicuro e gratuito',
-    description: 'Trasferisci file fino a 2GB gratis. Link cifrati, scadenza automatica, protezione password.',
+    title: 'VaultTransfer — Send files securely and for free',
+    description: 'Transfer files up to 2GB for free. Encrypted links, automatic expiry, password protection.',
   },
   alternates: { canonical: baseUrl },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale()
+  const messages = await getMessages()
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID
+
   return (
-    <html lang="it">
+    <html lang={locale}>
       <body>
         {adsenseId && (
           <Script
@@ -72,11 +72,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             strategy="afterInteractive"
           />
         )}
-        <HeaderWrapper />
-        {children}
-        <CookieBanner />
-        <Footer />
-
+        <NextIntlClientProvider messages={messages}>
+          <HeaderWrapper />
+          {children}
+          <CookieBanner />
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   )

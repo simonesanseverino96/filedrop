@@ -1,10 +1,13 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 export default function NotFound() {
+  const t = useTranslations('notFound')
+
   return (
     <main className="min-h-screen flex items-center justify-center px-6">
       <div className="text-center animate-fade-up">
-        {/* Big 404 */}
         <div className="relative mb-8">
           <p className="font-display text-[8rem] md:text-[12rem] font-800 leading-none text-white/5 select-none">
             404
@@ -22,30 +25,23 @@ export default function NotFound() {
         </div>
 
         <h1 className="font-display text-3xl md:text-4xl font-800 text-paper mb-3">
-          Pagina non trovata
+          {t('title')}
         </h1>
         <p className="text-muted font-body text-base max-w-sm mx-auto mb-10 leading-relaxed">
-          La pagina che stai cercando non esiste o è stata spostata.
-          Forse stai cercando un link di download scaduto?
+          {t('description')}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href="/"
-            className="px-6 py-3 bg-accent text-ink rounded-xl font-display font-600 text-sm hover:bg-accent-dim transition-all active:scale-[0.98] shadow-lg shadow-accent/20"
-          >
-            Torna alla home →
+          <a href="/" className="px-6 py-3 bg-accent text-ink rounded-xl font-display font-600 text-sm hover:bg-accent-dim transition-all active:scale-[0.98] shadow-lg shadow-accent/20">
+            {t('backHome')}
           </a>
-          <a
-            href="/prezzi"
-            className="px-6 py-3 bg-surface border border-white/10 text-paper rounded-xl font-display font-600 text-sm hover:bg-surface-2 transition-all"
-          >
-            Vedi i piani
+          <a href="/pricing" className="px-6 py-3 bg-surface border border-white/10 text-paper rounded-xl font-display font-600 text-sm hover:bg-surface-2 transition-all">
+            {t('seePlans')}
           </a>
         </div>
 
         <p className="mt-10 text-xs text-muted font-body">
-          Hai bisogno di aiuto?{' '}
+          {t('help')}{' '}
           <a href="mailto:support@vaultransfer.com" className="text-accent hover:underline">
             support@vaultransfer.com
           </a>

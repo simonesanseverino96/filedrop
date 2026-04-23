@@ -1,0 +1,318 @@
+{
+  "common": {
+    "appName": "VaultTransfer",
+    "secureConnection": "Ligação segura"
+  },
+  "header": {
+    "pricing": "Preços",
+    "login": "Iniciar sessão",
+    "register": "Inscrever-se gratuitamente",
+    "dashboard": "Painel de controlo",
+    "upgradeToPro": "Atualizar para Pro",
+    "logout": "Terminar sessão",
+    "planFree": "Grátis",
+    "planPro": "⭐ Pro",
+    "planBusiness": "🏢 Negócios"
+  },
+  "footer": {
+    "tagline": "Transferência de ficheiros rápida e segura. Em conformidade com o RGPD, servidores europeus.",
+    "sections": {
+      "product": "Produto",
+      "legal": "Jurídico",
+      "contact": "Contacto"
+    },
+    "links": {
+      "pricing": "Preços",
+      "faq": "FAQ",
+      "dashboard": "Painel de controlo",
+      "privacy": "Política de privacidade",
+      "terms": "Termos do serviço"
+    },
+    "copyright": "© {year} VaultTransfer. Todos os direitos reservados.",
+    "badge": "🇪🇺 Servidores europeus - Em conformidade com o RGPD - TLS 1.3"
+  },
+  "home": {
+    "badge": "Não é necessária conta - Grátis até 2GB",
+    "headline": "Partilhar ficheiros",
+    "headlineAccent": "sem compromisso.",
+    "description": "Ligações encriptadas com expiração automática, proteção por palavra-passe, limites de descarregamento. Os seus ficheiros viajam em segurança - e desaparecem quando você decidir.",
+    "securityTagline": "Segurança desde a conceção",
+    "featuresHeadline": "Concebido para quem não quer compromissos"
+  },
+  "upload": {
+    "dropzone": {
+      "active": "Deixar ficheiros aqui",
+      "idle": "Arrastar ficheiros para aqui",
+      "browse": "navegar",
+      "hint": "ou {browse} do seu dispositivo - máx. 2GB - 20 ficheiros"
+    },
+    "file": {
+      "uploaded": "✓ Carregado",
+      "error": "erro",
+      "remaining": "{time} restante",
+      "completed": "Concluído"
+    },
+    "options": {
+      "toggle": "Opções de segurança",
+      "expiry": "Expiração da ligação",
+      "expiry1": "24 horas",
+      "expiry7": "7 dias",
+      "expiry30": "30 dias",
+      "maxDownloads": "Máximo de descarregamentos (opcional)",
+      "maxDownloadsPlaceholder": "Ilimitado",
+      "password": "Palavra-passe de proteção (opcional)",
+      "message": "Mensagem para o destinatário",
+      "messagePlaceholder": "Adicionar uma mensagem...",
+      "senderEmail": "O seu e-mail (opcional)",
+      "emailPlaceholder": "you@example.com"
+    },
+    "button": {
+      "uploading": "Carregando...",
+      "upload": "Carregar e gerar ligação →"
+    },
+    "summary": "{count} ficheiros - {size} total",
+    "error": {
+      "tooLarge": "Alguns ficheiros excedem o limite de {limit}.",
+      "blocked": "Ficheiro não permitido.",
+      "maxFiles": "Máximo de ficheiros {max}.",
+      "upload": "Erro durante o carregamento",
+      "transfer": "Erro ao criar transferência"
+    }
+  },
+  "uploadSuccess": {
+    "title": "Transferência pronta!",
+    "subtitle": "ficheiro {count} ({size}) - expira em {expiry}{password}",
+    "passwordSuffix": " - protegido por palavra-passe",
+    "linkLabel": "A sua ligação",
+    "copy": "Cópia",
+    "copied": "✓ Copiado",
+    "badges": {
+      "https": "HTTPS encriptado",
+      "expiry": "Expira em {expiry}",
+      "password": "Palavra-passe necessária",
+      "maxDownloads": "Max {count} downloads"
+    },
+    "newTransfer": "Nova transferência →",
+    "expiry1": "24 horas",
+    "expiry7": "7 dias",
+    "expiry30": "30 dias"
+  },
+  "download": {
+    "secureDownload": "descarregamento seguro através de uma ligação assinada - válido por 60 segundos",
+    "downloading": "Descarregar...",
+    "downloadFile": "Descarregar ficheiro →",
+    "downloadAll": "Descarregar todos os ficheiros →",
+    "downloadInProgress": "Transferência em curso..."
+  },
+  "features": {
+    "items": {
+      "encrypted": {
+        "title": "Encriptado em trânsito",
+        "desc": "Todas as transferências são efectuadas através de HTTPS com TLS 1.3. Os seus ficheiros nunca são lidos."
+      },
+      "expiry": {
+        "title": "Expiração automática",
+        "desc": "Escolha entre 24 horas, 7 ou 30 dias. No final do prazo, os ficheiros são eliminados permanentemente."
+      },
+      "password": {
+        "title": "Proteção por palavra-passe",
+        "desc": "Adicionar uma palavra-passe: o hash é guardado com bcrypt. A palavra-passe nunca é guardada em texto simples."
+      },
+      "downloadLimit": {
+        "title": "Limite de descarregamento",
+        "desc": "Defina o número máximo de descarregamentos. Quando o limite for atingido, a ligação é automaticamente desactivada."
+      },
+      "noAccount": {
+        "title": "Zero contas",
+        "desc": "Sem registo. Não é necessário correio eletrónico. Carregamento anónimo e instantâneo."
+      },
+      "gdpr": {
+        "title": "Conformidade com o RGPD",
+        "desc": "Sem rastreio. Sem definição de perfis. Os dados permanecem na Europa."
+      }
+    }
+  },
+  "report": {
+    "button": "🚨 Comunicar conteúdo inadequado",
+    "title": "Comunicar conteúdos ilegais ou inadequados",
+    "reasonLabel": "Motivo do relatório *",
+    "reasonPlaceholder": "Selecionar um motivo...",
+    "reasons": {
+      "csam": "Material de abuso sexual de crianças (CSAM)",
+      "malware": "Malware ou vírus",
+      "copyright": "Violação dos direitos de autor",
+      "illegal": "Conteúdo ilegal",
+      "phishing": "Phishing ou burla",
+      "other": "Outros"
+    },
+    "emailLabel": "O seu e-mail (opcional, para actualizações)",
+    "submit": "Enviar relatório",
+    "submitting": "Enviar...",
+    "cancel": "Cancelar",
+    "notice": "Os relatórios são analisados no prazo de 72 horas. Em caso de emergência, escrever para",
+    "sent": "relatório enviado. Obrigado por nos ajudar a manter o serviço seguro."
+  },
+  "login": {
+    "title": "Iniciar sessão",
+    "subtitle": "Enviamos-lhe uma ligação mágica por correio eletrónico - não precisa de se lembrar da palavra-passe.",
+    "emailLabel": "Correio eletrónico",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Enviar ligação mágica →",
+    "submitting": "Enviando...",
+    "noAccount": "Não tem conta? Será criada uma automaticamente.",
+    "backHome": "← Voltar ao início",
+    "checkEmail": {
+      "title": "Verifique o seu correio eletrónico!",
+      "message": "Enviámos uma ligação mágica para {email}. Clique na ligação para iniciar sessão - será redireccionado automaticamente."
+    }
+  },
+  "pricing": {
+    "badge": "Simples e transparente",
+    "title": "Escolha o seu plano",
+    "subtitle": "Comece gratuitamente, actualize quando quiser.",
+    "monthly": "Mensal",
+    "annual": "Anual",
+    "saveBadge": "Poupe até €{amount}/ano",
+    "perMonth": "/mês",
+    "billedAnnually": "€{amount} facturado anualmente",
+    "saveWithAnnual": "Poupe €{amount}/ano com o plano anual",
+    "free": "Grátis",
+    "plans": {
+      "free": {
+        "name": "Grátis",
+        "cta": "Começar gratuitamente"
+      },
+      "pro": {
+        "name": "Profissional",
+        "badge": "Mais populares",
+        "cta": "Atualizar para Pro"
+      },
+      "business": {
+        "name": "Negócios",
+        "cta": "Atualização para Negócios"
+      }
+    },
+    "features": {
+      "upload2gb": "Carregar até 2 GB por ficheiro",
+      "upload50gb": "Carregar até 50 GB por ficheiro",
+      "upload200gb": "Carregar até 200 GB por ficheiro",
+      "link7days": "Ligações válidas por 7 dias",
+      "link30days": "Ligações válidas por 30 dias",
+      "linkNoExpiry": "Ligações sem prazo de validade",
+      "ads": "Bandas publicitárias",
+      "noAds": "Sem faixas publicitárias",
+      "unlimitedDownloads": "Transferências ilimitadas",
+      "customLinks": "Ligações personalizadas",
+      "downloadStats": "Estatísticas de descarregamento",
+      "passwordLinks": "Palavra-passe nas ligações",
+      "prioritySupport": "Apoio prioritário"
+    },
+    "loading": "Carregando..",
+    "error": "Erro de rede. Tente novamente.",
+    "trust": {
+      "refund": "14 dias de devolução do dinheiro",
+      "stripe": "Pagamentos seguros através do Stripe",
+      "cancel": "Cancelar a qualquer momento",
+      "faq": "Dúvidas? Ler as FAQ →"
+    }
+  },
+  "faq": {
+    "badge": "Perguntas mais frequentes",
+    "title": "Tudo o que",
+    "titleAccent": "querer saber",
+    "contact": "Não consegue encontrar uma resposta?",
+    "contactLink": "Contactar-nos",
+    "cta": {
+      "ready": "Pronto para começar?",
+      "seePlans": "Ver planos"
+    },
+    "categories": {
+      "general": "Geral",
+      "security": "Segurança",
+      "plans": "Planos e pagamentos",
+      "technical": "Técnica"
+    },
+    "items": {
+      "whatIs": {
+        "q": "O que é a VaultTransfer?",
+        "a": "A VaultTransfer é um serviço seguro de transferência de ficheiros. Pode enviar ficheiros grandes para qualquer pessoa através de uma ligação protegida, sem que o destinatário necessite de uma conta."
+      },
+      "register": {
+        "q": "Preciso de me registar para o utilizar?",
+        "a": "Não. Pode enviar ficheiros gratuitamente sem se registar. A criação de uma conta dá-lhe acesso a funcionalidades avançadas, como carregamentos até 50 GB, ligações personalizadas e estatísticas de descarregamento."
+      },
+      "expiry": {
+        "q": "Durante quanto tempo estão os meus ficheiros disponíveis?",
+        "a": "Com o plano Free, os links expiram após 7 dias. Com o Pro, após 30 dias. Com o plano Business, pode definir datas de expiração personalizadas ou manter os ficheiros indefinidamente."
+      },
+      "safe": {
+        "q": "Os meus ficheiros estão seguros?",
+        "a": "Sim. Todas as transferências são efectuadas através de HTTPS com TLS 1.3. Os ficheiros são automaticamente eliminados quando a ligação expira. Os servidores estão localizados na Europa e estamos em total conformidade com o RGPD."
+      },
+      "whoCanSee": {
+        "q": "Quem pode ver os meus ficheiros?",
+        "a": "Apenas aqueles que possuem a ligação podem aceder aos ficheiros. Pode adicionar uma palavra-passe para proteção extra (disponível nos planos pagos). O nosso pessoal nunca acede aos conteúdos."
+      },
+      "scanned": {
+        "q": "Os ficheiros são analisados ou digitalizados?",
+        "a": "Efectuamos uma verificação automática do antivírus para proteger os destinatários, mas não analisamos o conteúdo dos ficheiros para fins comerciais ou publicitários."
+      },
+      "payment": {
+        "q": "Quais são os métodos de pagamento aceites?",
+        "a": "Aceitamos todos os principais cartões de crédito e débito (Visa, Mastercard, American Express) via Stripe. Os pagamentos são seguros e não armazenamos os dados do cartão."
+      },
+      "changePlan": {
+        "q": "Posso mudar de plano em qualquer altura?",
+        "a": "Sim, pode fazer um upgrade ou um downgrade em qualquer altura. Para actualizações, a diferença de preço é calculada proporcionalmente para o período restante. Para os downgrades, o plano atual permanece ativo até ao final do período pago."
+      },
+      "annualDiscount": {
+        "q": "Como funciona o desconto anual?",
+        "a": "Ao optar pela faturação anual, obtém um preço fixo de 45 euros/ano para o plano Pro e de 120 euros/ano para o plano Business, com poupanças significativas em comparação com a faturação mensal. O pagamento é efectuado de uma só vez e o plano está ativo durante 12 meses."
+      },
+      "refund": {
+        "q": "Posso pedir um reembolso?",
+        "a": "Oferecemos um reembolso total no prazo de 14 dias após a compra se não ficar satisfeito. Após 14 dias, não é possível efetuar reembolsos parciais."
+      },
+      "maxSize": {
+        "q": "Qual é o tamanho máximo do ficheiro?",
+        "a": "Plano gratuito: 2 GB por ficheiro. Plano Pro: 50 GB por ficheiro. Plano Business: 200 GB por ficheiro. Não há limites para o número de ficheiros que pode enviar."
+      },
+      "formats": {
+        "q": "Que formatos de ficheiro são suportados?",
+        "a": "Suportamos a maioria dos formatos: documentos, imagens, vídeos, arquivos ZIP, ficheiros de projectos, etc. Por motivos de segurança, os ficheiros executáveis (.exe, .msi, .bat, .sh), os scripts (.ps1, .vbs, .js), as macros do Office (.docm, .xlsm, .pptm), os pacotes de aplicações (.apk, .ipa, .deb) e outros formatos potencialmente nocivos estão bloqueados."
+      },
+      "devices": {
+        "q": "O serviço funciona em todos os dispositivos?",
+        "a": "Sim. A VaultTransfer funciona em qualquer dispositivo com um navegador moderno: PC, Mac, smartphones e tablets Android e iOS. Não é necessária nenhuma aplicação."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "A página que procura não existe ou foi transferida. Talvez esteja à procura de uma ligação de transferência expirada?",
+    "backHome": "Voltar ao início →",
+    "seePlans": "Ver planos",
+    "help": "Precisa de ajuda?"
+  },
+  "cookie": {
+    "message": "Utilizamos cookies para melhorar a sua experiência e apresentar anúncios relevantes. Aceita?",
+    "accept": "Aceitar",
+    "decline": "Declínio"
+  },
+  "metadata": {
+    "titleDefault": "VaultTransfer - Envie ficheiros de forma segura e gratuita",
+    "description": "Transfira ficheiros até 2 GB gratuitamente. Ligações encriptadas com expiração automática, proteção por palavra-passe e limites de transferência. Não é necessária uma conta. Compatível com o RGPD.",
+    "keywords": [
+      "secure file transfer",
+      "send files free",
+      "share files online",
+      "send large files",
+      "secure file sharing",
+      "transfer encrypted files",
+      "expiry download link",
+      "send files without registration",
+      "wetransfer alternative",
+      "send password protected files"
+    ]
+  }
+}

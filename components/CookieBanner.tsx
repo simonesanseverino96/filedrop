@@ -2,12 +2,13 @@
 
 import CookieConsent from 'react-cookie-consent'
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 
 export default function CookieBanner() {
+  const t = useTranslations('cookie')
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    // Mostra solo se non ha già risposto
     const consent = localStorage.getItem('vt-cookie-consent')
     if (!consent) setShow(true)
   }, [])
@@ -17,8 +18,8 @@ export default function CookieBanner() {
   return (
     <CookieConsent
       location="bottom"
-      buttonText="Accetta tutti"
-      declineButtonText="Solo necessari"
+      buttonText={t('accept')}
+      declineButtonText={t('decline')}
       enableDeclineButton
       onAccept={() => {
         localStorage.setItem('vt-cookie-consent', 'all')
@@ -27,7 +28,6 @@ export default function CookieBanner() {
       onDecline={() => {
         localStorage.setItem('vt-cookie-consent', 'necessary')
         setShow(false)
-        // Disabilita AdSense se rifiuta
         if (typeof window !== 'undefined') {
           // @ts-ignore
           window['ga-disable-G-XXXXXXXX'] = true
@@ -64,7 +64,7 @@ export default function CookieBanner() {
       }}
     >
       <span style={{ fontSize: '13px', color: '#f4f1eb', fontFamily: 'monospace' }}>
-        🍪 Utilizziamo cookie tecnici necessari e, con il tuo consenso, cookie pubblicitari (Google AdSense) per supportare il servizio gratuito.{' '}
+        🍪 {t('message')}{' '}
         <a href="/privacy" style={{ color: '#00e5a0', textDecoration: 'underline' }}>
           Privacy Policy
         </a>

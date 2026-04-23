@@ -1,0 +1,318 @@
+{
+  "common": {
+    "appName": "金库转移",
+    "secureConnection": "安全连接"
+  },
+  "header": {
+    "pricing": "定价",
+    "login": "登录",
+    "register": "免费注册",
+    "dashboard": "仪表板",
+    "upgradeToPro": "升级至专业版",
+    "logout": "退出登录",
+    "planFree": "免费",
+    "planPro": "⭐ 专业",
+    "planBusiness": "🏢 商业"
+  },
+  "footer": {
+    "tagline": "快速安全的文件传输。符合 GDPR 标准，欧洲服务器。",
+    "sections": {
+      "product": "产品",
+      "legal": "法律",
+      "contact": "联系方式"
+    },
+    "links": {
+      "pricing": "定价",
+      "faq": "常见问题",
+      "dashboard": "仪表板",
+      "privacy": "隐私政策",
+      "terms": "服务条款"
+    },
+    "copyright": "© {year} VaultTransfer。保留所有权利。",
+    "badge": "🇪🇺 欧洲服务器 - 符合 GDPR - TLS 1.3"
+  },
+  "home": {
+    "badge": "无需帐户 - 最高免费 2GB",
+    "headline": "共享文件",
+    "headlineAccent": "毫不妥协。",
+    "description": "加密链接自动失效、密码保护、下载限制。您的文件安全传输，并在您决定时消失。",
+    "securityTagline": "设计安全",
+    "featuresHeadline": "专为不想妥协的人设计"
+  },
+  "upload": {
+    "dropzone": {
+      "active": "将文件放在此处",
+      "idle": "将文件拖到此处",
+      "browse": "浏览",
+      "hint": "或设备中的 {browse} - 最大 2GB - 20 个文件"
+    },
+    "file": {
+      "uploaded": "✓ 已上传",
+      "error": "✗ 错误",
+      "remaining": "{time}剩余",
+      "completed": "已完成"
+    },
+    "options": {
+      "toggle": "安全选项",
+      "expiry": "链接过期",
+      "expiry1": "24 小时",
+      "expiry7": "7 天",
+      "expiry30": "30 天",
+      "maxDownloads": "最大下载量（可选）",
+      "maxDownloadsPlaceholder": "无限制",
+      "password": "保护密码（可选）",
+      "message": "给收件人的信息",
+      "messagePlaceholder": "添加信息...",
+      "senderEmail": "您的电子邮件（可选）",
+      "emailPlaceholder": "you@example.com"
+    },
+    "button": {
+      "uploading": "上传...",
+      "upload": "上传并生成链接 →"
+    },
+    "summary": "{count}个文件 - 共{size}个文件",
+    "error": {
+      "tooLarge": "有些文件超过了 {limit} 限制。",
+      "blocked": "文件不允许。",
+      "maxFiles": "最大{max}文件。",
+      "upload": "上传过程中出现错误",
+      "transfer": "创建传输时出错"
+    }
+  },
+  "uploadSuccess": {
+    "title": "转账准备就绪！",
+    "subtitle": "{count}文件({size}) - 在{expiry}{password}中失效",
+    "passwordSuffix": "- 受密码保护",
+    "linkLabel": "您的链接",
+    "copy": "复制",
+    "copied": "复制的",
+    "badges": {
+      "https": "HTTPS 加密",
+      "expiry": "有效期至{expiry}__年",
+      "password": "需要密码",
+      "maxDownloads": "最大{count}下载量"
+    },
+    "newTransfer": "新转账 →",
+    "expiry1": "24 小时",
+    "expiry7": "7 天",
+    "expiry30": "30 天"
+  },
+  "download": {
+    "secureDownload": "🔒 通过签名链接安全下载 - 60 秒内有效",
+    "downloading": "下载...",
+    "downloadFile": "下载文件 →",
+    "downloadAll": "下载所有文件 →",
+    "downloadInProgress": "下载中..."
+  },
+  "features": {
+    "items": {
+      "encrypted": {
+        "title": "传输中加密",
+        "desc": "所有传输均通过 HTTPS 和 TLS 1.3 进行。您的文件永远不会被读取。"
+      },
+      "expiry": {
+        "title": "自动失效",
+        "desc": "可选择 24 小时、7 天或 30 天。到期后，文件将被永久删除。"
+      },
+      "password": {
+        "title": "密码保护",
+        "desc": "添加密码：使用 bcrypt 保存哈希值。密码不会以纯文本形式保存。"
+      },
+      "downloadLimit": {
+        "title": "下载限制",
+        "desc": "设置最大下载次数。一旦达到上限，链接将自动停用。"
+      },
+      "noAccount": {
+        "title": "零账户",
+        "desc": "无需注册。无需电子邮件。匿名即时上传。"
+      },
+      "gdpr": {
+        "title": "符合 GDPR",
+        "desc": "无跟踪。无特征分析。数据留在欧洲。"
+      }
+    }
+  },
+  "report": {
+    "button": "🚨 报告不恰当内容",
+    "title": "举报非法或不当内容",
+    "reasonLabel": "报告原因 *",
+    "reasonPlaceholder": "选择原因...",
+    "reasons": {
+      "csam": "儿童性虐待材料 (CSAM)",
+      "malware": "恶意软件或病毒",
+      "copyright": "侵犯版权",
+      "illegal": "非法内容",
+      "phishing": "网络钓鱼或诈骗",
+      "other": "其他"
+    },
+    "emailLabel": "您的电子邮件（可选，用于更新）",
+    "submit": "提交报告",
+    "submitting": "提交...",
+    "cancel": "取消",
+    "notice": "72 小时内对报告进行审查。如遇紧急情况，请致函",
+    "sent": "✓ 已提交报告。感谢您帮助我们确保服务安全。"
+  },
+  "login": {
+    "title": "登录",
+    "subtitle": "我们会通过电子邮件向您发送一个神奇的链接--无需记住密码。",
+    "emailLabel": "电子邮件",
+    "emailPlaceholder": "you@example.com",
+    "submit": "发送魔法链接 →",
+    "submitting": "发送...",
+    "noAccount": "没有账户？将自动创建一个。",
+    "backHome": "← 返回首页",
+    "checkEmail": {
+      "title": "查看您的电子邮件！",
+      "message": "我们向 {email} 发送了一个神奇的链接。点击链接登录 - 您将被自动重定向。"
+    }
+  },
+  "pricing": {
+    "badge": "简单透明",
+    "title": "选择您的计划",
+    "subtitle": "免费开始，随时升级。",
+    "monthly": "每月",
+    "annual": "年度",
+    "saveBadge": "每年最多可节省_{amount}_欧元",
+    "perMonth": "/每月",
+    "billedAnnually": "_{amount}_欧元，每年结算",
+    "saveWithAnnual": "年度计划每年可节省_{amount}_欧元",
+    "free": "免费",
+    "plans": {
+      "free": {
+        "name": "免费",
+        "cta": "免费开始"
+      },
+      "pro": {
+        "name": "专业",
+        "badge": "最受欢迎",
+        "cta": "升级至专业版"
+      },
+      "business": {
+        "name": "商业",
+        "cta": "升级至商务"
+      }
+    },
+    "features": {
+      "upload2gb": "每个文件最多可上传 2 GB",
+      "upload50gb": "每个文件最多可上传 50 GB",
+      "upload200gb": "每个文件最多可上传 200 GB",
+      "link7days": "链接有效期为 7 天",
+      "link30days": "链接有效期为 30 天",
+      "linkNoExpiry": "无过期链接",
+      "ads": "广告横幅",
+      "noAds": "无广告横幅",
+      "unlimitedDownloads": "无限制下载",
+      "customLinks": "自定义链接",
+      "downloadStats": "下载统计数据",
+      "passwordLinks": "链接密码",
+      "prioritySupport": "优先支持"
+    },
+    "loading": "正在加载...",
+    "error": "网络错误。请重试。",
+    "trust": {
+      "refund": "14 天退款",
+      "stripe": "通过 Stripe 安全支付",
+      "cancel": "随时取消",
+      "faq": "有问题？阅读常见问题 →"
+    }
+  },
+  "faq": {
+    "badge": "常见问题",
+    "title": "您的一切",
+    "titleAccent": "想知道",
+    "contact": "找不到答案？",
+    "contactLink": "联系我们",
+    "cta": {
+      "ready": "准备好开始了吗？",
+      "seePlans": "查看计划"
+    },
+    "categories": {
+      "general": "一般情况",
+      "security": "安全",
+      "plans": "计划与付款",
+      "technical": "技术"
+    },
+    "items": {
+      "whatIs": {
+        "q": "什么是VaultTransfer？",
+        "a": "VaultTransfer是一种安全的文件传输服务。您可以通过受保护的链接向任何人发送大文件，收件人无需账户。"
+      },
+      "register": {
+        "q": "我需要注册才能使用吗？",
+        "a": "无需注册即可免费发送文件。创建账户后，您可以使用高级功能，如上传最大 50 GB、自定义链接和下载统计。"
+      },
+      "expiry": {
+        "q": "我的文件可使用多长时间？",
+        "a": "免费计划的链接在 7 天后失效。专业版 30 天后失效。使用商务版，您可以设置自定义过期日期或无限期保留文件。"
+      },
+      "safe": {
+        "q": "我的文件安全吗？",
+        "a": "是的。所有传输都通过 HTTPS 和 TLS 1.3 进行。链接过期后，文件将自动删除。服务器位于欧洲，完全符合 GDPR 要求。"
+      },
+      "whoCanSee": {
+        "q": "谁可以查看我的文件？",
+        "a": "只有拥有链接的人才能访问文件。您可以添加密码以提供额外保护（付费计划提供）。我们的员工永远不会访问文件内容。"
+      },
+      "scanned": {
+        "q": "是否对文件进行了分析或扫描？",
+        "a": "我们会进行自动杀毒扫描以保护收件人，但不会出于商业或广告目的分析文件内容。"
+      },
+      "payment": {
+        "q": "你们接受哪些付款方式？",
+        "a": "我们通过 Stripe 接受所有主要信用卡和借记卡（维萨卡、万事达卡、美国运通卡）。付款是安全的，我们不会存储卡数据。"
+      },
+      "changePlan": {
+        "q": "我可以随时更改计划吗？",
+        "a": "是的，您可以随时升级或降级。升级时，差价按剩余时间的比例计算。对于降级，当前计划在付费期结束前保持有效。"
+      },
+      "annualDiscount": {
+        "q": "年度折扣如何计算？",
+        "a": "选择按年计费，专业计划的固定价格为 45 欧元/年，商业计划的固定价格为 120 欧元/年，比按月计费节省很多。付款方式为一次性预付，计划有效期为 12 个月。"
+      },
+      "refund": {
+        "q": "我可以申请退款吗？",
+        "a": "如果您不满意，我们将在购买后 14 天内提供全额退款。14 天后将无法进行部分退款。"
+      },
+      "maxSize": {
+        "q": "最大文件大小是多少？",
+        "a": "免费计划：每个文件 2 GB。专业计划：每个文件 50 GB。商业计划：每个文件 200 GB。发送文件数量不受限制。"
+      },
+      "formats": {
+        "q": "支持哪些文件格式？",
+        "a": "我们支持大多数格式：文档、图像、视频、ZIP 压缩包、项目文件等。出于安全考虑，我们会阻止可执行文件（.exe、.msi、.bat、.sh）、脚本（.ps1、.vbs、.js）、Office 宏（.docm、.xlsm、.pptm）、应用程序包（.apk、.ipa、.deb）和其他可能有害的格式。"
+      },
+      "devices": {
+        "q": "服务是否适用于所有设备？",
+        "a": "是的。VaultTransfer适用于任何带有现代浏览器的设备：PC、Mac、安卓和iOS智能手机、平板电脑。无需应用程序。"
+      }
+    }
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "您要查找的页面不存在或已被移动。也许您要找的下载链接已经过期？",
+    "backHome": "返回首页 →",
+    "seePlans": "查看计划",
+    "help": "需要帮助吗？"
+  },
+  "cookie": {
+    "message": "我们使用 cookie 改善您的体验并显示相关广告。您接受吗？",
+    "accept": "接受",
+    "decline": "下降"
+  },
+  "metadata": {
+    "titleDefault": "VaultTransfer - 安全免费地发送文件",
+    "description": "免费传输高达 2GB 的文件。加密链接自动失效、密码保护和下载限制。无需账户。符合 GDPR 标准。",
+    "keywords": [
+      "secure file transfer",
+      "send files free",
+      "share files online",
+      "send large files",
+      "secure file sharing",
+      "transfer encrypted files",
+      "expiry download link",
+      "send files without registration",
+      "wetransfer alternative",
+      "send password protected files"
+    ]
+  }
+}

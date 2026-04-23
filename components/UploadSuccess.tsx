@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { UploadConfig } from '@/types'
 import { formatBytes } from '@/lib/utils'
 
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function UploadSuccess({ token, config, files }: Props) {
+  const t = useTranslations('uploadSuccess')
   const [copied, setCopied] = useState(false)
   const link = `${typeof window !== 'undefined' ? window.location.origin : ''}/download/${token}`
 
@@ -20,7 +22,12 @@ export default function UploadSuccess({ token, config, files }: Props) {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const expiryLabel = config.expiry === '1' ? '24 ore' : config.expiry === '7' ? '7 giorni' : '30 giorni'
+  const expiryLabel = config.expiry === '1'
+    ? t('expiry1')
+    : config.expiry === '7'
+    ? t('expiry7')
+    : t('expiry30')
+
   const totalSize = files.reduce((a, f) => a + f.size, 0)
 
   return (
@@ -32,15 +39,19 @@ export default function UploadSuccess({ token, config, files }: Props) {
         </svg>
       </div>
 
-      <h2 className="font-display text-3xl font-700 text-paper mb-2">Transfer pronto!</h2>
+      <h2 className="font-display text-3xl font-700 text-paper mb-2">{t('title')}</h2>
       <p className="text-muted text-sm font-body mb-8">
-        {files.length} file ({formatBytes(totalSize)}) · scade in {expiryLabel}
-        {config.password && ' · protetto da password'}
+        {t('subtitle', {
+          count: files.length,
+          size: formatBytes(totalSize),
+          expiry: expiryLabel,
+          password: config.password ? t('passwordSuffix') : '',
+        })}
       </p>
 
       {/* Link box */}
       <div className="bg-surface border border-white/5 rounded-2xl p-5 mb-4">
-        <p className="text-xs text-muted mb-3 font-body uppercase tracking-widest">Il tuo link</p>
+        <p className="text-xs text-muted mb-3 font-body uppercase tracking-widest">{t('linkLabel')}</p>
         <div className="flex items-center gap-3">
           <code className="flex-1 text-accent text-sm font-body bg-surface-2 rounded-lg px-3 py-2 truncate text-left">
             {link}
@@ -51,7 +62,7 @@ export default function UploadSuccess({ token, config, files }: Props) {
               copied ? 'bg-accent/20 text-accent' : 'bg-accent text-ink hover:bg-accent-dim'
             }`}
           >
-            {copied ? '✓ Copiato' : 'Copia'}
+            {copied ? t('copied') : t('copy')}
           </button>
         </div>
       </div>
@@ -59,10 +70,10 @@ export default function UploadSuccess({ token, config, files }: Props) {
       {/* Security badges */}
       <div className="flex flex-wrap justify-center gap-2 mb-8">
         {[
-          { icon: '🔒', label: 'HTTPS cifrato' },
-          { icon: '⏱', label: `Scade in ${expiryLabel}` },
-          config.password ? { icon: '🔑', label: 'Password richiesta' } : null,
-          config.maxDownloads ? { icon: '📥', label: `Max ${config.maxDownloads} download` } : null,
+          { icon: '🔒', label: t('badges.https') },
+          { icon: '⏱', label: t('badges.expiry', { expiry: expiryLabel }) },
+          config.password ? { icon: '🔑', label: t('badges.password') } : null,
+          config.maxDownloads ? { icon: '📥', label: t('badges.maxDownloads', { count: config.maxDownloads }) } : null,
         ].filter(Boolean).map((badge, i) => (
           <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-surface border border-white/5 rounded-full text-xs text-muted font-body">
             <span>{badge!.icon}</span>
@@ -75,7 +86,7 @@ export default function UploadSuccess({ token, config, files }: Props) {
         onClick={() => window.location.reload()}
         className="text-sm text-muted hover:text-paper underline underline-offset-4 font-body transition-colors"
       >
-        Nuovo trasferimento →
+        {t('newTransfer')}
       </button>
     </div>
   )

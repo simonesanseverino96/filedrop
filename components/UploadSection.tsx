@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { useTranslations } from 'next-intl'
 import { formatBytes } from '@/lib/utils'
 import { UploadConfig } from '@/types'
 import UploadSuccess from './UploadSuccess'
@@ -28,6 +29,7 @@ function formatTime(seconds: number): string {
 }
 
 export default function UploadSection() {
+  const t = useTranslations('upload')
   const [files, setFiles] = useState<FileWithProgress[]>([])
   const [config, setConfig] = useState<UploadConfig>({
     expiry: '7', maxDownloads: null, password: '', message: '', senderEmail: '',
@@ -39,25 +41,23 @@ export default function UploadSection() {
   const startTimeRef = useRef<Record<string, number>>({})
 
   const onDrop = useCallback((accepted: File[], rejected: any[]) => {
-    if (rejected.length > 0) setError(`Alcuni file superano il limite di ${formatBytes(MAX_SIZE)}.`)
-    // Blocca file pericolosi
+    if (rejected.length > 0) setError(t('error.tooLarge', { limit: formatBytes(MAX_SIZE) }))
     const blockedFiles = accepted.filter(f => isBlockedFile(f.name))
     if (blockedFiles.length > 0) {
-      setError(getBlockedReason(blockedFiles[0].name) || 'File non consentito.')
+      setError(getBlockedReason(blockedFiles[0].name) || t('error.blocked'))
       return
     }
-
     const newFiles = accepted.map(f => ({
       file: f, id: Math.random().toString(36).slice(2),
       progress: 0, speed: 0, timeLeft: 0, status: 'pending' as const,
     }))
     setFiles(prev => {
       const combined = [...prev, ...newFiles]
-      if (combined.length > MAX_FILES) { setError(`Max ${MAX_FILES} file.`); return prev }
+      if (combined.length > MAX_FILES) { setError(t('error.maxFiles', { max: MAX_FILES })); return prev }
       return combined
     })
     setError(null)
-  }, [])
+  }, [t])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, maxSize: MAX_SIZE })
   const removeFile = (id: string) => setFiles(prev => prev.filter(f => f.id !== id))
@@ -66,10 +66,8 @@ export default function UploadSection() {
   const uploadFileWithProgress = (file: File, storagePath: string, fileId: string): Promise<void> => {
     return new Promise((resolve, reject) => {
       startTimeRef.current[fileId] = Date.now()
-
       const xhr = new XMLHttpRequest()
 
-      // Ottieni l'URL di upload da Supabase
       supabase.storage.from('filedrop').createSignedUploadUrl(storagePath).then(({ data, error }) => {
         if (error || !data) { reject(error || new Error('No signed URL')); return }
 
@@ -79,7 +77,6 @@ export default function UploadSection() {
           const elapsed = (Date.now() - startTimeRef.current[fileId]) / 1000
           const speed = elapsed > 0 ? e.loaded / elapsed : 0
           const timeLeft = speed > 0 ? (e.total - e.loaded) / speed : 0
-
           setFiles(prev => prev.map(f =>
             f.id === fileId ? { ...f, progress, speed, timeLeft, status: 'uploading' } : f
           ))
@@ -97,7 +94,6 @@ export default function UploadSection() {
         })
 
         xhr.addEventListener('error', () => reject(new Error('Network error')))
-
         xhr.open('PUT', data.signedUrl)
         xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream')
         xhr.send(file)
@@ -112,17 +108,12 @@ export default function UploadSection() {
 
     try {
       const transferId = uuidv4()
-
-      // Caricamento parallelo di tutti i file contemporaneamente
       const uploadedFiles = await Promise.all(
         files.map(async ({ file, id }) => {
           const fileId = uuidv4()
           const storagePath = `transfers/${transferId}/${fileId}_${file.name}`
-
           setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'uploading' } : f))
-
           await uploadFileWithProgress(file, storagePath, id)
-
           return {
             id: fileId, filename: file.name, size: file.size,
             mimeType: file.type || 'application/octet-stream', storagePath,
@@ -130,7 +121,6 @@ export default function UploadSection() {
         })
       )
 
-      // Passa il token se l'utente è loggato
       let accessToken: string | null = null
       try {
         const tokenRes = await fetch('/api/auth/token', { cache: 'no-store' })
@@ -146,13 +136,13 @@ export default function UploadSection() {
 
       if (!res.ok) {
         const data = await res.json()
-        throw new Error(data.error || 'Errore nella creazione del trasferimento')
+        throw new Error(data.error || t('error.transfer'))
       }
 
       const data = await res.json()
       setTransferToken(data.token)
     } catch (err: any) {
-      setError(err.message || 'Errore durante l\'upload')
+      setError(err.message || t('error.upload'))
       setFiles(prev => prev.map(f => ({ ...f, status: f.status === 'done' ? 'done' : 'error' })))
     } finally {
       setIsUploading(false)
@@ -181,10 +171,10 @@ export default function UploadSection() {
           </div>
           <div>
             <p className="font-display text-lg font-600 text-paper mb-1">
-              {isDragActive ? 'Rilascia i file qui' : 'Trascina i file qui'}
+              {isDragActive ? t('dropzone.active') : t('dropzone.idle')}
             </p>
             <p className="text-muted text-sm font-body">
-              oppure <span className="text-accent underline underline-offset-2">sfoglia</span> dal tuo dispositivo · max 2GB · 20 file
+              or <span className="text-accent underline underline-offset-2">{t('dropzone.browse')}</span> from your device · max 2GB · 20 files
             </p>
           </div>
         </div>
@@ -205,8 +195,8 @@ export default function UploadSection() {
                   <p className="text-sm text-paper truncate font-body">{file.name}</p>
                   <p className="text-xs text-muted font-body">{formatBytes(file.size)}</p>
                 </div>
-                {status === 'done' && <span className="text-xs text-accent font-body flex-shrink-0">✓ Caricato</span>}
-                {status === 'error' && <span className="text-xs text-red-400 font-body flex-shrink-0">✗ Errore</span>}
+                {status === 'done' && <span className="text-xs text-accent font-body flex-shrink-0">{t('file.uploaded')}</span>}
+                {status === 'error' && <span className="text-xs text-red-400 font-body flex-shrink-0">{t('file.error')}</span>}
                 {!isUploading && status === 'pending' && (
                   <button onClick={() => removeFile(id)} className="text-muted hover:text-paper transition-colors p-1 flex-shrink-0">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -216,7 +206,6 @@ export default function UploadSection() {
                 )}
               </div>
 
-              {/* Progress bar */}
               {(status === 'uploading' || status === 'done') && (
                 <div className="mt-3">
                   <div className="flex justify-between items-center mb-1.5">
@@ -228,11 +217,11 @@ export default function UploadSection() {
                     </div>
                     {status === 'uploading' && timeLeft > 0 && (
                       <span className="text-xs text-muted font-body">
-                        {formatTime(timeLeft)} rimanenti
+                        {t('file.remaining', { time: formatTime(timeLeft) })}
                       </span>
                     )}
                     {status === 'done' && (
-                      <span className="text-xs text-accent font-body">Completato</span>
+                      <span className="text-xs text-accent font-body">{t('file.completed')}</span>
                     )}
                   </div>
                   <div className="h-1.5 bg-surface-2 rounded-full overflow-hidden">
@@ -247,8 +236,7 @@ export default function UploadSection() {
           ))}
 
           <div className="flex justify-between items-center px-1 pt-1 text-xs text-muted font-body">
-            <span>{files.length} file{files.length !== 1 ? 's' : ''}</span>
-            <span>{formatBytes(totalSize)} totali</span>
+            <span>{t('summary', { count: files.length, size: formatBytes(totalSize) })}</span>
           </div>
         </div>
       )}
@@ -263,44 +251,44 @@ export default function UploadSection() {
               style={{ transform: showOptions ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
               <polyline points="6 9 12 15 18 9"/>
             </svg>
-            Opzioni di sicurezza
+            {t('options.toggle')}
           </button>
 
           {showOptions && (
             <div className="mt-3 bg-surface border border-white/5 rounded-xl p-5 space-y-4 animate-fade-up">
               <div>
-                <label className="text-xs text-muted mb-2 block font-body">Scadenza link</label>
+                <label className="text-xs text-muted mb-2 block font-body">{t('options.expiry')}</label>
                 <div className="flex gap-2">
                   {(['1', '7', '30'] as const).map(d => (
                     <button key={d} onClick={() => setConfig(c => ({ ...c, expiry: d }))}
                       className={`flex-1 py-2 rounded-lg text-sm font-body transition-all ${config.expiry === d ? 'bg-accent text-ink font-500' : 'bg-surface-2 text-muted hover:text-paper border border-white/5'}`}>
-                      {d === '1' ? '24 ore' : d === '7' ? '7 giorni' : '30 giorni'}
+                      {d === '1' ? t('options.expiry1') : d === '7' ? t('options.expiry7') : t('options.expiry30')}
                     </button>
                   ))}
                 </div>
               </div>
               <div>
-                <label className="text-xs text-muted mb-2 block font-body">Max download (opzionale)</label>
-                <input type="number" min="1" max="100" placeholder="Illimitati"
+                <label className="text-xs text-muted mb-2 block font-body">{t('options.maxDownloads')}</label>
+                <input type="number" min="1" max="100" placeholder={t('options.maxDownloadsPlaceholder')}
                   value={config.maxDownloads ?? ''}
                   onChange={e => setConfig(c => ({ ...c, maxDownloads: e.target.value ? parseInt(e.target.value) : null }))}
                   className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
               </div>
               <div>
-                <label className="text-xs text-muted mb-2 block font-body">Password protezione (opzionale)</label>
+                <label className="text-xs text-muted mb-2 block font-body">{t('options.password')}</label>
                 <input type="password" placeholder="••••••••" value={config.password}
                   onChange={e => setConfig(c => ({ ...c, password: e.target.value }))}
                   className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
               </div>
               <div>
-                <label className="text-xs text-muted mb-2 block font-body">Messaggio per il destinatario</label>
-                <textarea placeholder="Aggiungi un messaggio..." value={config.message} rows={2}
+                <label className="text-xs text-muted mb-2 block font-body">{t('options.message')}</label>
+                <textarea placeholder={t('options.messagePlaceholder')} value={config.message} rows={2}
                   onChange={e => setConfig(c => ({ ...c, message: e.target.value }))}
                   className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors resize-none" />
               </div>
               <div>
-                <label className="text-xs text-muted mb-2 block font-body">La tua email (opzionale)</label>
-                <input type="email" placeholder="tu@esempio.com" value={config.senderEmail}
+                <label className="text-xs text-muted mb-2 block font-body">{t('options.senderEmail')}</label>
+                <input type="email" placeholder={t('options.emailPlaceholder')} value={config.senderEmail}
                   onChange={e => setConfig(c => ({ ...c, senderEmail: e.target.value }))}
                   className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
               </div>
@@ -326,9 +314,9 @@ export default function UploadSection() {
                 <circle cx="12" cy="12" r="10" strokeOpacity="0.25"/>
                 <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round"/>
               </svg>
-              Caricamento in corso...
+              {t('button.uploading')}
             </span>
-          ) : `Carica e genera link →`}
+          ) : t('button.upload')}
         </button>
       )}
     </div>

@@ -1,0 +1,318 @@
+{
+  "common": {
+    "appName": "VaultTransfer",
+    "secureConnection": "Connessione sicura"
+  },
+  "header": {
+    "pricing": "Prezzi",
+    "login": "Accedi",
+    "register": "Iscriviti gratuitamente",
+    "dashboard": "Cruscotto",
+    "upgradeToPro": "Aggiornamento a Pro",
+    "logout": "Disconnettersi",
+    "planFree": "Gratuito",
+    "planPro": "⭐ Pro",
+    "planBusiness": "🏢 Affari"
+  },
+  "footer": {
+    "tagline": "Trasferimento di file veloce e sicuro. Conformità al GDPR, server europei.",
+    "sections": {
+      "product": "Prodotto",
+      "legal": "Legale",
+      "contact": "Contatto"
+    },
+    "links": {
+      "pricing": "Prezzi",
+      "faq": "FAQ",
+      "dashboard": "Cruscotto",
+      "privacy": "Informativa sulla privacy",
+      "terms": "Termini di servizio"
+    },
+    "copyright": "© {year} VaultTransfer. Tutti i diritti riservati.",
+    "badge": "🇪🇺 Server europei - Conformi al GDPR - TLS 1.3"
+  },
+  "home": {
+    "badge": "Non è necessario un account - Gratis fino a 2 GB",
+    "headline": "Condividere i file",
+    "headlineAccent": "senza compromessi.",
+    "description": "Link criptati con scadenza automatica, protezione con password, limiti di download. I vostri file viaggiano al sicuro e scompaiono quando lo decidete voi.",
+    "securityTagline": "La sicurezza per il design",
+    "featuresHeadline": "Costruito per chi non vuole compromessi"
+  },
+  "upload": {
+    "dropzone": {
+      "active": "Lasciare i file qui",
+      "idle": "Trascinare i file qui",
+      "browse": "sfogliare",
+      "hint": "o {browse} dal vostro dispositivo - max 2GB - 20 file"
+    },
+    "file": {
+      "uploaded": "✓ Caricato",
+      "error": "errore",
+      "remaining": "{time} rimanente",
+      "completed": "Completato"
+    },
+    "options": {
+      "toggle": "Opzioni di sicurezza",
+      "expiry": "Scadenza del link",
+      "expiry1": "24 ore",
+      "expiry7": "7 giorni",
+      "expiry30": "30 giorni",
+      "maxDownloads": "Download massimo (opzionale)",
+      "maxDownloadsPlaceholder": "Illimitato",
+      "password": "Password di protezione (opzionale)",
+      "message": "Messaggio per il destinatario",
+      "messagePlaceholder": "Aggiungi un messaggio...",
+      "senderEmail": "Il vostro indirizzo e-mail (facoltativo)",
+      "emailPlaceholder": "you@example.com"
+    },
+    "button": {
+      "uploading": "Caricamento...",
+      "upload": "Caricare e generare il link →"
+    },
+    "summary": "{count} file - {size} totale",
+    "error": {
+      "tooLarge": "Alcuni file superano il limite di {limit}.",
+      "blocked": "File non consentito.",
+      "maxFiles": "File max {max}.",
+      "upload": "Errore durante il caricamento",
+      "transfer": "Errore nella creazione del trasferimento"
+    }
+  },
+  "uploadSuccess": {
+    "title": "Trasferimento pronto!",
+    "subtitle": "file {count} ({size}) - scade in {expiry}{password}",
+    "passwordSuffix": " - protetto da password",
+    "linkLabel": "Il tuo link",
+    "copy": "Copia",
+    "copied": "✓ Copiato",
+    "badges": {
+      "https": "HTTPS crittografato",
+      "expiry": "Scade nel {expiry}",
+      "password": "È richiesta la password",
+      "maxDownloads": "Max {count} download"
+    },
+    "newTransfer": "Nuovo trasferimento →",
+    "expiry1": "24 ore",
+    "expiry7": "7 giorni",
+    "expiry30": "30 giorni"
+  },
+  "download": {
+    "secureDownload": "🔒 Download sicuro tramite link firmato - validità 60 secondi",
+    "downloading": "Scaricare...",
+    "downloadFile": "Scarica il file →",
+    "downloadAll": "Scarica tutti i file →",
+    "downloadInProgress": "Download in corso..."
+  },
+  "features": {
+    "items": {
+      "encrypted": {
+        "title": "Crittografato in transito",
+        "desc": "Tutti i trasferimenti avvengono tramite HTTPS con TLS 1.3. I vostri file non vengono mai letti."
+      },
+      "expiry": {
+        "title": "Scadenza automatica",
+        "desc": "Scegliete 24 ore, 7 o 30 giorni. Alla scadenza, i file vengono eliminati in modo permanente."
+      },
+      "password": {
+        "title": "Protezione con password",
+        "desc": "Aggiungere una password: l'hash viene memorizzato con bcrypt. La password non viene mai salvata in testo normale."
+      },
+      "downloadLimit": {
+        "title": "Limite di download",
+        "desc": "Impostare il numero massimo di download. Una volta raggiunto il limite, il link viene disattivato automaticamente."
+      },
+      "noAccount": {
+        "title": "Zero conti",
+        "desc": "Nessuna registrazione. Nessuna e-mail richiesta. Caricamento anonimo e istantaneo."
+      },
+      "gdpr": {
+        "title": "Conformità al GDPR",
+        "desc": "Nessun tracciamento. Nessuna profilazione. I dati rimangono in Europa."
+      }
+    }
+  },
+  "report": {
+    "button": "🚨 Segnala un contenuto inappropriato",
+    "title": "Segnalare contenuti illegali o inappropriati",
+    "reasonLabel": "Motivo della segnalazione *",
+    "reasonPlaceholder": "Selezionare un motivo...",
+    "reasons": {
+      "csam": "Materiale pedopornografico (CSAM)",
+      "malware": "Malware o virus",
+      "copyright": "Violazione del copyright",
+      "illegal": "Contenuti illegali",
+      "phishing": "Phishing o truffa",
+      "other": "Altro"
+    },
+    "emailLabel": "Il vostro indirizzo e-mail (facoltativo, per gli aggiornamenti)",
+    "submit": "Invia il rapporto",
+    "submitting": "Invio...",
+    "cancel": "Annullamento",
+    "notice": "I rapporti vengono esaminati entro 72 ore. Per le emergenze scrivere a",
+    "sent": "✓ Rapporto inviato. Grazie per averci aiutato a mantenere il servizio sicuro."
+  },
+  "login": {
+    "title": "Accedi",
+    "subtitle": "Vi invieremo un link magico via e-mail, senza password da ricordare.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Invia il link magico →",
+    "submitting": "Invio...",
+    "noAccount": "Non avete un account? Verrà creato automaticamente.",
+    "backHome": "← Torna alla pagina iniziale",
+    "checkEmail": {
+      "title": "Controllate la vostra e-mail!",
+      "message": "Abbiamo inviato un link magico a {email}. Cliccate sul link per accedere: sarete reindirizzati automaticamente."
+    }
+  },
+  "pricing": {
+    "badge": "Semplice e trasparente",
+    "title": "Scegliete il vostro piano",
+    "subtitle": "Iniziate gratuitamente e aggiornate quando volete.",
+    "monthly": "Mensile",
+    "annual": "Annuale",
+    "saveBadge": "Risparmia fino a €{amount}/anno",
+    "perMonth": "/mese",
+    "billedAnnually": "€{amount} fatturati annualmente",
+    "saveWithAnnual": "Risparmiare €{amount}/anno con il piano annuale",
+    "free": "Gratuito",
+    "plans": {
+      "free": {
+        "name": "Gratuito",
+        "cta": "Iniziare gratuitamente"
+      },
+      "pro": {
+        "name": "Pro",
+        "badge": "I più popolari",
+        "cta": "Aggiornamento a Pro"
+      },
+      "business": {
+        "name": "Affari",
+        "cta": "Aggiornamento a Business"
+      }
+    },
+    "features": {
+      "upload2gb": "Caricare fino a 2 GB per file",
+      "upload50gb": "Caricare fino a 50 GB per file",
+      "upload200gb": "Caricare fino a 200 GB per file",
+      "link7days": "Link validi 7 giorni",
+      "link30days": "Link validi 30 giorni",
+      "linkNoExpiry": "Link senza scadenza",
+      "ads": "Banner pubblicitari",
+      "noAds": "Nessun banner pubblicitario",
+      "unlimitedDownloads": "Download illimitati",
+      "customLinks": "Collegamenti personalizzati",
+      "downloadStats": "Scarica le statistiche",
+      "passwordLinks": "Password sui link",
+      "prioritySupport": "Assistenza prioritaria"
+    },
+    "loading": "Caricamento..",
+    "error": "Errore di rete. Riprovare.",
+    "trust": {
+      "refund": "14 giorni di rimborso",
+      "stripe": "Pagamenti sicuri tramite Stripe",
+      "cancel": "Annullamento in qualsiasi momento",
+      "faq": "Domande? Leggete le FAQ →"
+    }
+  },
+  "faq": {
+    "badge": "Domande frequenti",
+    "title": "Tutto ciò che",
+    "titleAccent": "vuole sapere",
+    "contact": "Non riuscite a trovare una risposta?",
+    "contactLink": "Contattateci",
+    "cta": {
+      "ready": "Siete pronti per iniziare?",
+      "seePlans": "Vedere i piani"
+    },
+    "categories": {
+      "general": "Generale",
+      "security": "Sicurezza",
+      "plans": "Piani e pagamenti",
+      "technical": "Tecnica"
+    },
+    "items": {
+      "whatIs": {
+        "q": "Che cos'è VaultTransfer?",
+        "a": "VaultTransfer è un servizio di trasferimento sicuro di file. È possibile inviare file di grandi dimensioni a chiunque tramite un link protetto, senza che il destinatario abbia bisogno di un account."
+      },
+      "register": {
+        "q": "Devo iscrivermi per utilizzarlo?",
+        "a": "No. È possibile inviare file gratuitamente senza registrazione. La creazione di un account consente di accedere a funzioni avanzate come il caricamento di file fino a 50 GB, link personalizzati e statistiche sui download."
+      },
+      "expiry": {
+        "q": "Per quanto tempo sono disponibili i miei file?",
+        "a": "Con il piano Free, i link scadono dopo 7 giorni. Con il piano Pro dopo 30 giorni. Con Business è possibile impostare date di scadenza personalizzate o conservare i file a tempo indeterminato."
+      },
+      "safe": {
+        "q": "I miei file sono al sicuro?",
+        "a": "Sì. Tutti i trasferimenti avvengono tramite HTTPS con TLS 1.3. I file vengono eliminati automaticamente alla scadenza del link. I server sono in Europa e siamo pienamente conformi al GDPR."
+      },
+      "whoCanSee": {
+        "q": "Chi può vedere i miei file?",
+        "a": "Solo chi ha il link può accedere ai file. È possibile aggiungere una password per una maggiore protezione (disponibile con i piani a pagamento). Il nostro personale non accede mai ai contenuti."
+      },
+      "scanned": {
+        "q": "I file vengono analizzati o scansionati?",
+        "a": "Eseguiamo una scansione antivirus automatica per proteggere i destinatari, ma non analizziamo il contenuto dei file a fini commerciali o pubblicitari."
+      },
+      "payment": {
+        "q": "Quali metodi di pagamento accettate?",
+        "a": "Accettiamo tutte le principali carte di credito e di debito (Visa, Mastercard, American Express) tramite Stripe. I pagamenti sono sicuri e non memorizziamo i dati della carta."
+      },
+      "changePlan": {
+        "q": "Posso cambiare piano in qualsiasi momento?",
+        "a": "Sì, è possibile effettuare l'upgrade o il downgrade in qualsiasi momento. Per gli upgrade, la differenza di prezzo viene calcolata proporzionalmente per il periodo rimanente. Per i downgrade, il piano attuale rimane attivo fino alla fine del periodo pagato."
+      },
+      "annualDiscount": {
+        "q": "Come funziona lo sconto annuale?",
+        "a": "Scegliendo la fatturazione annuale si ottiene un prezzo fisso di 45 euro/anno per il piano Pro e di 120 euro/anno per il piano Business, con un notevole risparmio rispetto alla fatturazione mensile. Il pagamento avviene in un'unica soluzione anticipata e il piano è attivo per 12 mesi."
+      },
+      "refund": {
+        "q": "Posso richiedere un rimborso?",
+        "a": "Offriamo un rimborso completo entro 14 giorni dall'acquisto se non siete soddisfatti. Dopo 14 giorni non è possibile effettuare rimborsi parziali."
+      },
+      "maxSize": {
+        "q": "Qual è la dimensione massima del file?",
+        "a": "Piano gratuito: 2 GB per file. Piano Pro: 50 GB per file. Piano Business: 200 GB per file. Non ci sono limiti al numero di file che si possono inviare."
+      },
+      "formats": {
+        "q": "Quali sono i formati di file supportati?",
+        "a": "Supportiamo la maggior parte dei formati: documenti, immagini, video, archivi ZIP, file di progetto, ecc. Per motivi di sicurezza, i file eseguibili (.exe, .msi, .bat, .sh), gli script (.ps1, .vbs, .js), le macro di Office (.docm, .xlsm, .pptm), i pacchetti di applicazioni (.apk, .ipa, .deb) e altri formati potenzialmente dannosi sono bloccati."
+      },
+      "devices": {
+        "q": "Il servizio funziona su tutti i dispositivi?",
+        "a": "Sì. VaultTransfer funziona su qualsiasi dispositivo dotato di un browser moderno: PC, Mac, smartphone e tablet Android e iOS. Non è richiesta alcuna applicazione."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "description": "La pagina che state cercando non esiste o è stata spostata. Forse state cercando un link di download scaduto?",
+    "backHome": "Torna alla casa →",
+    "seePlans": "Vedere i piani",
+    "help": "Avete bisogno di aiuto?"
+  },
+  "cookie": {
+    "message": "Utilizziamo i cookie per migliorare la vostra esperienza e mostrare annunci pertinenti. Accettate?",
+    "accept": "Accettare",
+    "decline": "Declino"
+  },
+  "metadata": {
+    "titleDefault": "VaultTransfer - Inviare file in modo sicuro e gratuito",
+    "description": "Trasferimento gratuito di file fino a 2 GB. Link crittografati con scadenza automatica, protezione con password e limiti di download. Nessun account richiesto. Conforme al GDPR.",
+    "keywords": [
+      "secure file transfer",
+      "send files free",
+      "share files online",
+      "send large files",
+      "secure file sharing",
+      "transfer encrypted files",
+      "expiry download link",
+      "send files without registration",
+      "wetransfer alternative",
+      "send password protected files"
+    ]
+  }
+}
