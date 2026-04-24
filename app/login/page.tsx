@@ -16,11 +16,11 @@ export default function LoginPage() {
   useEffect(() => {
     const hash = window.location.hash
     if (hash && hash.includes('access_token')) {
-      supabase.auth.getSession().then(({ data }) => {
+      supabase.auth.getSession().then(({ data }: { data: any }) => {
         if (data.session) window.location.href = '/dashboard'
       })
     }
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event: any, session: any) => {
       if (event === 'SIGNED_IN' && session) window.location.href = '/dashboard'
     })
     return () => subscription.unsubscribe()
