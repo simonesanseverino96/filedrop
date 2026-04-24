@@ -102,7 +102,25 @@
     "downloading": "下载...",
     "downloadFile": "下载文件 →",
     "downloadAll": "下载所有文件 →",
-    "downloadInProgress": "下载中..."
+    "downloadInProgress": "下载中...",
+    "loading": "加载传输...",
+    "expiredTitle": "转让过期",
+    "expiredDesc": "此链接已过期或达到下载限制。请发件人重新发送文件。",
+    "newTransfer": "创建新转账",
+    "errorTitle": "未找到传输",
+    "errorDesc": "链接可能不正确或传输不存在。",
+    "backHome": "返回首页",
+    "protectedTitle": "受保护的转移",
+    "protectedDesc": "输入密码以访问文件",
+    "passwordLabel": "密码",
+    "passwordError": "密码错误，请重试。",
+    "passwordVerifyError": "密码验证错误",
+    "accessFiles": "访问文件 →",
+    "readyLabel": "转账准备就绪",
+    "totalSize": "总面积",
+    "expiresIn": "⏱ 在{expiry}到期",
+    "downloadCount": "📥 {count}/{max} 下载",
+    "scarica": "下载"
   },
   "features": {
     "items": {
@@ -314,5 +332,33 @@
       "wetransfer alternative",
       "send password protected files"
     ]
+  },
+  "dashboard": {
+    "currentPlan": "当前计划",
+    "free": "免费",
+    "perMonth": "欧元/月",
+    "upgradePro": "升级到专业版 →",
+    "upgradeProPrice": "升级至专业版 - 每月 4.99 欧元 →",
+    "upgradeBusiness": "升级到商务 →",
+    "manageSubscription": "管理订阅",
+    "loading": "正在加载...",
+    "maxUpload": "最大上传",
+    "maxExpiry": "最长有效期",
+    "maxDownloads": "最大下载量",
+    "unlimited": "无限制",
+    "ads": "广告",
+    "yes": "是",
+    "no": "没有",
+    "days": "{count}天",
+    "wantMore": "想要更多存储空间和 API 访问权限？",
+    "transfers": "您的转账",
+    "newTransfer": "+ 新",
+    "transfersProOnly": "专业计划可提供转账历史记录。",
+    "noTransfers": "还没有转让。开始分享",
+    "uploadFirst": "上传您的第一个文件 →",
+    "expired": "已过期",
+    "copyLink": "复制链接",
+    "transferDate": "转让{date}_",
+    "transferMeta": "{size} - {downloads} 下载 - {expiry} 过期"
   }
 }

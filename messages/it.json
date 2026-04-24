@@ -102,7 +102,25 @@
     "downloading": "Scaricare...",
     "downloadFile": "Scarica il file →",
     "downloadAll": "Scarica tutti i file →",
-    "downloadInProgress": "Download in corso..."
+    "downloadInProgress": "Download in corso...",
+    "loading": "Trasferimento di carico...",
+    "expiredTitle": "Trasferimento scaduto",
+    "expiredDesc": "Questo link è scaduto o ha raggiunto il limite di download. Chiedete al mittente di inviare nuovamente i file.",
+    "newTransfer": "Creare un nuovo trasferimento",
+    "errorTitle": "Trasferimento non trovato",
+    "errorDesc": "Il link potrebbe essere errato o il trasferimento non esiste.",
+    "backHome": "Torna a casa",
+    "protectedTitle": "Trasferimento protetto",
+    "protectedDesc": "Inserire la password per accedere ai file",
+    "passwordLabel": "Password",
+    "passwordError": "Password errata, riprovare.",
+    "passwordVerifyError": "Errore nella verifica della password",
+    "accessFiles": "Accesso ai file →",
+    "readyLabel": "Trasferimento pronto",
+    "totalSize": "Dimensione totale",
+    "expiresIn": "⏱ Scade nel {expiry}",
+    "downloadCount": "📥 {count}/{max} download",
+    "scarica": "Scaricare"
   },
   "features": {
     "items": {
@@ -314,5 +332,33 @@
       "wetransfer alternative",
       "send password protected files"
     ]
+  },
+  "dashboard": {
+    "currentPlan": "Piano attuale",
+    "free": "Gratuito",
+    "perMonth": "€/mese",
+    "upgradePro": "Aggiornamento a Pro →",
+    "upgradeProPrice": "Aggiornamento a Pro - €4,99/mese →",
+    "upgradeBusiness": "Aggiornamento a Business →",
+    "manageSubscription": "Gestire l'abbonamento",
+    "loading": "Caricamento...",
+    "maxUpload": "Caricamento massimo",
+    "maxExpiry": "Scadenza massima",
+    "maxDownloads": "Max download",
+    "unlimited": "Illimitato",
+    "ads": "Annunci",
+    "yes": "Sì",
+    "no": "No",
+    "days": "{count} giorni",
+    "wantMore": "Volete più spazio di archiviazione e accesso alle API?",
+    "transfers": "I vostri trasferimenti",
+    "newTransfer": "+ Nuovo",
+    "transfersProOnly": "La cronologia dei trasferimenti è disponibile nel piano Pro.",
+    "noTransfers": "Non ci sono ancora trasferimenti. Inizia a condividere!",
+    "uploadFirst": "Caricare il primo file →",
+    "expired": "Scaduto",
+    "copyLink": "Copiare il link",
+    "transferDate": "Trasferimento di {date}",
+    "transferMeta": "{size} - {downloads} download - scadenza in {expiry}"
   }
 }

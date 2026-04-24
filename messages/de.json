@@ -102,7 +102,25 @@
     "downloading": "Herunterladen...",
     "downloadFile": "Datei → herunterladen",
     "downloadAll": "Alle Dateien herunterladen →",
-    "downloadInProgress": "Download in Arbeit..."
+    "downloadInProgress": "Download in Arbeit...",
+    "loading": "Übertragung laden...",
+    "expiredTitle": "Übertragung abgelaufen",
+    "expiredDesc": "Dieser Link ist abgelaufen oder hat das Download-Limit erreicht. Bitten Sie den Absender, die Dateien erneut zu senden.",
+    "newTransfer": "Eine neue Übertragung erstellen",
+    "errorTitle": "Übertragung nicht gefunden",
+    "errorDesc": "Der Link kann falsch sein oder die Übertragung existiert nicht.",
+    "backHome": "Zurück nach Hause",
+    "protectedTitle": "Geschützte Übertragung",
+    "protectedDesc": "Geben Sie das Passwort für den Zugriff auf die Dateien ein",
+    "passwordLabel": "Passwort",
+    "passwordError": "Falsches Passwort, bitte versuchen Sie es erneut.",
+    "passwordVerifyError": "Fehler beim Überprüfen des Passworts",
+    "accessFiles": "Zugang zu Dateien →",
+    "readyLabel": "Übertragung bereit",
+    "totalSize": "Gesamtgröße",
+    "expiresIn": "⏱ Läuft aus in {expiry}",
+    "downloadCount": "📥 {count}/{max} Downloads",
+    "scarica": "Herunterladen"
   },
   "features": {
     "items": {
@@ -314,5 +332,33 @@
       "wetransfer alternative",
       "send password protected files"
     ]
+  },
+  "dashboard": {
+    "currentPlan": "Aktueller Plan",
+    "free": "Kostenlos",
+    "perMonth": "€/Monat",
+    "upgradePro": "Upgrade auf Pro →",
+    "upgradeProPrice": "Upgrade auf Pro - 4,99 €/Monat →",
+    "upgradeBusiness": "Upgrade auf Business →",
+    "manageSubscription": "Abonnement verwalten",
+    "loading": "Laden...",
+    "maxUpload": "Maximaler Upload",
+    "maxExpiry": "Maximaler Verfall",
+    "maxDownloads": "Maximale Downloads",
+    "unlimited": "Unbegrenzt",
+    "ads": "Anzeigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "days": "{count} Tage",
+    "wantMore": "Sie möchten mehr Speicherplatz und API-Zugang?",
+    "transfers": "Ihre Überweisungen",
+    "newTransfer": "+ Neu",
+    "transfersProOnly": "Der Übertragungsverlauf ist ab dem Pro-Tarif verfügbar.",
+    "noTransfers": "Noch keine Überweisungen. Beginnen Sie mit dem Teilen!",
+    "uploadFirst": "Laden Sie Ihre erste Datei hoch →",
+    "expired": "Abgelaufen",
+    "copyLink": "Link kopieren",
+    "transferDate": "Übertragung von {date}",
+    "transferMeta": "{size} - {downloads} Downloads - läuft in {expiry} ab"
   }
 }

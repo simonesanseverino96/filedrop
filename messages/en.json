@@ -104,12 +104,30 @@
   },
 
   "download": {
-    "secureDownload": "🔒 Secure download via signed link · valid 60 seconds",
-    "downloading": "Downloading...",
-    "downloadFile": "Download file →",
-    "downloadAll": "Download all files →",
-    "downloadInProgress": "Download in progress..."
-  },
+  "secureDownload": "🔒 Secure download via signed link · valid 60 seconds",
+  "downloading": "Downloading...",
+  "downloadFile": "Download file →",
+  "downloadAll": "Download all files →",
+  "downloadInProgress": "Download in progress...",
+  "loading": "Loading transfer...",
+  "expiredTitle": "Transfer expired",
+  "expiredDesc": "This link has expired or reached the download limit. Ask the sender to resend the files.",
+  "newTransfer": "Create a new transfer",
+  "errorTitle": "Transfer not found",
+  "errorDesc": "The link may be incorrect or the transfer does not exist.",
+  "backHome": "Back to home",
+  "protectedTitle": "Protected transfer",
+  "protectedDesc": "Enter the password to access the files",
+  "passwordLabel": "Password",
+  "passwordError": "Wrong password, please try again.",
+  "passwordVerifyError": "Error verifying password",
+  "accessFiles": "Access files →",
+  "readyLabel": "Transfer ready",
+  "totalSize": "Total size",
+  "expiresIn": "⏱ Expires in {expiry}",
+  "downloadCount": "📥 {count}/{max} downloads",
+  "scarica": "Download"
+},
 
   "features": {
     "items": {
@@ -328,5 +346,34 @@
       "wetransfer alternative",
       "send password protected files"
     ]
-  }
+  },
+
+  "dashboard": {
+  "currentPlan": "Current plan",
+  "free": "Free",
+  "perMonth": "€/month",
+  "upgradePro": "Upgrade to Pro →",
+  "upgradeProPrice": "Upgrade to Pro — €4.99/month →",
+  "upgradeBusiness": "Upgrade to Business →",
+  "manageSubscription": "Manage subscription",
+  "loading": "Loading...",
+  "maxUpload": "Max upload",
+  "maxExpiry": "Max expiry",
+  "maxDownloads": "Max downloads",
+  "unlimited": "Unlimited",
+  "ads": "Ads",
+  "yes": "Yes",
+  "no": "No",
+  "days": "{count} days",
+  "wantMore": "Want more storage and API access?",
+  "transfers": "Your transfers",
+  "newTransfer": "+ New",
+  "transfersProOnly": "Transfer history is available from the Pro plan.",
+  "noTransfers": "No transfers yet. Start sharing!",
+  "uploadFirst": "Upload your first file →",
+  "expired": "Expired",
+  "copyLink": "Copy link",
+  "transferDate": "Transfer of {date}",
+  "transferMeta": "{size} · {downloads} downloads · expires in {expiry}"
+}
 }

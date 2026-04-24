@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react'
-import { createBrowserClient } from '@supabase/ssr'
+import { getBrowserClient } from '@/lib/supabase'
 import { useTranslations } from 'next-intl'
 import TranslateWidget from './TranslateWidget'
 
@@ -18,10 +18,8 @@ export default function Header() {
   const [ready, setReady] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+  const supabase = getBrowserClient()
+  
 
   const fetchUser = async (retries = 3) => {
     try {

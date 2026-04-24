@@ -102,7 +102,25 @@
     "downloading": "ダウンロード...",
     "downloadFile": "ダウンロードファイル → （英語",
     "downloadAll": "すべてのファイルをダウンロードする",
-    "downloadInProgress": "ダウンロード中..."
+    "downloadInProgress": "ダウンロード中...",
+    "loading": "ローディング転送...",
+    "expiredTitle": "移籍期間満了",
+    "expiredDesc": "このリンクは有効期限が切れているか、ダウンロード制限に達しています。送信者にファイルの再送信を依頼してください。",
+    "newTransfer": "新規移籍の作成",
+    "errorTitle": "転送が見つかりません",
+    "errorDesc": "リンクが間違っているか、転送が存在しない可能性があります。",
+    "backHome": "ホームへ戻る",
+    "protectedTitle": "プロテクト・トランスファー",
+    "protectedDesc": "ファイルにアクセスするためのパスワードを入力する",
+    "passwordLabel": "パスワード",
+    "passwordError": "パスワードが間違っています。",
+    "passwordVerifyError": "パスワードの検証エラー",
+    "accessFiles": "アクセス・ファイル",
+    "readyLabel": "移籍準備完了",
+    "totalSize": "合計サイズ",
+    "expiresIn": "期限は{expiry}。",
+    "downloadCount": "V0__/_V1__ダウンロード数",
+    "scarica": "ダウンロード"
   },
   "features": {
     "items": {
@@ -314,5 +332,33 @@
       "wetransfer alternative",
       "send password protected files"
     ]
+  },
+  "dashboard": {
+    "currentPlan": "現在の計画",
+    "free": "無料",
+    "perMonth": "ユーロ／月",
+    "upgradePro": "プロへのアップグレード",
+    "upgradeProPrice": "Proへのアップグレード - 4.99ユーロ/月 → Proへのアップグレード - 4.99ユーロ/月",
+    "upgradeBusiness": "ビジネスへのアップグレード",
+    "manageSubscription": "サブスクリプションの管理",
+    "loading": "読み込み中...",
+    "maxUpload": "最大アップロード",
+    "maxExpiry": "最大有効期限",
+    "maxDownloads": "最大ダウンロード数",
+    "unlimited": "無制限",
+    "ads": "広告",
+    "yes": "はい",
+    "no": "いいえ",
+    "days": "V0__日",
+    "wantMore": "より多くのストレージとAPIアクセスが必要ですか？",
+    "transfers": "あなたの移動",
+    "newTransfer": "+ 新着情報",
+    "transfersProOnly": "移籍履歴はプロプランから利用可能。",
+    "noTransfers": "移籍はまだない。共有開始",
+    "uploadFirst": "最初のファイルをアップロードする",
+    "expired": "期限切れ",
+    "copyLink": "リンクをコピーする",
+    "transferDate": "V0__の移籍",
+    "transferMeta": "V0__ - {downloads} ダウンロード - {expiry} で期限切れ"
   }
 }

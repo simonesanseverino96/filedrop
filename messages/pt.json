@@ -102,7 +102,25 @@
     "downloading": "Descarregar...",
     "downloadFile": "Descarregar ficheiro →",
     "downloadAll": "Descarregar todos os ficheiros →",
-    "downloadInProgress": "Transferência em curso..."
+    "downloadInProgress": "Transferência em curso...",
+    "loading": "Transferência de carga...",
+    "expiredTitle": "Transferência expirada",
+    "expiredDesc": "Esta ligação expirou ou atingiu o limite de transferências. Peça ao remetente para reenviar os ficheiros.",
+    "newTransfer": "Criar uma nova transferência",
+    "errorTitle": "Transferência não encontrada",
+    "errorDesc": "A ligação pode estar incorrecta ou a transferência não existe.",
+    "backHome": "Voltar ao início",
+    "protectedTitle": "Transferência protegida",
+    "protectedDesc": "Introduzir a palavra-passe para aceder aos ficheiros",
+    "passwordLabel": "Palavra-passe",
+    "passwordError": "Palavra-passe errada, tente novamente.",
+    "passwordVerifyError": "Erro ao verificar a palavra-passe",
+    "accessFiles": "Aceder aos ficheiros →",
+    "readyLabel": "Transferência pronta",
+    "totalSize": "Tamanho total",
+    "expiresIn": "expira em {expiry}",
+    "downloadCount": "📥 {count}/{max} downloads",
+    "scarica": "Descarregar"
   },
   "features": {
     "items": {
@@ -314,5 +332,33 @@
       "wetransfer alternative",
       "send password protected files"
     ]
+  },
+  "dashboard": {
+    "currentPlan": "Plano atual",
+    "free": "Grátis",
+    "perMonth": "€/mês",
+    "upgradePro": "Atualizar para Pro →",
+    "upgradeProPrice": "Atualização para Pro - 4,99 €/mês →",
+    "upgradeBusiness": "Atualização para Negócios →",
+    "manageSubscription": "Gerir a subscrição",
+    "loading": "Carregando...",
+    "maxUpload": "Carregamento máximo",
+    "maxExpiry": "Prazo máximo de validade",
+    "maxDownloads": "Máximo de transferências",
+    "unlimited": "Ilimitado",
+    "ads": "Anúncios",
+    "yes": "Sim",
+    "no": "Não",
+    "days": "{count} dias",
+    "wantMore": "Pretende mais armazenamento e acesso à API?",
+    "transfers": "As suas transferências",
+    "newTransfer": "+ Novo",
+    "transfersProOnly": "O histórico de transferências está disponível no plano Pro.",
+    "noTransfers": "Ainda não há transferências. Comece a partilhar!",
+    "uploadFirst": "Carregue o seu primeiro ficheiro →",
+    "expired": "Expirado",
+    "copyLink": "Copiar ligação",
+    "transferDate": "Transferência de {date}",
+    "transferMeta": "{size} - {downloads} transferências - expira em {expiry}"
   }
 }

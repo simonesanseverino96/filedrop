@@ -102,7 +102,25 @@
     "downloading": "تنزيل...",
     "downloadFile": "تنزيل الملف →",
     "downloadAll": "تنزيل جميع الملفات →",
-    "downloadInProgress": "التنزيل قيد التنفيذ..."
+    "downloadInProgress": "التنزيل قيد التنفيذ...",
+    "loading": "تحميل النقل...",
+    "expiredTitle": "انتهت صلاحية التحويل",
+    "expiredDesc": "انتهت صلاحية هذا الرابط أو وصل إلى الحد الأقصى للتنزيل. اطلب من المرسل إعادة إرسال الملفات.",
+    "newTransfer": "إنشاء تحويل جديد",
+    "errorTitle": "لم يتم العثور على التحويل",
+    "errorDesc": "قد يكون الرابط غير صحيح أو أن النقل غير موجود.",
+    "backHome": "العودة إلى المنزل",
+    "protectedTitle": "النقل المحمي",
+    "protectedDesc": "أدخل كلمة المرور للوصول إلى الملفات",
+    "passwordLabel": "كلمة المرور",
+    "passwordError": "كلمة مرور خاطئة، يرجى المحاولة مرة أخرى.",
+    "passwordVerifyError": "خطأ في التحقق من كلمة المرور",
+    "accessFiles": "الوصول إلى الملفات →",
+    "readyLabel": "التحويل جاهز",
+    "totalSize": "الحجم الإجمالي",
+    "expiresIn": "⏱ تنتهي صلاحيته في __0_{expiry}_",
+    "downloadCount": "📥 __{count}_/_{max}__ تنزيلات",
+    "scarica": "تنزيل"
   },
   "features": {
     "items": {
@@ -314,5 +332,33 @@
       "wetransfer alternative",
       "send password protected files"
     ]
+  },
+  "dashboard": {
+    "currentPlan": "الخطة الحالية",
+    "free": "مجاناً",
+    "perMonth": "يورو/شهر",
+    "upgradePro": "الترقية إلى Pro →",
+    "upgradeProPrice": "الترقية إلى Pro - 4.99 يورو/شهريًا - 4.99 يورو/شهريًا →",
+    "upgradeBusiness": "الترقية إلى الأعمال →",
+    "manageSubscription": "إدارة الاشتراك",
+    "loading": "جاري التحميل...",
+    "maxUpload": "الحد الأقصى للتحميل",
+    "maxExpiry": "الحد الأقصى لانتهاء الصلاحية",
+    "maxDownloads": "الحد الأقصى للتنزيلات",
+    "unlimited": "غير محدود",
+    "ads": "الإعلانات",
+    "yes": "نعم",
+    "no": "لا يوجد",
+    "days": "____0_يوم",
+    "wantMore": "هل تريد المزيد من التخزين والوصول إلى واجهة برمجة التطبيقات (API)؟",
+    "transfers": "التحويلات الخاصة بك",
+    "newTransfer": "+ جديد",
+    "transfersProOnly": "يتوفر سجل التحويلات من خطة Pro.",
+    "noTransfers": "لا توجد تحويلات بعد. ابدأ المشاركة!",
+    "uploadFirst": "قم بتحميل ملفك الأول →",
+    "expired": "منتهية الصلاحية",
+    "copyLink": "نسخ الرابط",
+    "transferDate": "نقل __0_V0___",
+    "transferMeta": "{size}_ - {downloads}_ تنزيلات {downloads}_ - تنتهي صلاحيتها في {expiry}_"
   }
 }

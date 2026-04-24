@@ -1,15 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createBrowserClient } from '@supabase/ssr'
+import { getBrowserClient } from '@/lib/supabase'
+import { useTranslations } from 'next-intl'
 import { formatBytes, formatExpiry } from '@/lib/utils'
 import { PLANS, PlanType } from '@/lib/plans'
 import ApiKeysSection from '@/components/ApiKeysSection'
 
-const supabase = createBrowserClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+const supabase = getBrowserClient()
 
 interface Profile {
   email: string
@@ -30,6 +28,7 @@ interface Transfer {
 }
 
 export default function DashboardPage() {
+  const t = useTranslations('dashboard')
   const [profile, setProfile] = useState<Profile | null>(null)
   const [transfers, setTransfers] = useState<Transfer[]>([])
   const [loading, setLoading] = useState(true)
@@ -49,7 +48,6 @@ export default function DashboardPage() {
       .eq('id', user.id)
       .single()
 
-    // Carica trasferimenti via API server-side (bypassa RLS)
     const transfersRes = await fetch('/api/auth/transfers', { cache: 'no-store' })
     const transfersJson = await transfersRes.json()
 
@@ -71,9 +69,9 @@ export default function DashboardPage() {
       })
       const data = await res.json()
       if (data.url) window.location.href = data.url
-      else alert(data.error || 'Errore nel checkout')
+      else alert(data.error || 'Error during checkout')
     } catch {
-      alert('Errore di connessione')
+      alert('Connection error')
     } finally {
       setCheckoutLoading(null)
     }
@@ -104,17 +102,18 @@ export default function DashboardPage() {
   return (
     <main className="min-h-screen">
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-8">
+
         {/* Piano attuale */}
         <div className="bg-surface border border-white/5 rounded-2xl p-6">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs text-muted uppercase tracking-widest font-body mb-1">Piano attuale</p>
+              <p className="text-xs text-muted uppercase tracking-widest font-body mb-1">{t('currentPlan')}</p>
               <div className="flex items-center gap-3">
                 <h2 className="font-display text-2xl font-700 text-paper">{planConfig.name}</h2>
                 <span className={`px-2 py-0.5 rounded-full text-xs font-body ${
                   plan === 'free' ? 'bg-white/10 text-muted' : 'bg-accent/15 text-accent'
                 }`}>
-                  {plan === 'free' ? 'Gratuito' : `${planConfig.price}€/mese`}
+                  {plan === 'free' ? t('free') : `${planConfig.price}${t('perMonth')}`}
                 </span>
               </div>
               <p className="text-sm text-muted font-body mt-1">{profile?.email}</p>
@@ -126,14 +125,14 @@ export default function DashboardPage() {
                   disabled={checkoutLoading === 'pro'}
                   className="px-4 py-2 bg-accent text-ink rounded-lg text-sm font-display font-600 hover:bg-accent-dim transition-colors disabled:opacity-50"
                 >
-                  {checkoutLoading === 'pro' ? 'Caricamento...' : 'Passa a Pro →'}
+                  {checkoutLoading === 'pro' ? t('loading') : t('upgradePro')}
                 </button>
               ) : (
                 <button
                   onClick={handleManageSubscription}
                   className="px-4 py-2 bg-surface-2 text-muted hover:text-paper border border-white/5 rounded-lg text-sm font-body transition-colors"
                 >
-                  Gestisci abbonamento
+                  {t('manageSubscription')}
                 </button>
               )}
             </div>
@@ -141,10 +140,10 @@ export default function DashboardPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/5">
             {[
-              { label: 'Max upload', value: formatBytes(planConfig.maxTotalSizeMB * 1024 * 1024) },
-              { label: 'Scadenza max', value: `${planConfig.maxDaysExpiry} giorni` },
-              { label: 'Download max', value: planConfig.maxDownloads === null ? 'Illimitati' : String(planConfig.maxDownloads) },
-              { label: 'Pubblicità', value: planConfig.hasAds ? 'Sì' : 'No' },
+              { label: t('maxUpload'), value: formatBytes(planConfig.maxTotalSizeMB * 1024 * 1024) },
+              { label: t('maxExpiry'), value: t('days', { count: planConfig.maxDaysExpiry }) },
+              { label: t('maxDownloads'), value: planConfig.maxDownloads === null ? t('unlimited') : String(planConfig.maxDownloads) },
+              { label: t('ads'), value: planConfig.hasAds ? t('yes') : t('no') },
             ].map((item, i) => (
               <div key={i}>
                 <p className="text-xs text-muted font-body mb-1">{item.label}</p>
@@ -153,16 +152,15 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          {/* Upgrade a Business se Pro */}
           {plan === 'pro' && (
             <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-              <p className="text-sm text-muted font-body">Vuoi più spazio e API access?</p>
+              <p className="text-sm text-muted font-body">{t('wantMore')}</p>
               <button
                 onClick={() => handleCheckout('business')}
                 disabled={checkoutLoading === 'business'}
                 className="px-4 py-2 bg-surface-2 text-paper hover:bg-white/10 border border-white/10 rounded-lg text-sm font-display font-600 transition-colors disabled:opacity-50"
               >
-                {checkoutLoading === 'business' ? 'Caricamento...' : 'Passa a Business →'}
+                {checkoutLoading === 'business' ? t('loading') : t('upgradeBusiness')}
               </button>
             </div>
           )}
@@ -171,54 +169,56 @@ export default function DashboardPage() {
         {/* Storico trasferimenti */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-display text-lg font-700 text-paper">I tuoi trasferimenti</h3>
+            <h3 className="font-display text-lg font-700 text-paper">{t('transfers')}</h3>
             <a href="/" className="px-4 py-2 bg-accent text-ink rounded-lg text-sm font-display font-600 hover:bg-accent-dim transition-colors">
-              + Nuovo
+              {t('newTransfer')}
             </a>
           </div>
 
           {plan === 'free' ? (
             <div className="bg-surface border border-white/5 rounded-2xl p-8 text-center">
-              <p className="text-muted font-body text-sm mb-4">
-                Lo storico dei trasferimenti è disponibile dal piano Pro.
-              </p>
+              <p className="text-muted font-body text-sm mb-4">{t('transfersProOnly')}</p>
               <button
                 onClick={() => handleCheckout('pro')}
                 disabled={checkoutLoading === 'pro'}
                 className="inline-block px-5 py-2.5 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors disabled:opacity-50"
               >
-                {checkoutLoading === 'pro' ? 'Caricamento...' : 'Passa a Pro — 4.99€/mese →'}
+                {checkoutLoading === 'pro' ? t('loading') : t('upgradeProPrice')}
               </button>
             </div>
           ) : transfers.length === 0 ? (
             <div className="bg-surface border border-white/5 rounded-2xl p-8 text-center">
-              <p className="text-muted font-body text-sm">Nessun trasferimento ancora. Inizia a condividere!</p>
+              <p className="text-muted font-body text-sm">{t('noTransfers')}</p>
               <a href="/" className="inline-block mt-4 px-5 py-2.5 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
-                Carica il primo file →
+                {t('uploadFirst')}
               </a>
             </div>
           ) : (
             <div className="space-y-2">
-              {transfers.map(t => (
-                <div key={t.id} className="stagger-item flex items-center gap-4 bg-surface border border-white/5 rounded-xl px-5 py-4 hover:border-accent/20 transition-colors">
+              {transfers.map(tr => (
+                <div key={tr.id} className="stagger-item flex items-center gap-4 bg-surface border border-white/5 rounded-xl px-5 py-4 hover:border-accent/20 transition-colors">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <p className="text-sm font-body text-paper truncate">
-                        {t.message || `Trasferimento del ${new Date(t.created_at).toLocaleDateString('it-IT')}`}
+                        {tr.message || t('transferDate', { date: new Date(tr.created_at).toLocaleDateString() })}
                       </p>
-                      {new Date(t.expires_at) < new Date() && (
-                        <span className="px-2 py-0.5 rounded-full text-xs font-body bg-red-500/10 text-red-400">Scaduto</span>
+                      {new Date(tr.expires_at) < new Date() && (
+                        <span className="px-2 py-0.5 rounded-full text-xs font-body bg-red-500/10 text-red-400">{t('expired')}</span>
                       )}
                     </div>
                     <p className="text-xs text-muted font-body mt-0.5">
-                      {formatBytes(t.total_size)} · {t.download_count} download · scade in {formatExpiry(t.expires_at)}
+                      {t('transferMeta', {
+                        size: formatBytes(tr.total_size),
+                        downloads: tr.download_count,
+                        expiry: formatExpiry(tr.expires_at),
+                      })}
                     </p>
                   </div>
                   <button
-                    onClick={() => navigator.clipboard.writeText(`${window.location.origin}/download/${t.token}`)}
+                    onClick={() => navigator.clipboard.writeText(`${window.location.origin}/download/${tr.token}`)}
                     className="flex-shrink-0 px-3 py-1.5 bg-accent/10 hover:bg-accent text-accent hover:text-ink border border-accent/20 hover:border-accent rounded-lg text-xs font-display font-600 transition-all"
                   >
-                    Copia link
+                    {t('copyLink')}
                   </button>
                 </div>
               ))}

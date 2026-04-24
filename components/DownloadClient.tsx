@@ -2,6 +2,7 @@
 import ReportButton from './ReportButton'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { formatBytes, formatExpiry } from '@/lib/utils'
 
 interface TransferInfo {
@@ -19,12 +20,13 @@ interface TransferInfo {
 type Status = 'loading' | 'needs-password' | 'ready' | 'error' | 'expired'
 
 export default function DownloadClient({ token }: { token: string }) {
+  const t = useTranslations('download')
   const [status, setStatus] = useState<Status>('loading')
   const [transfer, setTransfer] = useState<TransferInfo | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState<string | null>(null)
-  const [downloading, setDownloading] = useState<string | null>(null) // fileId being downloaded
+  const [downloading, setDownloading] = useState<string | null>(null)
 
   useEffect(() => {
     fetchTransferInfo()
@@ -38,7 +40,7 @@ export default function DownloadClient({ token }: { token: string }) {
 
       if (!res.ok) {
         if (res.status === 410) { setStatus('expired'); return }
-        setError(data.error || 'Trasferimento non trovato')
+        setError(data.error || t('errorDesc'))
         setStatus('error')
         return
       }
@@ -46,7 +48,7 @@ export default function DownloadClient({ token }: { token: string }) {
       setTransfer(data)
       setStatus(data.hasPassword ? 'needs-password' : 'ready')
     } catch {
-      setError('Impossibile caricare il trasferimento')
+      setError(t('errorDesc'))
       setStatus('error')
     }
   }
@@ -55,7 +57,6 @@ export default function DownloadClient({ token }: { token: string }) {
     if (!transfer) return
     setPasswordError(null)
 
-    // Download first file to test password
     const res = await fetch(`/api/download/${token}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -64,11 +65,11 @@ export default function DownloadClient({ token }: { token: string }) {
     const data = await res.json()
 
     if (res.status === 401) {
-      setPasswordError('Password errata, riprova.')
+      setPasswordError(t('passwordError'))
       return
     }
     if (!res.ok) {
-      setPasswordError(data.error || 'Errore verifica password')
+      setPasswordError(data.error || t('passwordVerifyError'))
       return
     }
 
@@ -89,11 +90,10 @@ export default function DownloadClient({ token }: { token: string }) {
 
       if (!res.ok) {
         if (data.requiresPassword) { setStatus('needs-password'); return }
-        setError(data.error || 'Errore download')
+        setError(data.error || t('downloading'))
         return
       }
 
-      // Trigger browser download via temporary anchor
       const a = document.createElement('a')
       a.href = data.url
       a.download = filename
@@ -101,7 +101,7 @@ export default function DownloadClient({ token }: { token: string }) {
       a.click()
       document.body.removeChild(a)
     } catch {
-      setError('Errore durante il download')
+      setError(t('errorDesc'))
     } finally {
       setDownloading(null)
     }
@@ -111,18 +111,15 @@ export default function DownloadClient({ token }: { token: string }) {
     if (!transfer) return
     for (const file of transfer.files) {
       await downloadFile(file.id, file.filename)
-      // Small delay between downloads to avoid browser blocking
       await new Promise(r => setTimeout(r, 300))
     }
   }
-
-  // ── STATES ──────────────────────────────────────────
 
   if (status === 'loading') {
     return (
       <div className="flex flex-col items-center gap-4 py-20">
         <div className="w-12 h-12 rounded-full border-2 border-accent/30 border-t-accent animate-spin" />
-        <p className="text-sm text-muted font-body">Caricamento trasferimento...</p>
+        <p className="text-sm text-muted font-body">{t('loading')}</p>
       </div>
     )
   }
@@ -135,10 +132,10 @@ export default function DownloadClient({ token }: { token: string }) {
             <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
         </div>
-        <h2 className="font-display text-2xl font-700 text-paper mb-2">Trasferimento scaduto</h2>
-        <p className="text-muted text-sm font-body">Questo link è scaduto o ha raggiunto il limite di download.<br/>Chiedi al mittente di inviare nuovamente i file.</p>
+        <h2 className="font-display text-2xl font-700 text-paper mb-2">{t('expiredTitle')}</h2>
+        <p className="text-muted text-sm font-body">{t('expiredDesc')}</p>
         <a href="/" className="inline-block mt-8 px-6 py-3 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
-          Crea un nuovo trasferimento
+          {t('newTransfer')}
         </a>
       </div>
     )
@@ -152,10 +149,10 @@ export default function DownloadClient({ token }: { token: string }) {
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         </div>
-        <h2 className="font-display text-2xl font-700 text-paper mb-2">Trasferimento non trovato</h2>
-        <p className="text-muted text-sm font-body">{error || 'Il link potrebbe essere errato o il trasferimento non esiste.'}</p>
+        <h2 className="font-display text-2xl font-700 text-paper mb-2">{t('errorTitle')}</h2>
+        <p className="text-muted text-sm font-body">{error || t('errorDesc')}</p>
         <a href="/" className="inline-block mt-8 px-6 py-3 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
-          Torna alla home
+          {t('backHome')}
         </a>
       </div>
     )
@@ -171,12 +168,12 @@ export default function DownloadClient({ token }: { token: string }) {
               <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
             </svg>
           </div>
-          <h2 className="font-display text-2xl font-700 text-paper mb-2">Trasferimento protetto</h2>
-          <p className="text-muted text-sm font-body">Inserisci la password per accedere ai file</p>
+          <h2 className="font-display text-2xl font-700 text-paper mb-2">{t('protectedTitle')}</h2>
+          <p className="text-muted text-sm font-body">{t('protectedDesc')}</p>
         </div>
 
         <div className="bg-surface border border-white/5 rounded-2xl p-6">
-          <label className="text-xs text-muted mb-2 block font-body uppercase tracking-widest">Password</label>
+          <label className="text-xs text-muted mb-2 block font-body uppercase tracking-widest">{t('passwordLabel')}</label>
           <input
             type="password"
             placeholder="••••••••"
@@ -194,7 +191,7 @@ export default function DownloadClient({ token }: { token: string }) {
             disabled={!password}
             className="w-full py-3 bg-accent text-ink rounded-xl font-display font-600 text-sm hover:bg-accent-dim transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Accedi ai file →
+            {t('accessFiles')}
           </button>
         </div>
       </div>
@@ -204,29 +201,27 @@ export default function DownloadClient({ token }: { token: string }) {
   // status === 'ready'
   return (
     <div className="animate-fade-up">
-      {/* Header card */}
       <div className="bg-surface border border-white/5 rounded-2xl p-6 mb-4">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <p className="text-xs text-muted font-body uppercase tracking-widest mb-1">Trasferimento pronto</p>
+            <p className="text-xs text-muted font-body uppercase tracking-widest mb-1">{t('readyLabel')}</p>
             <h2 className="font-display text-xl font-700 text-paper">
               {transfer!.files.length} file{transfer!.files.length !== 1 ? 's' : ''}
             </h2>
           </div>
           <div className="text-right">
-            <p className="text-xs text-muted font-body">Dimensione totale</p>
+            <p className="text-xs text-muted font-body">{t('totalSize')}</p>
             <p className="text-sm font-display font-600 text-paper">{formatBytes(transfer!.totalSize)}</p>
           </div>
         </div>
 
-        {/* Meta badges */}
         <div className="flex flex-wrap gap-2">
           <span className="px-2 py-1 bg-accent/10 border border-accent/20 rounded-lg text-xs text-accent font-body">
-            ⏱ Scade in {formatExpiry(transfer!.expiresAt)}
+            {t('expiresIn', { expiry: formatExpiry(transfer!.expiresAt) })}
           </span>
           {transfer!.maxDownloads && (
             <span className="px-2 py-1 bg-surface-2 border border-white/5 rounded-lg text-xs text-muted font-body">
-              📥 {transfer!.downloadCount}/{transfer!.maxDownloads} download
+              {t('downloadCount', { count: transfer!.downloadCount, max: transfer!.maxDownloads })}
             </span>
           )}
           {transfer!.senderEmail && (
@@ -236,7 +231,6 @@ export default function DownloadClient({ token }: { token: string }) {
           )}
         </div>
 
-        {/* Message */}
         {transfer!.message && (
           <div className="mt-4 p-3 bg-surface-2 rounded-xl border-l-2 border-accent/50">
             <p className="text-sm text-muted font-body italic">"{transfer!.message}"</p>
@@ -244,9 +238,8 @@ export default function DownloadClient({ token }: { token: string }) {
         )}
       </div>
 
-      {/* File list */}
       <div className="space-y-2 mb-4">
-        {transfer!.files.map((file, i) => (
+        {transfer!.files.map((file) => (
           <div key={file.id} className="stagger-item flex items-center gap-3 bg-surface border border-white/5 rounded-xl px-4 py-3 hover:border-accent/20 transition-colors">
             <div className="w-9 h-9 rounded-lg bg-surface-2 flex items-center justify-center flex-shrink-0">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -275,20 +268,19 @@ export default function DownloadClient({ token }: { token: string }) {
                   <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
               )}
-              Scarica
+              {t('scarica')}
             </button>
           </div>
         ))}
       </div>
 
-      {/* Download all button */}
       {transfer!.files.length > 1 && (
         <button
           onClick={downloadAll}
           disabled={!!downloading}
           className="w-full py-4 bg-accent text-ink rounded-xl font-display font-600 text-base hover:bg-accent-dim transition-all active:scale-[0.98] shadow-lg shadow-accent/20 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {downloading ? 'Download in corso...' : `Scarica tutti i file →`}
+          {downloading ? t('downloadInProgress') : t('downloadAll')}
         </button>
       )}
 
@@ -298,12 +290,12 @@ export default function DownloadClient({ token }: { token: string }) {
           disabled={!!downloading}
           className="w-full py-4 bg-accent text-ink rounded-xl font-display font-600 text-base hover:bg-accent-dim transition-all active:scale-[0.98] shadow-lg shadow-accent/20 disabled:opacity-50"
         >
-          {downloading ? 'Download in corso...' : 'Scarica il file →'}
+          {downloading ? t('downloadInProgress') : t('downloadFile')}
         </button>
       )}
 
       <p className="text-center text-xs text-muted font-body mt-4">
-        🔒 Download sicuro via link firmato · valido 60 secondi
+        {t('secureDownload')}
       </p>
 
       <ReportButton token={token} />

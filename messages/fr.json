@@ -102,7 +102,25 @@
     "downloading": "Téléchargement...",
     "downloadFile": "Télécharger le fichier →",
     "downloadAll": "Télécharger tous les fichiers →",
-    "downloadInProgress": "Téléchargement en cours..."
+    "downloadInProgress": "Téléchargement en cours...",
+    "loading": "Chargement du transfert...",
+    "expiredTitle": "Transfert expiré",
+    "expiredDesc": "Ce lien a expiré ou a atteint la limite de téléchargement. Demandez à l'expéditeur de renvoyer les fichiers.",
+    "newTransfer": "Créer un nouveau transfert",
+    "errorTitle": "Transfert non trouvé",
+    "errorDesc": "Le lien peut être incorrect ou le transfert n'existe pas.",
+    "backHome": "Retour à l'accueil",
+    "protectedTitle": "Transfert protégé",
+    "protectedDesc": "Saisir le mot de passe pour accéder aux fichiers",
+    "passwordLabel": "Mot de passe",
+    "passwordError": "Mauvais mot de passe, veuillez réessayer.",
+    "passwordVerifyError": "Erreur de vérification du mot de passe",
+    "accessFiles": "Accès aux fichiers →",
+    "readyLabel": "Transfert prêt",
+    "totalSize": "Taille totale",
+    "expiresIn": "⏱ Expire en {expiry}",
+    "downloadCount": "📥 {count}/{max} téléchargements",
+    "scarica": "Télécharger"
   },
   "features": {
     "items": {
@@ -314,5 +332,33 @@
       "wetransfer alternative",
       "send password protected files"
     ]
+  },
+  "dashboard": {
+    "currentPlan": "Plan actuel",
+    "free": "Gratuit",
+    "perMonth": "€/mois",
+    "upgradePro": "Passer à la version Pro →",
+    "upgradeProPrice": "Passez à la version Pro - €4.99/mois →",
+    "upgradeBusiness": "Mise à niveau vers Business →",
+    "manageSubscription": "Gérer l'abonnement",
+    "loading": "Chargement...",
+    "maxUpload": "Chargement maximal",
+    "maxExpiry": "Expiration maximale",
+    "maxDownloads": "Téléchargements maximaux",
+    "unlimited": "Illimité",
+    "ads": "Annonces",
+    "yes": "Oui",
+    "no": "Non",
+    "days": "v0__ jours",
+    "wantMore": "Vous voulez plus d'espace de stockage et d'accès à l'API ?",
+    "transfers": "Vos transferts",
+    "newTransfer": "+ Nouveau",
+    "transfersProOnly": "L'historique des transferts est disponible à partir du plan Pro.",
+    "noTransfers": "Pas encore de transferts. Commencez à partager !",
+    "uploadFirst": "Téléchargez votre premier fichier →",
+    "expired": "Expiré",
+    "copyLink": "Copier le lien",
+    "transferDate": "Transfert de {date}",
+    "transferMeta": "téléchargements {size} - {downloads} - expire en {expiry}"
   }
 }
