@@ -165,8 +165,8 @@ export default function Header() {
             {t('pricing')}
           </a>
           <div className="py-1">
-      <TranslateWidget />
-    </div>
+            <TranslateWidget />
+          </div>
           {user ? (
             <>
               <a href="/dashboard" className="block text-sm text-paper font-body py-2">{t('dashboard')}</a>
