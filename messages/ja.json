@@ -360,5 +360,31 @@
     "copyLink": "リンクをコピーする",
     "transferDate": "V0__の移籍",
     "transferMeta": "V0__ - {downloads} ダウンロード - {expiry} で期限切れ"
+  },
+  "adBanner": {
+    "label": "広告",
+    "removePro": "広告を削除するにはProにアップグレードする"
+  },
+  "apiKeys": {
+    "title": "APIキー",
+    "subtitle": "APIキーを使ってVaultTransferをコードに統合する",
+    "warning": "⚠️ 今すぐこのキーをコピーしてください！",
+    "copied": "コピー",
+    "copy": "コピー",
+    "saved": "キーを保存し、閉じる",
+    "placeholder": "キー名（例：Production）",
+    "create": "+ キー作成",
+    "creating": "...",
+    "neverUsed": "未使用",
+    "lastUsed": "V0__で使用",
+    "revoke": "取り消す",
+    "noKeys": "APIキーはまだありません。作成してください！",
+    "revokeConfirm": "本当にこのAPIキーを取り消しますか？",
+    "sessionExpired": "セッションの有効期限が切れました。再度ログインしてください。",
+    "revokeError": "失効中にエラーが発生しました。再試行してください。",
+    "connectionError": "接続エラー。",
+    "docsTitle": "クイック・ドキュメント",
+    "docsUpload": "POST /api/v1/upload - 転送の作成",
+    "docsTransfers": "GET /api/v1/transfers - リスト転送"
   }
 }

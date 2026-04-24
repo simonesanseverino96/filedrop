@@ -1,12 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createBrowserClient } from '@supabase/ssr'
+import { useTranslations } from 'next-intl'
+import { getBrowserClient } from '@/lib/supabase'
 
-const supabase = createBrowserClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+const supabase = getBrowserClient()
 
 interface ApiKey {
   id: string
@@ -18,6 +16,7 @@ interface ApiKey {
 }
 
 export default function ApiKeysSection() {
+  const t = useTranslations('apiKeys')
   const [keys, setKeys] = useState<ApiKey[]>([])
   const [loading, setLoading] = useState(true)
   const [creating, setCreating] = useState(false)
@@ -33,15 +32,15 @@ export default function ApiKeysSection() {
   }
 
   const fetchKeys = async (retry = 0) => {
-  try {
-    const token = await getToken()
-    if (!token && retry < 3) {
-      setTimeout(() => fetchKeys(retry + 1), 500)
-      return
-    }
-    const res = await fetch('/api/keys', {
-      headers: token ? { 'Authorization': `Bearer ${token}` } : {},
-    })
+    try {
+      const token = await getToken()
+      if (!token && retry < 3) {
+        setTimeout(() => fetchKeys(retry + 1), 500)
+        return
+      }
+      const res = await fetch('/api/keys', {
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+      })
       const data = await res.json()
       setKeys(data.keys || [])
     } catch {}
@@ -72,10 +71,10 @@ export default function ApiKeysSection() {
   }
 
   const revokeKey = async (id: string) => {
-    if (!confirm('Sei sicuro di voler revocare questa API key?')) return
+    if (!confirm(t('revokeConfirm'))) return
     try {
       const token = await getToken()
-      if (!token) { alert('Sessione scaduta. Rieffettua il login.'); return }
+      if (!token) { alert(t('sessionExpired')); return }
 
       const res = await fetch('/api/keys', {
         method: 'DELETE',
@@ -86,10 +85,10 @@ export default function ApiKeysSection() {
         fetchKeys()
       } else {
         const data = await res.json()
-        alert(data.error || 'Errore durante la revoca. Riprova.')
+        alert(data.error || t('revokeError'))
       }
     } catch {
-      alert('Errore di connessione.')
+      alert(t('connectionError'))
     }
   }
 
@@ -104,14 +103,14 @@ export default function ApiKeysSection() {
     <div className="bg-surface border border-white/5 rounded-2xl p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="font-display text-lg font-700 text-paper">API Keys</h3>
-          <p className="text-xs text-muted font-body mt-1">Usa le API key per integrare VaultTransfer nel tuo codice</p>
+          <h3 className="font-display text-lg font-700 text-paper">{t('title')}</h3>
+          <p className="text-xs text-muted font-body mt-1">{t('subtitle')}</p>
         </div>
       </div>
 
       {revealedKey && (
         <div className="mb-6 p-4 bg-accent/10 border border-accent/20 rounded-xl">
-          <p className="text-xs text-accent font-body mb-2">⚠️ Copia questa key ora — non sarà più visibile!</p>
+          <p className="text-xs text-accent font-body mb-2">{t('warning')}</p>
           <div className="flex items-center gap-3">
             <code className="flex-1 text-xs text-paper font-body bg-surface-2 rounded-lg px-3 py-2 truncate">
               {revealedKey}
@@ -122,11 +121,14 @@ export default function ApiKeysSection() {
                 copied ? 'bg-accent/20 text-accent' : 'bg-accent text-ink hover:bg-accent-dim'
               }`}
             >
-              {copied ? '✓ Copiata' : 'Copia'}
+              {copied ? t('copied') : t('copy')}
             </button>
           </div>
-          <button onClick={() => setRevealedKey(null)} className="text-xs text-muted hover:text-paper font-body mt-2 transition-colors">
-            Ho salvato la key, chiudi →
+          <button
+            onClick={() => setRevealedKey(null)}
+            className="text-xs text-muted hover:text-paper font-body mt-2 transition-colors"
+          >
+            {t('saved')}
           </button>
         </div>
       )}
@@ -134,7 +136,7 @@ export default function ApiKeysSection() {
       <div className="flex gap-3 mb-6">
         <input
           type="text"
-          placeholder="Nome della key (es. Produzione)"
+          placeholder={t('placeholder')}
           value={newKeyName}
           onChange={e => setNewKeyName(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && createKey()}
@@ -145,14 +147,14 @@ export default function ApiKeysSection() {
           disabled={creating || !newKeyName.trim()}
           className="px-4 py-2.5 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors disabled:opacity-50 flex-shrink-0"
         >
-          {creating ? '...' : '+ Crea key'}
+          {creating ? t('creating') : t('create')}
         </button>
       </div>
 
       {loading ? (
         <div className="h-20 bg-surface-2 rounded-xl animate-pulse" />
       ) : keys.length === 0 ? (
-        <p className="text-sm text-muted font-body text-center py-8">Nessuna API key ancora. Creane una!</p>
+        <p className="text-sm text-muted font-body text-center py-8">{t('noKeys')}</p>
       ) : (
         <div className="space-y-2">
           {keys.map(key => (
@@ -164,15 +166,15 @@ export default function ApiKeysSection() {
               <div className="text-right flex-shrink-0">
                 <p className="text-xs text-muted font-body">
                   {key.last_used_at
-                    ? `Usata ${new Date(key.last_used_at).toLocaleDateString('it-IT')}`
-                    : 'Mai usata'}
+                    ? t('lastUsed', { date: new Date(key.last_used_at).toLocaleDateString() })
+                    : t('neverUsed')}
                 </p>
               </div>
               <button
                 onClick={() => revokeKey(key.id)}
                 className="text-xs text-red-400 hover:text-red-300 font-body transition-colors flex-shrink-0"
               >
-                Revoca
+                {t('revoke')}
               </button>
             </div>
           ))}
@@ -180,10 +182,10 @@ export default function ApiKeysSection() {
       )}
 
       <div className="mt-6 pt-6 border-t border-white/5">
-        <p className="text-xs text-muted font-body mb-3 uppercase tracking-widest">Documentazione rapida</p>
+        <p className="text-xs text-muted font-body mb-3 uppercase tracking-widest">{t('docsTitle')}</p>
         <div className="space-y-3">
           <div className="bg-surface-2 rounded-xl p-4">
-            <p className="text-xs text-accent font-body mb-2">POST /api/v1/upload — Crea trasferimento</p>
+            <p className="text-xs text-accent font-body mb-2">{t('docsUpload')}</p>
             <pre className="text-xs text-muted font-body overflow-x-auto">{`curl -X POST https://vaultransfer.com/api/v1/upload \\
   -H "Authorization: Bearer vt_live_..." \\
   -H "Content-Type: application/json" \\
@@ -194,7 +196,7 @@ export default function ApiKeysSection() {
   }'`}</pre>
           </div>
           <div className="bg-surface-2 rounded-xl p-4">
-            <p className="text-xs text-accent font-body mb-2">GET /api/v1/transfers — Lista trasferimenti</p>
+            <p className="text-xs text-accent font-body mb-2">{t('docsTransfers')}</p>
             <pre className="text-xs text-muted font-body overflow-x-auto">{`curl https://vaultransfer.com/api/v1/transfers \\
   -H "Authorization: Bearer vt_live_..."`}</pre>
           </div>

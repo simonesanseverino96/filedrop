@@ -360,5 +360,31 @@
     "copyLink": "نسخ الرابط",
     "transferDate": "نقل __0_V0___",
     "transferMeta": "{size}_ - {downloads}_ تنزيلات {downloads}_ - تنتهي صلاحيتها في {expiry}_"
+  },
+  "adBanner": {
+    "label": "الإعلانات",
+    "removePro": "الترقية إلى Pro لإزالة الإعلانات"
+  },
+  "apiKeys": {
+    "title": "مفاتيح واجهة برمجة التطبيقات",
+    "subtitle": "استخدم مفاتيح API لدمج VaultTransfer في التعليمات البرمجية الخاصة بك",
+    "warning": "⚠️ انسخ هذا المفتاح الآن - لن يكون مرئيًا مرة أخرى!",
+    "copied": "✓ منسوخ",
+    "copy": "نسخ",
+    "saved": "لقد حفظت المفتاح، أغلق →",
+    "placeholder": "اسم المفتاح (مثل الإنتاج)",
+    "create": "+ إنشاء مفتاح",
+    "creating": "...",
+    "neverUsed": "لم تستخدم قط",
+    "lastUsed": "مستخدمة على {date}__",
+    "revoke": "الإلغاء",
+    "noKeys": "لا توجد مفاتيح API حتى الآن. قم بإنشاء واحد!",
+    "revokeConfirm": "هل أنت متأكد من أنك تريد إلغاء مفتاح API هذا؟",
+    "sessionExpired": "انتهت صلاحية الجلسة. يرجى تسجيل الدخول مرة أخرى.",
+    "revokeError": "خطأ أثناء الإبطال. يرجى المحاولة مرة أخرى.",
+    "connectionError": "خطأ في الاتصال.",
+    "docsTitle": "التوثيق السريع",
+    "docsUpload": "POST /API/API/v1/upload - إنشاء النقل",
+    "docsTransfers": "GET /api/api/v1/transfers - قائمة التحويلات"
   }
 }

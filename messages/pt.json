@@ -360,5 +360,31 @@
     "copyLink": "Copiar ligação",
     "transferDate": "Transferência de {date}",
     "transferMeta": "{size} - {downloads} transferências - expira em {expiry}"
+  },
+  "adBanner": {
+    "label": "Publicidade",
+    "removePro": "Atualizar para Pro para remover anúncios"
+  },
+  "apiKeys": {
+    "title": "Chaves da API",
+    "subtitle": "Use chaves de API para integrar a VaultTransfer no seu código",
+    "warning": "⚠️ Copiar esta chave agora - não voltará a ser visível!",
+    "copied": "✓ Copiado",
+    "copy": "Cópia",
+    "saved": "Guardei a chave, fechar →",
+    "placeholder": "Nome da chave (por exemplo, Produção)",
+    "create": "+ Criar chave",
+    "creating": "...",
+    "neverUsed": "Nunca utilizado",
+    "lastUsed": "Utilizado em {date}",
+    "revoke": "Revogar",
+    "noKeys": "Ainda não existem chaves API. Crie uma!",
+    "revokeConfirm": "Tem a certeza de que pretende revogar esta chave API?",
+    "sessionExpired": "A sessão expirou. Por favor, inicie sessão novamente.",
+    "revokeError": "Erro durante a revogação. Por favor, tente novamente.",
+    "connectionError": "Erro de ligação.",
+    "docsTitle": "Documentação rápida",
+    "docsUpload": "POST /api/v1/upload - Criar transferência",
+    "docsTransfers": "GET /api/v1/transfers - Lista de transferências"
   }
 }

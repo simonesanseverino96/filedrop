@@ -129,6 +129,33 @@
   "scarica": "Download"
 },
 
+"adBanner": {
+  "label": "Advertisement",
+  "removePro": "Upgrade to Pro to remove ads"
+},
+"apiKeys": {
+  "title": "API Keys",
+  "subtitle": "Use API keys to integrate VaultTransfer in your code",
+  "warning": "⚠️ Copy this key now — it won't be visible again!",
+  "copied": "✓ Copied",
+  "copy": "Copy",
+  "saved": "I saved the key, close →",
+  "placeholder": "Key name (e.g. Production)",
+  "create": "+ Create key",
+  "creating": "...",
+  "neverUsed": "Never used",
+  "lastUsed": "Used on {date}",
+  "revoke": "Revoke",
+  "noKeys": "No API keys yet. Create one!",
+  "revokeConfirm": "Are you sure you want to revoke this API key?",
+  "sessionExpired": "Session expired. Please log in again.",
+  "revokeError": "Error during revocation. Please try again.",
+  "connectionError": "Connection error.",
+  "docsTitle": "Quick documentation",
+  "docsUpload": "POST /api/v1/upload — Create transfer",
+  "docsTransfers": "GET /api/v1/transfers — List transfers"
+},
+
   "features": {
     "items": {
       "encrypted": {

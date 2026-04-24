@@ -360,5 +360,31 @@
     "copyLink": "复制链接",
     "transferDate": "转让{date}_",
     "transferMeta": "{size} - {downloads} 下载 - {expiry} 过期"
+  },
+  "adBanner": {
+    "label": "广告",
+    "removePro": "升级至专业版，删除广告"
+  },
+  "apiKeys": {
+    "title": "应用程序接口密钥",
+    "subtitle": "使用API密钥将VaultTransfer集成到您的代码中",
+    "warning": "⚠️ 现在就复制这个密钥--以后就看不到了！",
+    "copied": "复制的",
+    "copy": "复制",
+    "saved": "我保存了密钥，关闭 →",
+    "placeholder": "密钥名称（如生产）",
+    "create": "+ 创建密钥",
+    "creating": "...",
+    "neverUsed": "从未使用过",
+    "lastUsed": "在{date}上使用",
+    "revoke": "撤销",
+    "noKeys": "尚无 API 密钥。创建一个！",
+    "revokeConfirm": "您确定要撤销此 API 密钥吗？",
+    "sessionExpired": "会话已过期。请重新登录。",
+    "revokeError": "撤销过程中出错。请重试。",
+    "connectionError": "连接错误。",
+    "docsTitle": "快速文档",
+    "docsUpload": "POST /api/v1/upload - 创建传输",
+    "docsTransfers": "GET /api/v1/transfers - 列出传输内容"
   }
 }
