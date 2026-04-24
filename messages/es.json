@@ -216,7 +216,7 @@
     "subtitle": "Empieza gratis y actualiza cuando quieras.",
     "monthly": "Mensualmente",
     "annual": "Anual",
-    "saveBadge": "Ahorre hasta{amount} €/año",
+    "saveBadge": "Ahorre hasta €{amount}/año",
     "perMonth": "/mes",
     "billedAnnually": "€{amount} facturado anualmente",
     "saveWithAnnual": "Ahorre _{amount}/año con el plan anual",
