@@ -30,6 +30,13 @@ describe('Upload API', () => {
       insert: jest.fn().mockReturnThis(),
       eq: jest.fn().mockReturnThis(),
       delete: jest.fn().mockReturnThis(),
+      storage: {
+        from: jest.fn().mockReturnThis(),
+        list: jest.fn().mockResolvedValue({ 
+          data: [{ name: 'f1_test.txt', metadata: { size: 100 } }], 
+          error: null 
+        }),
+      }
     }
     ;(supabaseAdmin as jest.Mock).mockReturnValue(mockSupabase)
   })

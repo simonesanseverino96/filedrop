@@ -48,17 +48,52 @@ export async function finalizeTransfer(options: FinalizeTransferOptions) {
 
   const transferId = options.transferId || uuidv4()
   const expiresAt = addDays(new Date(), parseInt(expiry.toString())).toISOString()
-  
-  // NOTE: In Task 3, we will validate the file size via Supabase storage.
-  // For now, we trust the client's sizes to complete Task 2.
-  const totalSize = files.reduce((acc, f) => acc + (f.size || 0), 0)
+
+  const supabase = supabaseAdmin()
+
+  let storageFiles: any[] = []
+  // Se options.transferId è stato fornito, significa che il client ha già caricato i file
+  // tramite i signed URLs di /api/upload/init. Validiamo quindi le dimensioni reali.
+  if (options.transferId) {
+    const { data, error } = await supabase.storage
+      .from('filedrop')
+      .list(`transfers/${transferId}`)
+    
+    if (error) {
+      console.error('Storage list error:', error)
+      throw new Error('ERR_STORAGE')
+    }
+    storageFiles = data || []
+  }
+
+  const validFiles = files.map((f) => {
+    const fileId = f.id || uuidv4()
+    const expectedName = `${fileId}_${f.filename}`
+    
+    let finalSize = f.size
+    
+    if (options.transferId) {
+      const storageFile = storageFiles.find(sf => sf.name === expectedName)
+      if (!storageFile) {
+        throw new Error(`ERR_FILE_NOT_UPLOADED:${f.filename}`)
+      }
+      finalSize = storageFile.metadata?.size || 0
+    }
+
+    return {
+      ...f,
+      id: fileId,
+      size: finalSize,
+      storagePath: f.storagePath || `transfers/${transferId}/${expectedName}`,
+    }
+  })
+
+  const totalSize = validFiles.reduce((acc, f) => acc + (f.size || 0), 0)
 
   let passwordHash: string | null = null
   if (password?.trim()) {
     passwordHash = await bcrypt.hash(password.trim(), 12)
   }
-
-  const supabase = supabaseAdmin()
 
   const { error: transferError } = await supabase.from('transfers').insert({
     id: transferId,
@@ -78,15 +113,14 @@ export async function finalizeTransfer(options: FinalizeTransferOptions) {
     throw new Error('ERR_DATABASE')
   }
 
-  const fileRecords = files.map((f) => {
-    const fileId = f.id || uuidv4()
+  const fileRecords = validFiles.map((f) => {
     return {
-      id: fileId,
+      id: f.id,
       transfer_id: transferId,
       filename: f.filename,
       size: f.size,
       mime_type: f.mimeType || 'application/octet-stream',
-      storage_path: f.storagePath || `transfers/${transferId}/${fileId}_${f.filename}`,
+      storage_path: f.storagePath,
     }
   })
 
@@ -101,7 +135,7 @@ export async function finalizeTransfer(options: FinalizeTransferOptions) {
     try {
       await sendUploadConfirmation({
         senderEmail,
-        fileCount: files.length,
+        fileCount: validFiles.length,
         totalSize,
         expiresAt,
         token: transferId,
