@@ -13,3 +13,11 @@ export const uploadRatelimit = new Ratelimit({
   analytics: true,
   prefix: 'vt:upload',
 })
+
+// Download: max 10 tentativi ogni minuto per IP (anti brute-force)
+export const downloadRatelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(10, '1 m'),
+  analytics: true,
+  prefix: 'vt:download',
+})

@@ -48,11 +48,14 @@ export async function POST(req: NextRequest) {
   }
 
   const { name } = await req.json()
-  const rawKey = `vt_live_${uuidv4().replace(/-/g, '')}`
-  const keyHash = await bcrypt.hash(rawKey, 10)
-  const keyPrefix = rawKey.substring(0, 16) + '...'
+  const keyId = uuidv4()
+  const secret = uuidv4().replace(/-/g, '')
+  const rawKey = `vt_live_${keyId}_${secret}`
+  const keyHash = await bcrypt.hash(secret, 10)
+  const keyPrefix = `vt_live_${keyId.substring(0, 8)}...`
 
   const { error } = await supabase.from('api_keys').insert({
+    id: keyId,
     user_id: user.id,
     name: name || 'Default',
     key_hash: keyHash,

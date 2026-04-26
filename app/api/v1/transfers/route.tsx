@@ -6,21 +6,29 @@ async function verifyApiKey(req: NextRequest) {
   const authHeader = req.headers.get('Authorization')
   if (!authHeader?.startsWith('Bearer vt_live_')) return null
 
-  const rawKey = authHeader.replace('Bearer ', '')
+  const rawKey = authHeader.replace('Bearer vt_live_', '')
+  const parts = rawKey.split('_')
+  
+  if (parts.length !== 2) return null
+  
+  const [keyId, secret] = parts
   const supabase = supabaseAdmin()
 
-  const { data: keys } = await supabase
+  const { data: key } = await supabase
     .from('api_keys')
     .select('id, user_id, key_hash')
+    .eq('id', keyId)
     .eq('is_active', true)
+    .single()
 
-  for (const key of keys || []) {
-    const match = await bcrypt.compare(rawKey, key.key_hash)
-    if (match) {
-      await supabase.from('api_keys').update({ last_used_at: new Date().toISOString() }).eq('id', key.id)
-      return key.user_id
-    }
+  if (!key) return null
+
+  const match = await bcrypt.compare(secret, key.key_hash)
+  if (match) {
+    await supabase.from('api_keys').update({ last_used_at: new Date().toISOString() }).eq('id', key.id)
+    return key.user_id
   }
+  
   return null
 }
 

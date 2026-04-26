@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
       filename: f.filename,
       size: f.size,
       mime_type: f.mimeType,
-      storage_path: f.storagePath,
+      storage_path: `transfers/${transferId}/${f.id}_${f.filename}`,
     }))
 
     const { error: filesError } = await supabase.from('transfer_files').insert(fileRecords)

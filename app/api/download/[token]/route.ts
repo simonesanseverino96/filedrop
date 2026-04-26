@@ -2,8 +2,19 @@ import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import { supabaseAdmin } from '@/lib/supabase'
 import { sendDownloadNotification } from '@/lib/email'
+import { downloadRatelimit } from '@/lib/ratelimit'
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ token: string }> }) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'anonymous'
+  const { success, limit, remaining } = await downloadRatelimit.limit(ip)
+
+  if (!success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429, headers: { 'X-RateLimit-Limit': limit.toString(), 'X-RateLimit-Remaining': remaining.toString() } }
+    )
+  }
+
   try {
     const { token } = await params
     const body = await req.json()

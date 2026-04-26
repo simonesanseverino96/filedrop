@@ -63,41 +63,37 @@ export default function UploadSection() {
   const removeFile = (id: string) => setFiles(prev => prev.filter(f => f.id !== id))
   const totalSize = files.reduce((acc, f) => acc + f.file.size, 0)
 
-  const uploadFileWithProgress = (file: File, storagePath: string, fileId: string): Promise<void> => {
+  const uploadFileWithProgress = (file: File, signedUrl: string, fileId: string): Promise<void> => {
     return new Promise((resolve, reject) => {
       startTimeRef.current[fileId] = Date.now()
       const xhr = new XMLHttpRequest()
 
-      supabase.storage.from('filedrop').createSignedUploadUrl(storagePath).then(({ data, error }) => {
-        if (error || !data) { reject(error || new Error('No signed URL')); return }
-
-        xhr.upload.addEventListener('progress', (e) => {
-          if (!e.lengthComputable) return
-          const progress = Math.round((e.loaded / e.total) * 100)
-          const elapsed = (Date.now() - startTimeRef.current[fileId]) / 1000
-          const speed = elapsed > 0 ? e.loaded / elapsed : 0
-          const timeLeft = speed > 0 ? (e.total - e.loaded) / speed : 0
-          setFiles(prev => prev.map(f =>
-            f.id === fileId ? { ...f, progress, speed, timeLeft, status: 'uploading' } : f
-          ))
-        })
-
-        xhr.addEventListener('load', () => {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            setFiles(prev => prev.map(f =>
-              f.id === fileId ? { ...f, progress: 100, speed: 0, timeLeft: 0, status: 'done' } : f
-            ))
-            resolve()
-          } else {
-            reject(new Error(`Upload failed: ${xhr.status}`))
-          }
-        })
-
-        xhr.addEventListener('error', () => reject(new Error('Network error')))
-        xhr.open('PUT', data.signedUrl)
-        xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream')
-        xhr.send(file)
+      xhr.upload.addEventListener('progress', (e) => {
+        if (!e.lengthComputable) return
+        const progress = Math.round((e.loaded / e.total) * 100)
+        const elapsed = (Date.now() - startTimeRef.current[fileId]) / 1000
+        const speed = elapsed > 0 ? e.loaded / elapsed : 0
+        const timeLeft = speed > 0 ? (e.total - e.loaded) / speed : 0
+        setFiles(prev => prev.map(f =>
+          f.id === fileId ? { ...f, progress, speed, timeLeft, status: 'uploading' } : f
+        ))
       })
+
+      xhr.addEventListener('load', () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          setFiles(prev => prev.map(f =>
+            f.id === fileId ? { ...f, progress: 100, speed: 0, timeLeft: 0, status: 'done' } : f
+          ))
+          resolve()
+        } else {
+          reject(new Error(`Upload failed: ${xhr.status}`))
+        }
+      })
+
+      xhr.addEventListener('error', () => reject(new Error('Network error')))
+      xhr.open('PUT', signedUrl)
+      xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream')
+      xhr.send(file)
     })
   }
 
@@ -107,16 +103,42 @@ export default function UploadSection() {
     setError(null)
 
     try {
-      const transferId = uuidv4()
+      // 1. Chiedi al server di generare i link di upload e gli ID univoci
+      const initRes = await fetch('/api/upload/init', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          files: files.map(f => ({
+            clientFileId: f.id,
+            filename: f.file.name,
+            size: f.file.size,
+            mimeType: f.file.type || 'application/octet-stream'
+          }))
+        })
+      });
+
+      if (!initRes.ok) {
+        const initData = await initRes.json();
+        throw new Error(initData.error || t('error.upload'));
+      }
+
+      const { transferId, files: signedFiles } = await initRes.json();
+
+      // 2. Esegui l'upload verso i Signed URL generati dal backend
       const uploadedFiles = await Promise.all(
         files.map(async ({ file, id }) => {
-          const fileId = uuidv4()
-          const storagePath = `transfers/${transferId}/${fileId}_${file.name}`
+          const signedFile = signedFiles.find((sf: any) => sf.clientFileId === id);
+          if (!signedFile) throw new Error('Signed URL non trovato');
+
           setFiles(prev => prev.map(f => f.id === id ? { ...f, status: 'uploading' } : f))
-          await uploadFileWithProgress(file, storagePath, id)
+          await uploadFileWithProgress(file, signedFile.signedUrl, id)
+
           return {
-            id: fileId, filename: file.name, size: file.size,
-            mimeType: file.type || 'application/octet-stream', storagePath,
+            id: signedFile.id, 
+            filename: signedFile.filename, 
+            size: signedFile.size,
+            mimeType: signedFile.mimeType, 
+            storagePath: signedFile.storagePath,
           }
         })
       )

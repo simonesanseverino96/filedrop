@@ -8,23 +8,32 @@ async function verifyApiKey(req: NextRequest) {
   const authHeader = req.headers.get('Authorization')
   if (!authHeader?.startsWith('Bearer vt_live_')) return null
 
-  const rawKey = authHeader.replace('Bearer ', '')
+  const rawKey = authHeader.replace('Bearer vt_live_', '')
+  const parts = rawKey.split('_')
+  
+  // Retrocompatibilità: se non c'è il formato nuovo, logica fallback o skip.
+  // Siccome chiedi di implementare il formato sicuro per mitigare il DoS,
+  // accettiamo solo il nuovo formato: vt_live_<id>_<secret>
+  if (parts.length !== 2) return null
+  
+  const [keyId, secret] = parts
   const supabase = supabaseAdmin()
 
-  // Trova tutte le key attive e verifica con bcrypt
-  const { data: keys } = await supabase
+  const { data: key } = await supabase
     .from('api_keys')
     .select('id, user_id, key_hash')
+    .eq('id', keyId)
     .eq('is_active', true)
+    .single()
 
-  for (const key of keys || []) {
-    const match = await bcrypt.compare(rawKey, key.key_hash)
-    if (match) {
-      // Aggiorna last_used_at
-      await supabase.from('api_keys').update({ last_used_at: new Date().toISOString() }).eq('id', key.id)
-      return key.user_id
-    }
+  if (!key) return null
+
+  const match = await bcrypt.compare(secret, key.key_hash)
+  if (match) {
+    await supabase.from('api_keys').update({ last_used_at: new Date().toISOString() }).eq('id', key.id)
+    return key.user_id
   }
+  
   return null
 }
 
@@ -63,14 +72,17 @@ export async function POST(req: NextRequest) {
       total_size: totalSize,
     })
 
-    const fileRecords = files.map((f: any) => ({
-      id: uuidv4(),
-      transfer_id: transferId,
-      filename: f.filename,
-      size: f.size,
-      mime_type: f.mimeType || 'application/octet-stream',
-      storage_path: f.storagePath,
-    }))
+    const fileRecords = files.map((f: any) => {
+      const fileId = uuidv4()
+      return {
+        id: fileId,
+        transfer_id: transferId,
+        filename: f.filename,
+        size: f.size,
+        mime_type: f.mimeType || 'application/octet-stream',
+        storage_path: `transfers/${transferId}/${fileId}_${f.filename}`,
+      }
+    })
 
     await supabase.from('transfer_files').insert(fileRecords)
 
