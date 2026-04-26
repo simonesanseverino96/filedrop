@@ -16,6 +16,10 @@ jest.mock('@/lib/email', () => ({
   sendUploadConfirmation: jest.fn(),
 }))
 
+jest.mock('uuid', () => ({
+  v4: () => 'test-uuid-1234',
+}))
+
 describe('Upload API', () => {
   let mockSupabase: any;
 

@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import bcrypt from 'bcryptjs'
-import { addDays } from 'date-fns'
-import { v4 as uuidv4 } from 'uuid'
+import { finalizeTransfer } from '@/lib/transfers'
 
 async function verifyApiKey(req: NextRequest) {
   const authHeader = req.headers.get('Authorization')
@@ -48,43 +47,17 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const { files, expiry = '7', maxDownloads, password, message } = body
 
-    if (!files || !Array.isArray(files) || files.length === 0) {
-      return NextResponse.json({ error: 'ERR_MISSING_FILES' }, { status: 400 })
-    }
+    const locale = req.cookies.get('NEXT_LOCALE')?.value ?? 'en'
 
-    const supabase = supabaseAdmin()
-    const transferId = uuidv4()
-    const expiresAt = addDays(new Date(), parseInt(expiry)).toISOString()
-    const totalSize = files.reduce((acc: number, f: any) => acc + (f.size || 0), 0)
-
-    let passwordHash = null
-    if (password) passwordHash = await bcrypt.hash(password, 12)
-
-    await supabase.from('transfers').insert({
-      id: transferId,
-      token: transferId,
-      expires_at: expiresAt,
-      password_hash: passwordHash,
-      max_downloads: maxDownloads || null,
-      download_count: 0,
-      message: message || null,
-      user_id: userId,
-      total_size: totalSize,
+    const { transferId, expiresAt } = await finalizeTransfer({
+      files,
+      expiry,
+      password,
+      message,
+      maxDownloads,
+      userId,
+      locale,
     })
-
-    const fileRecords = files.map((f: any) => {
-      const fileId = uuidv4()
-      return {
-        id: fileId,
-        transfer_id: transferId,
-        filename: f.filename,
-        size: f.size,
-        mime_type: f.mimeType || 'application/octet-stream',
-        storage_path: `transfers/${transferId}/${fileId}_${f.filename}`,
-      }
-    })
-
-    await supabase.from('transfer_files').insert(fileRecords)
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://vaultransfer.com'
 
@@ -93,7 +66,14 @@ export async function POST(req: NextRequest) {
       downloadUrl: `${appUrl}/download/${transferId}`,
       expiresAt,
     }, { status: 201 })
-  } catch (err) {
+  } catch (err: any) {
+    if (err.message === 'ERR_MISSING_FILES') {
+      return NextResponse.json({ error: 'ERR_MISSING_FILES' }, { status: 400 })
+    }
+    if (err.message.startsWith('ERR_FILE_NOT_ALLOWED')) {
+      const filename = err.message.split(':')[1]
+      return NextResponse.json({ error: 'ERR_FILE_NOT_ALLOWED', filename }, { status: 400 })
+    }
     return NextResponse.json({ error: 'ERR_INTERNAL' }, { status: 500 })
   }
 }
