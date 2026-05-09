@@ -3,7 +3,6 @@
     "appName": "VaultTransfer",
     "secureConnection": "Secure connection"
   },
-
   "header": {
     "pricing": "Pricing",
     "login": "Log in",
@@ -15,7 +14,6 @@
     "planPro": "⭐ Pro",
     "planBusiness": "🏢 Business"
   },
-
   "footer": {
     "tagline": "Fast and secure file transfer. GDPR compliant, European servers.",
     "sections": {
@@ -33,7 +31,6 @@
     "copyright": "© {year} VaultTransfer. All rights reserved.",
     "badge": "🇪🇺 European servers · GDPR Compliant · TLS 1.3"
   },
-
   "home": {
     "badge": "No account required · Free up to 2GB",
     "headline": "Share files",
@@ -42,7 +39,6 @@
     "securityTagline": "Security by design",
     "featuresHeadline": "Built for those who don't want compromises"
   },
-
   "upload": {
     "dropzone": {
       "active": "Drop files here",
@@ -83,7 +79,6 @@
       "transfer": "Error creating transfer"
     }
   },
-
   "uploadSuccess": {
     "title": "Transfer ready!",
     "subtitle": "{count} file ({size}) · expires in {expiry}{password}",
@@ -102,60 +97,57 @@
     "expiry7": "7 days",
     "expiry30": "30 days"
   },
-
   "download": {
-  "secureDownload": "🔒 Secure download via signed link · valid 60 seconds",
-  "downloading": "Downloading...",
-  "downloadFile": "Download file →",
-  "downloadAll": "Download all files →",
-  "downloadInProgress": "Download in progress...",
-  "loading": "Loading transfer...",
-  "expiredTitle": "Transfer expired",
-  "expiredDesc": "This link has expired or reached the download limit. Ask the sender to resend the files.",
-  "newTransfer": "Create a new transfer",
-  "errorTitle": "Transfer not found",
-  "errorDesc": "The link may be incorrect or the transfer does not exist.",
-  "backHome": "Back to home",
-  "protectedTitle": "Protected transfer",
-  "protectedDesc": "Enter the password to access the files",
-  "passwordLabel": "Password",
-  "passwordError": "Wrong password, please try again.",
-  "passwordVerifyError": "Error verifying password",
-  "accessFiles": "Access files →",
-  "readyLabel": "Transfer ready",
-  "totalSize": "Total size",
-  "expiresIn": "⏱ Expires in {expiry}",
-  "downloadCount": "📥 {count}/{max} downloads",
-  "scarica": "Download"
-},
-
-"adBanner": {
-  "label": "Advertisement",
-  "removePro": "Upgrade to Pro to remove ads"
-},
-"apiKeys": {
-  "title": "API Keys",
-  "subtitle": "Use API keys to integrate VaultTransfer in your code",
-  "warning": "⚠️ Copy this key now — it won't be visible again!",
-  "copied": "✓ Copied",
-  "copy": "Copy",
-  "saved": "I saved the key, close →",
-  "placeholder": "Key name (e.g. Production)",
-  "create": "+ Create key",
-  "creating": "...",
-  "neverUsed": "Never used",
-  "lastUsed": "Used on {date}",
-  "revoke": "Revoke",
-  "noKeys": "No API keys yet. Create one!",
-  "revokeConfirm": "Are you sure you want to revoke this API key?",
-  "sessionExpired": "Session expired. Please log in again.",
-  "revokeError": "Error during revocation. Please try again.",
-  "connectionError": "Connection error.",
-  "docsTitle": "Quick documentation",
-  "docsUpload": "POST /api/v1/upload — Create transfer",
-  "docsTransfers": "GET /api/v1/transfers — List transfers"
-},
-
+    "secureDownload": "🔒 Secure download via signed link · valid 60 seconds",
+    "downloading": "Downloading...",
+    "downloadFile": "Download file →",
+    "downloadAll": "Download all files →",
+    "downloadInProgress": "Download in progress...",
+    "loading": "Loading transfer...",
+    "expiredTitle": "Transfer expired",
+    "expiredDesc": "This link has expired or reached the download limit. Ask the sender to resend the files.",
+    "newTransfer": "Create a new transfer",
+    "errorTitle": "Transfer not found",
+    "errorDesc": "The link may be incorrect or the transfer does not exist.",
+    "backHome": "Back to home",
+    "protectedTitle": "Protected transfer",
+    "protectedDesc": "Enter the password to access the files",
+    "passwordLabel": "Password",
+    "passwordError": "Wrong password, please try again.",
+    "passwordVerifyError": "Error verifying password",
+    "accessFiles": "Access files →",
+    "readyLabel": "Transfer ready",
+    "totalSize": "Total size",
+    "expiresIn": "⏱ Expires in {expiry}",
+    "downloadCount": "📥 {count}/{max} downloads",
+    "scarica": "Download"
+  },
+  "adBanner": {
+    "label": "Advertisement",
+    "removePro": "Upgrade to Pro to remove ads"
+  },
+  "apiKeys": {
+    "title": "API Keys",
+    "subtitle": "Use API keys to integrate VaultTransfer in your code",
+    "warning": "⚠️ Copy this key now — it won't be visible again!",
+    "copied": "✓ Copied",
+    "copy": "Copy",
+    "saved": "I saved the key, close →",
+    "placeholder": "Key name (e.g. Production)",
+    "create": "+ Create key",
+    "creating": "...",
+    "neverUsed": "Never used",
+    "lastUsed": "Used on {date}",
+    "revoke": "Revoke",
+    "noKeys": "No API keys yet. Create one!",
+    "revokeConfirm": "Are you sure you want to revoke this API key?",
+    "sessionExpired": "Session expired. Please log in again.",
+    "revokeError": "Error during revocation. Please try again.",
+    "connectionError": "Connection error.",
+    "docsTitle": "Quick documentation",
+    "docsUpload": "POST /api/v1/upload — Create transfer",
+    "docsTransfers": "GET /api/v1/transfers — List transfers"
+  },
   "features": {
     "items": {
       "encrypted": {
@@ -184,7 +176,6 @@
       }
     }
   },
-
   "report": {
     "button": "🚨 Report inappropriate content",
     "title": "Report illegal or inappropriate content",
@@ -205,7 +196,6 @@
     "notice": "Reports are reviewed within 72 hours. For emergencies write to",
     "sent": "✓ Report submitted. Thank you for helping us keep the service safe."
   },
-
   "login": {
     "title": "Log in",
     "subtitle": "We send you a magic link by email — no password to remember.",
@@ -225,7 +215,6 @@
       "default": "An error occurred during login. Please try again."
     }
   },
-
   "pricing": {
     "badge": "Simple and transparent",
     "title": "Choose your plan",
@@ -276,7 +265,6 @@
       "faq": "Questions? Read the FAQ →"
     }
   },
-
   "faq": {
     "badge": "Frequently asked questions",
     "title": "Everything you",
@@ -348,7 +336,6 @@
       }
     }
   },
-
   "notFound": {
     "title": "Page not found",
     "description": "The page you are looking for does not exist or has been moved. Maybe you are looking for an expired download link?",
@@ -356,13 +343,11 @@
     "seePlans": "See plans",
     "help": "Need help?"
   },
-
   "cookie": {
     "message": "We use cookies to improve your experience and show relevant ads. Do you accept?",
     "accept": "Accept",
     "decline": "Decline"
   },
-
   "metadata": {
     "titleDefault": "VaultTransfer — Send files securely and for free",
     "description": "Transfer files up to 2GB for free. Encrypted links with automatic expiry, password protection and download limits. No account required. GDPR compliant.",
@@ -379,33 +364,49 @@
       "send password protected files"
     ]
   },
-
   "dashboard": {
-  "currentPlan": "Current plan",
-  "free": "Free",
-  "perMonth": "€/month",
-  "upgradePro": "Upgrade to Pro →",
-  "upgradeProPrice": "Upgrade to Pro — €4.99/month →",
-  "upgradeBusiness": "Upgrade to Business →",
-  "manageSubscription": "Manage subscription",
-  "loading": "Loading...",
-  "maxUpload": "Max upload",
-  "maxExpiry": "Max expiry",
-  "maxDownloads": "Max downloads",
-  "unlimited": "Unlimited",
-  "ads": "Ads",
-  "yes": "Yes",
-  "no": "No",
-  "days": "{count} days",
-  "wantMore": "Want more storage and API access?",
-  "transfers": "Your transfers",
-  "newTransfer": "+ New",
-  "transfersProOnly": "Transfer history is available from the Pro plan.",
-  "noTransfers": "No transfers yet. Start sharing!",
-  "uploadFirst": "Upload your first file →",
-  "expired": "Expired",
-  "copyLink": "Copy link",
-  "transferDate": "Transfer of {date}",
-  "transferMeta": "{size} · {downloads} downloads · expires in {expiry}"
-}
+    "currentPlan": "Current plan",
+    "free": "Free",
+    "perMonth": "€/month",
+    "upgradePro": "Upgrade to Pro →",
+    "upgradeProPrice": "Upgrade to Pro — €4.99/month →",
+    "upgradeBusiness": "Upgrade to Business →",
+    "manageSubscription": "Manage subscription",
+    "loading": "Loading...",
+    "maxUpload": "Max upload",
+    "maxExpiry": "Max expiry",
+    "maxDownloads": "Max downloads",
+    "unlimited": "Unlimited",
+    "ads": "Ads",
+    "yes": "Yes",
+    "no": "No",
+    "days": "{count} days",
+    "wantMore": "Want more storage and API access?",
+    "transfers": "Your transfers",
+    "newTransfer": "+ New",
+    "transfersProOnly": "Transfer history is available from the Pro plan.",
+    "noTransfers": "No transfers yet. Start sharing!",
+    "uploadFirst": "Upload your first file →",
+    "expired": "Expired",
+    "copyLink": "Copy link",
+    "transferDate": "Transfer of {date}",
+    "transferMeta": "{size} · {downloads} downloads · expires in {expiry}"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "totalTransfers": "Total Transfers",
+    "totalGb": "Data Transferred",
+    "totalDownloads": "Total Downloads",
+    "activeVsExpired": "Active vs Expired",
+    "last30Days": "Last 30 Days",
+    "upgradeTitle": "Unlock Analytics",
+    "upgradeDesc": "Upgrade to a Pro or Business plan to view your detailed transfer analytics and usage statistics.",
+    "upgradeButton": "Upgrade to Pro",
+    "transfersPerDay": "Transfers per day",
+    "allTime": "All time",
+    "active": "Active",
+    "expired": "Expired",
+    "loading": "Loading analytics...",
+    "error": "Failed to load analytics"
+  }
 }

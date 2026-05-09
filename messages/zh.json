@@ -386,5 +386,22 @@
     "copyLink": "复制链接",
     "transferDate": "转让{date}_",
     "transferMeta": "{size} - {downloads} 下载 - {expiry} 过期"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "totalTransfers": "Total Transfers",
+    "totalGb": "Data Transferred",
+    "totalDownloads": "Total Downloads",
+    "activeVsExpired": "Active vs Expired",
+    "last30Days": "Last 30 Days",
+    "upgradeTitle": "Unlock Analytics",
+    "upgradeDesc": "Upgrade to a Pro or Business plan to view your detailed transfer analytics and usage statistics.",
+    "upgradeButton": "Upgrade to Pro",
+    "transfersPerDay": "Transfers per day",
+    "allTime": "All time",
+    "active": "Active",
+    "expired": "Expired",
+    "loading": "Loading analytics...",
+    "error": "Failed to load analytics"
   }
 }

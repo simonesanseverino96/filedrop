@@ -391,5 +391,22 @@
     "copyLink": "Copiare il link",
     "transferDate": "Trasferimento di {date}",
     "transferMeta": "{size} - {downloads} download - scadenza in {expiry}"
+  },
+  "analytics": {
+    "title": "Analisi",
+    "totalTransfers": "Trasferimenti Totali",
+    "totalGb": "Dati Trasferiti",
+    "totalDownloads": "Download Totali",
+    "activeVsExpired": "Attivi vs Scaduti",
+    "last30Days": "Ultimi 30 Giorni",
+    "upgradeTitle": "Sblocca le Analisi",
+    "upgradeDesc": "Passa a un piano Pro o Business per visualizzare statistiche dettagliate sull'uso e sui trasferimenti.",
+    "upgradeButton": "Passa a Pro",
+    "transfersPerDay": "Trasferimenti per giorno",
+    "allTime": "Di sempre",
+    "active": "Attivi",
+    "expired": "Scaduti",
+    "loading": "Caricamento analisi...",
+    "error": "Impossibile caricare le analisi"
   }
 }

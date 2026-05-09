@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { formatBytes, formatExpiry } from '@/lib/utils'
 import { PLANS, PlanType } from '@/lib/plans'
 import ApiKeysSection from '@/components/ApiKeysSection'
+import AnalyticsSection from '@/components/dashboard/AnalyticsSection'
 
 const supabase = getBrowserClient()
 
@@ -165,6 +166,9 @@ export default function DashboardPage() {
             </div>
           )}
         </div>
+
+        {/* Analytics Section */}
+        <AnalyticsSection plan={plan} onUpgrade={handleCheckout} />
 
         {/* Storico trasferimenti */}
         <div>
