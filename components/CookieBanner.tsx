@@ -3,6 +3,7 @@
 import CookieConsent from 'react-cookie-consent'
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/routing'
 
 export default function CookieBanner() {
   const t = useTranslations('cookie')
@@ -65,9 +66,9 @@ export default function CookieBanner() {
     >
       <span style={{ fontSize: '13px', color: '#f4f1eb', fontFamily: 'monospace' }}>
         🍪 {t('message')}{' '}
-        <a href="/privacy" style={{ color: '#00e5a0', textDecoration: 'underline' }}>
+        <Link href="/privacy" style={{ color: '#00e5a0', textDecoration: 'underline' }}>
           Privacy Policy
-        </a>
+        </Link>
       </span>
     </CookieConsent>
   )

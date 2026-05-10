@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/routing'
 
 interface Props {
   slot: string
@@ -36,7 +37,7 @@ export default function AdBanner({ slot }: Props) {
         />
       </div>
       <p className="text-xs text-muted font-body text-center mt-2">
-        <a href="/pricing" className="text-accent hover:underline">{t('removePro')}</a>
+        <Link href="/pricing" className="text-accent hover:underline">{t('removePro')}</Link>
       </p>
     </div>
   )

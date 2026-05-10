@@ -1,27 +1,27 @@
 import { Metadata } from 'next'
 import { getTranslations, getLocale } from 'next-intl/server'
-import { getTermsContent } from '@/lib/legal/terms'
+import { getPrivacyContent } from '@/lib/legal/privacy'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations()
   const locale = await getLocale()
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://vaultransfer.com'
-  const route = '/terms'
+  const route = '/privacy'
   
   return {
-    title: t('footer.links.terms'),
+    title: t('footer.links.privacy'),
     description: t('metadata.description'),
     alternates: {
-      canonical: locale === 'en' ? `${baseUrl}${route}` : `${baseUrl}${route}?lang=${locale}`,
+      canonical: `${baseUrl}/${locale}${route}`,
     }
   }
 }
 
 
 
-export default async function TermsPage() {
+export default async function PrivacyPage() {
   const locale = await getLocale()
-  const content = getTermsContent(locale)
+  const content = getPrivacyContent(locale)
 
   return (
     <main className="min-h-screen">
@@ -39,39 +39,22 @@ export default async function TermsPage() {
           {content.sections.map((section, i) => (
             <section key={i}>
               <h2 className="font-display text-xl font-700 text-paper mb-3">{section.title}</h2>
-
-              {section.content && (
-                <p className={section.list ? 'mb-3' : section.extra ? 'mb-3' : ''}>
-                  {section.content}
-                </p>
-              )}
-
+              {section.content && <p className={section.list ? 'mb-3' : ''}>{section.content}</p>}
               {section.list && (
-                <ul className="space-y-2 ml-4 mb-3">
-                  {section.list.map((item, j) => (
-                    <li key={j}>• {item}</li>
-                  ))}
+                <ul className="space-y-2 ml-4">
+                  {section.list.map((item, j) => {
+                    const bold = section.listBold?.[j]
+                    if (bold) {
+                      const rest = item.replace(bold, '').replace(/^ ?— ?/, '')
+                      return (
+                        <li key={j}>• <span className="text-paper">{bold}</span>{rest ? ` — ${rest}` : ''}</li>
+                      )
+                    }
+                    return <li key={j}>• {item}</li>
+                  })}
                 </ul>
               )}
-
-              {section.extra && (
-                <p className={section.extra2 ? 'mb-3' : ''}>{section.extra}</p>
-              )}
-
-              {section.extra2 && <p>{section.extra2}</p>}
-
-              {section.contacts && (
-                <div className="space-y-1">
-                  {section.contacts.map((c, j) => (
-                    <p key={j}>
-                      {c.label}:{' '}
-                      <a href={`mailto:${c.email}`} className="text-accent hover:underline">
-                        {c.email}
-                      </a>
-                    </p>
-                  ))}
-                </div>
-              )}
+              {section.extra && <p className="mt-3">{section.extra}</p>}
             </section>
           ))}
         </div>

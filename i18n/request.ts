@@ -1,13 +1,14 @@
 import { getRequestConfig } from 'next-intl/server'
-import { cookies } from 'next/headers'
+import { routing } from './routing'
 
-export default getRequestConfig(async () => {
-  const cookieStore = await cookies()
-  const requested = cookieStore.get('NEXT_LOCALE')?.value || 'en'
-
-  // Fallback a inglese se il file lingua non esiste
-  const validLocales = ['en', 'it', 'de', 'fr', 'es', 'pt', 'ja', 'zh', 'ar']
-  const locale = validLocales.includes(requested) ? requested : 'en'
+export default getRequestConfig(async ({requestLocale}) => {
+  // Ottiene il locale richiesto dalla navigazione (dalla route [locale])
+  let locale = await requestLocale;
+  
+  // Fallback a inglese se il locale non è valido o mancante
+  if (!locale || !routing.locales.includes(locale as any)) {
+    locale = routing.defaultLocale;
+  }
 
   return {
     locale,

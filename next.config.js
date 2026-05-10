@@ -12,10 +12,9 @@ const nextConfig = {
     return [
       {
         source: '/prezzi',
-        destination: '/pricing',
+        destination: '/it/pricing',
         permanent: true, // 301
       },
-
     ]
   },
   async headers() {

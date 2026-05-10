@@ -4,6 +4,7 @@ import ReportButton from './ReportButton'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { formatBytes, formatExpiry } from '@/lib/utils'
+import { Link } from '@/i18n/routing'
 
 interface TransferInfo {
   token: string
@@ -134,9 +135,9 @@ export default function DownloadClient({ token }: { token: string }) {
         </div>
         <h2 className="font-display text-2xl font-700 text-paper mb-2">{t('expiredTitle')}</h2>
         <p className="text-muted text-sm font-body">{t('expiredDesc')}</p>
-        <a href="/" className="inline-block mt-8 px-6 py-3 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
+        <Link href="/" className="inline-block mt-8 px-6 py-3 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
           {t('newTransfer')}
-        </a>
+        </Link>
       </div>
     )
   }
@@ -151,9 +152,9 @@ export default function DownloadClient({ token }: { token: string }) {
         </div>
         <h2 className="font-display text-2xl font-700 text-paper mb-2">{t('errorTitle')}</h2>
         <p className="text-muted text-sm font-body">{error || t('errorDesc')}</p>
-        <a href="/" className="inline-block mt-8 px-6 py-3 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
+        <Link href="/" className="inline-block mt-8 px-6 py-3 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
           {t('backHome')}
-        </a>
+        </Link>
       </div>
     )
   }

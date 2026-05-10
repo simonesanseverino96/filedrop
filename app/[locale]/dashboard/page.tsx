@@ -7,6 +7,7 @@ import { formatBytes, formatExpiry } from '@/lib/utils'
 import { PLANS, PlanType } from '@/lib/plans'
 import ApiKeysSection from '@/components/ApiKeysSection'
 import AnalyticsSection from '@/components/dashboard/AnalyticsSection'
+import { Link } from '@/i18n/routing'
 
 const supabase = getBrowserClient()
 
@@ -174,9 +175,9 @@ export default function DashboardPage() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-display text-lg font-700 text-paper">{t('transfers')}</h3>
-            <a href="/" className="px-4 py-2 bg-accent text-ink rounded-lg text-sm font-display font-600 hover:bg-accent-dim transition-colors">
+            <Link href="/" className="px-4 py-2 bg-accent text-ink rounded-lg text-sm font-display font-600 hover:bg-accent-dim transition-colors">
               {t('newTransfer')}
-            </a>
+            </Link>
           </div>
 
           {plan === 'free' ? (
@@ -193,9 +194,9 @@ export default function DashboardPage() {
           ) : transfers.length === 0 ? (
             <div className="bg-surface border border-white/5 rounded-2xl p-8 text-center">
               <p className="text-muted font-body text-sm">{t('noTransfers')}</p>
-              <a href="/" className="inline-block mt-4 px-5 py-2.5 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
+              <Link href="/" className="inline-block mt-4 px-5 py-2.5 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
                 {t('uploadFirst')}
-              </a>
+              </Link>
             </div>
           ) : (
             <div className="space-y-2">

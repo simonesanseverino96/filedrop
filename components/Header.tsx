@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react'
 import { getBrowserClient } from '@/lib/supabase'
+import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import TranslateWidget from './TranslateWidget'
 
@@ -52,19 +53,19 @@ export default function Header() {
   return (
     <header className="relative z-[9999] border-b border-white/5">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="#0a0a0f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
           <span className="font-display text-xl font-700 tracking-tight text-paper">VaultTransfer</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-6">
-          <a href="/pricing" className="text-sm text-muted hover:text-paper font-body transition-colors">
+          <Link href="/pricing" className="text-sm text-muted hover:text-paper font-body transition-colors">
             {t('pricing')}
-          </a>
+          </Link>
 
           <TranslateWidget />
 
@@ -97,23 +98,23 @@ export default function Header() {
                       className="w-48 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 outline-none mt-2"
                     >
                       <MenuItem>
-                        <a href="/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-body text-paper data-[focus]:bg-white/5 transition-colors w-full">
+                        <Link href="/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-body text-paper data-[focus]:bg-white/5 transition-colors w-full">
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
                             <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
                           </svg>
                           {t('dashboard')}
-                        </a>
+                        </Link>
                       </MenuItem>
 
                       {user.plan === 'free' && (
                         <MenuItem>
-                          <a href="/pricing" className="flex items-center gap-3 px-4 py-3 text-sm font-body text-accent data-[focus]:bg-accent/5 transition-colors w-full">
+                          <Link href="/pricing" className="flex items-center gap-3 px-4 py-3 text-sm font-body text-accent data-[focus]:bg-accent/5 transition-colors w-full">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                             </svg>
                             {t('upgradeToPro')}
-                          </a>
+                          </Link>
                         </MenuItem>
                       )}
 
@@ -139,12 +140,12 @@ export default function Header() {
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <a href="/login" className="text-sm text-muted hover:text-paper font-body transition-colors">
+              <Link href="/login" className="text-sm text-muted hover:text-paper font-body transition-colors">
                 {t('login')}
-              </a>
-              <a href="/login" className="px-4 py-2 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
+              </Link>
+              <Link href="/login" className="px-4 py-2 bg-accent text-ink rounded-xl text-sm font-display font-600 hover:bg-accent-dim transition-colors">
                 {t('register')}
-              </a>
+              </Link>
             </div>
           )}
         </nav>
@@ -161,17 +162,17 @@ export default function Header() {
 
       {mobileOpen && (
         <div className="md:hidden border-t border-white/5 bg-surface px-6 py-4 space-y-3">
-          <a href="/pricing" className="block text-sm text-muted hover:text-paper font-body py-2">
+          <Link href="/pricing" className="block text-sm text-muted hover:text-paper font-body py-2">
             {t('pricing')}
-          </a>
+          </Link>
           <div className="py-1">
             <TranslateWidget />
           </div>
           {user ? (
             <>
-              <a href="/dashboard" className="block text-sm text-paper font-body py-2">{t('dashboard')}</a>
+              <Link href="/dashboard" className="block text-sm text-paper font-body py-2">{t('dashboard')}</Link>
               {user.plan === 'free' && (
-                <a href="/pricing" className="block text-sm text-accent font-body py-2">⭐ {t('upgradeToPro')}</a>
+                <Link href="/pricing" className="block text-sm text-accent font-body py-2">⭐ {t('upgradeToPro')}</Link>
               )}
               <button onClick={handleLogout} className="block text-sm text-muted font-body py-2 w-full text-left">
                 {t('logout')}
@@ -179,10 +180,10 @@ export default function Header() {
             </>
           ) : (
             <>
-              <a href="/login" className="block text-sm text-muted hover:text-paper font-body py-2">{t('login')}</a>
-              <a href="/login" className="block px-4 py-2 bg-accent text-ink rounded-xl text-sm font-display font-600 text-center">
+              <Link href="/login" className="block text-sm text-muted hover:text-paper font-body py-2">{t('login')}</Link>
+              <Link href="/login" className="block px-4 py-2 bg-accent text-ink rounded-xl text-sm font-display font-600 text-center">
                 {t('register')}
-              </a>
+              </Link>
             </>
           )}
         </div>

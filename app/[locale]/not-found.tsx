@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/routing'
 
 export default function NotFound() {
   const t = useTranslations('notFound')
@@ -32,12 +33,12 @@ export default function NotFound() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="/" className="px-6 py-3 bg-accent text-ink rounded-xl font-display font-600 text-sm hover:bg-accent-dim transition-all active:scale-[0.98] shadow-lg shadow-accent/20">
+          <Link href="/" className="px-6 py-3 bg-accent text-ink rounded-xl font-display font-600 text-sm hover:bg-accent-dim transition-all active:scale-[0.98] shadow-lg shadow-accent/20">
             {t('backHome')}
-          </a>
-          <a href="/pricing" className="px-6 py-3 bg-surface border border-white/10 text-paper rounded-xl font-display font-600 text-sm hover:bg-surface-2 transition-all">
+          </Link>
+          <Link href="/pricing" className="px-6 py-3 bg-surface border border-white/10 text-paper rounded-xl font-display font-600 text-sm hover:bg-surface-2 transition-all">
             {t('seePlans')}
-          </a>
+          </Link>
         </div>
 
         <p className="mt-10 text-xs text-muted font-body">

@@ -2,10 +2,17 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ locale: string }> | { locale: string } }
+) {
+  // Risolve i params che in Next.js 15+ possono essere una Promise
+  const resolvedParams = await Promise.resolve(params)
+  const locale = resolvedParams.locale
+
   const { searchParams } = new URL(req.url)
   const code = searchParams.get('code')
-  const next = searchParams.get('next') ?? '/dashboard'
+  const next = searchParams.get('next') ?? `/${locale}/dashboard`
 
   if (code) {
     const cookieStore = await cookies()
@@ -29,5 +36,5 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  return NextResponse.redirect(new URL('/login?error=auth', req.url))
+  return NextResponse.redirect(new URL(`/${locale}/login?error=auth`, req.url))
 }

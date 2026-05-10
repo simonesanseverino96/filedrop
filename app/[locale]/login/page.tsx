@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { getBrowserClient } from '@/lib/supabase'
 import { useTranslations } from 'next-intl'
+import { useRouter, Link } from '@/i18n/routing'
 
 export default function LoginPage() {
   const t = useTranslations('login')
@@ -11,20 +12,21 @@ export default function LoginPage() {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  const router = useRouter()
   const supabase = getBrowserClient()
 
   useEffect(() => {
     const hash = window.location.hash
     if (hash && hash.includes('access_token')) {
       supabase.auth.getSession().then(({ data }: { data: any }) => {
-        if (data.session) window.location.href = '/dashboard'
+        if (data.session) router.push('/dashboard')
       })
     }
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event: any, session: any) => {
-      if (event === 'SIGNED_IN' && session) window.location.href = '/dashboard'
+      if (event === 'SIGNED_IN' && session) router.push('/dashboard')
     })
     return () => subscription.unsubscribe()
-  }, [])
+  }, [router, supabase])
 
   const handleLogin = async () => {
     if (!email) return
@@ -33,7 +35,7 @@ export default function LoginPage() {
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/login`,
+        emailRedirectTo: window.location.href,
         shouldCreateUser: true,
       },
     })
@@ -97,7 +99,7 @@ export default function LoginPage() {
           )}
         </div>
         <p className="text-center text-xs text-muted font-body mt-6">
-          <a href="/" className="hover:text-paper transition-colors">{t('backHome')}</a>
+          <Link href="/" className="hover:text-paper transition-colors">{t('backHome')}</Link>
         </p>
       </div>
     </main>

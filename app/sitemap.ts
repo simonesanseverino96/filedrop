@@ -19,13 +19,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const page of pages) {
     // URL canonico in inglese
     entries.push({
-      url: `${baseUrl}${page.path}`,
+      url: `${baseUrl}/en${page.path}`,
       lastModified: new Date(),
       changeFrequency: page.changeFrequency as any,
       priority: page.priority,
       alternates: {
         languages: Object.fromEntries(
-          locales.map(locale => [locale, `${baseUrl}${page.path}?lang=${locale}`])
+          locales.map(locale => [locale, `${baseUrl}/${locale}${page.path}`])
         ),
       },
     })
