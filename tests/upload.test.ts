@@ -91,6 +91,34 @@ describe('Upload API', () => {
     expect(mockSupabase.from).toHaveBeenCalledWith('transfer_files')
   })
 
+  it('accepts upload under 12.5 MB', async () => {
+    mockSupabase.insert.mockResolvedValue({ error: null })
+
+    const req = new NextRequest('http://localhost/api/upload', {
+      method: 'POST',
+      body: JSON.stringify({
+        transferId: '123',
+        files: [{ filename: 'test.zip', size: 12 * 1024 * 1024, mimeType: 'application/zip', id: 'f1', storagePath: 'test.zip' }],
+        config: { expiry: '7' },
+        totalSize: 12 * 1024 * 1024
+      }),
+    })
+
+    mockSupabase.storage.from = jest.fn().mockReturnValue({
+      list: jest.fn().mockResolvedValue({
+        data: [{ name: 'f1_test.zip', metadata: { size: 12 * 1024 * 1024 } }],
+        error: null
+      })
+    })
+
+    const res = await POST(req)
+    expect(res.status).toBe(201)
+
+    // First insert is for transfer, second for files
+    expect(mockSupabase.from).toHaveBeenCalledWith('transfers')
+    expect(mockSupabase.from).toHaveBeenCalledWith('transfer_files')
+  })
+
   it('rejects upload over 12.5 MB', async () => {
     const maxSize = 12.5 * 1024 * 1024 + 1
     const req = new NextRequest('http://localhost/api/upload', {
