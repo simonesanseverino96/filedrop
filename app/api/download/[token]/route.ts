@@ -58,6 +58,27 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ tok
       return NextResponse.json({ error: 'ERR_FILE_NOT_FOUND' }, { status: 404 })
     }
 
+    if (transfer.user_id) {
+      const startOfMonth = new Date()
+      startOfMonth.setDate(1)
+      startOfMonth.setHours(0, 0, 0, 0)
+
+      const { data: userTransfers, error: userTransfersError } = await supabase
+        .from('transfers')
+        .select('total_size, download_count')
+        .eq('user_id', transfer.user_id)
+        .gte('created_at', startOfMonth.toISOString())
+
+      if (!userTransfersError && userTransfers) {
+        const totalEgress = userTransfers.reduce((acc: number, t: any) => acc + ((t.total_size || 0) * (t.download_count || 0)), 0)
+        const MAX_MONTHLY_EGRESS = 2.5 * 1024 * 1024 * 1024 // 2.5 GB
+
+        if (totalEgress + file.size > MAX_MONTHLY_EGRESS) {
+          return NextResponse.json({ error: 'Download blocked. The monthly egress limit of 2.5 GB has been reached.' }, { status: 403 })
+        }
+      }
+    }
+
     const { data: signed, error: signError } = await supabase.storage
       .from('filedrop')
       .createSignedUrl(file.storage_path, 60)

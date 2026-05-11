@@ -90,4 +90,70 @@ describe('Upload API', () => {
     expect(mockSupabase.from).toHaveBeenCalledWith('transfers')
     expect(mockSupabase.from).toHaveBeenCalledWith('transfer_files')
   })
+
+  it('rejects upload over 12.5 MB', async () => {
+    const maxSize = 12.5 * 1024 * 1024 + 1
+    const req = new NextRequest('http://localhost/api/upload', {
+      method: 'POST',
+      body: JSON.stringify({
+        transferId: '123',
+        files: [{ filename: 'large.zip', size: maxSize, mimeType: 'application/zip', id: 'f1', storagePath: 'large.zip' }],
+        config: { expiry: '7' },
+        totalSize: maxSize
+      }),
+    })
+
+    // Update storage mock so that the file size validation in finalizeTransfer passes the storage fetch
+    mockSupabase.storage.from = jest.fn().mockReturnValue({
+      list: jest.fn().mockResolvedValue({
+        data: [{ name: 'f1_large.zip', metadata: { size: maxSize } }],
+        error: null
+      })
+    })
+
+    const res = await POST(req)
+    expect(res.status).toBe(400)
+    const json = await res.json()
+    expect(json.error).toBe('Upload exceeds the maximum allowed size of 12.5 MB.')
+  })
+
+  it('rejects upload when user storage would exceed 250 MB', async () => {
+    const currentStorage = 240 * 1024 * 1024
+    const newFileSize = 11 * 1024 * 1024
+
+    mockSupabase.select = jest.fn().mockReturnValue({
+      eq: jest.fn().mockResolvedValue({
+        data: [{ total_size: currentStorage }],
+        error: null
+      })
+    })
+
+    const req = new NextRequest('http://localhost/api/upload', {
+      method: 'POST',
+      body: JSON.stringify({
+        transferId: '123',
+        files: [{ filename: 'test.zip', size: newFileSize, mimeType: 'application/zip', id: 'f1', storagePath: 'test.zip' }],
+        config: { expiry: '7' },
+        totalSize: newFileSize,
+        accessToken: 'fake-token' // Ensure we mock userId to trigger the check
+      }),
+    })
+
+    // Mock user retrieval
+    mockSupabase.auth = {
+      getUser: jest.fn().mockResolvedValue({ data: { user: { id: 'user-1' } } })
+    }
+
+    mockSupabase.storage.from = jest.fn().mockReturnValue({
+      list: jest.fn().mockResolvedValue({
+        data: [{ name: 'f1_test.zip', metadata: { size: newFileSize } }],
+        error: null
+      })
+    })
+
+    const res = await POST(req)
+    expect(res.status).toBe(400)
+    const json = await res.json()
+    expect(json.error).toBe('Upload rejected. You have exceeded your total storage limit of 250 MB.')
+  })
 })

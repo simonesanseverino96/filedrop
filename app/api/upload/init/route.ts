@@ -24,6 +24,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'ERR_NO_FILES_PROVIDED' }, { status: 400 })
     }
 
+    const totalSize = files.reduce((acc, file) => acc + file.size, 0)
+    const MAX_UPLOAD_SIZE = 12.5 * 1024 * 1024 // 12.5 MB
+
+    if (totalSize > MAX_UPLOAD_SIZE) {
+      return NextResponse.json({ error: 'Upload exceeds the maximum allowed size of 12.5 MB.' }, { status: 400 })
+    }
+
     const blockedFile = files.find((f: any) => isBlockedFile(f.filename))
     if (blockedFile) {
       return NextResponse.json({ error: 'ERR_FILE_NOT_ALLOWED', filename: blockedFile.filename }, { status: 400 })

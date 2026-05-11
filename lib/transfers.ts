@@ -90,6 +90,30 @@ export async function finalizeTransfer(options: FinalizeTransferOptions) {
 
   const totalSize = validFiles.reduce((acc, f) => acc + (f.size || 0), 0)
 
+  const MAX_UPLOAD_SIZE = 12.5 * 1024 * 1024 // 12.5 MB
+  if (totalSize > MAX_UPLOAD_SIZE) {
+    throw new Error('ERR_FILE_TOO_LARGE')
+  }
+
+  if (userId) {
+    const { data: userTransfers, error: userTransfersError } = await supabase
+      .from('transfers')
+      .select('total_size')
+      .eq('user_id', userId)
+
+    if (userTransfersError) {
+      console.error('Error fetching user transfers:', userTransfersError)
+      throw new Error('ERR_DATABASE')
+    }
+
+    const currentStorage = userTransfers.reduce((acc, t) => acc + (t.total_size || 0), 0)
+    const MAX_USER_STORAGE = 250 * 1024 * 1024 // 250 MB
+
+    if (currentStorage + totalSize > MAX_USER_STORAGE) {
+      throw new Error('ERR_USER_STORAGE_LIMIT_EXCEEDED')
+    }
+  }
+
   let passwordHash: string | null = null
   if (password?.trim()) {
     passwordHash = await bcrypt.hash(password.trim(), 12)

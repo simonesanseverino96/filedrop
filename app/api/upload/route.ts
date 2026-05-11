@@ -57,6 +57,12 @@ export async function POST(req: NextRequest) {
     if (err.message === 'ERR_MISSING_FILES') {
       return NextResponse.json({ error: 'ERR_NO_FILES_PROVIDED' }, { status: 400 })
     }
+    if (err.message === 'ERR_FILE_TOO_LARGE') {
+      return NextResponse.json({ error: 'Upload exceeds the maximum allowed size of 12.5 MB.' }, { status: 400 })
+    }
+    if (err.message === 'ERR_USER_STORAGE_LIMIT_EXCEEDED') {
+      return NextResponse.json({ error: 'Upload rejected. You have exceeded your total storage limit of 250 MB.' }, { status: 400 })
+    }
     if (err.message.startsWith('ERR_FILE_NOT_ALLOWED')) {
       const filename = err.message.split(':')[1]
       return NextResponse.json({ error: 'ERR_FILE_NOT_ALLOWED', filename }, { status: 400 })
