@@ -33,7 +33,7 @@ export const PLANS: Record<PlanType, PlanConfig> = {
     price: 4.99,
     maxFileSizeMB: 20480,       // 20GB
     maxTotalSizeMB: 20480,
-    maxDaysExpiry: 30,
+    maxDaysExpiry: 90,
     maxDownloads: null,         // illimitati
     hasAds: false,
     hasPasswordProtection: true,

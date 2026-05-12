@@ -70,6 +70,101 @@ describe('Upload API', () => {
     expect(json.error).toBe('ERR_FILE_NOT_ALLOWED')
   })
 
+  it('caps free user at 7 days expiry', async () => {
+    mockSupabase.insert.mockResolvedValue({ error: null })
+
+    // Setup mockSelect to return plan when querying 'profiles'
+    // and to return empty array when querying 'transfers'
+    mockSupabase.select = jest.fn().mockImplementation((selectArg) => {
+      if (selectArg === 'total_size') {
+        return { eq: jest.fn().mockResolvedValue({ data: [], error: null }) };
+      }
+      return {
+        eq: jest.fn().mockReturnValue({
+          single: jest.fn().mockResolvedValue({ data: { plan: 'free' }, error: null })
+        })
+      };
+    })
+
+    mockSupabase.from = jest.fn().mockReturnValue({
+      select: mockSupabase.select,
+      insert: mockSupabase.insert,
+      eq: jest.fn().mockReturnThis(),
+      delete: jest.fn().mockReturnThis(),
+    })
+
+    const req = new NextRequest('http://localhost/api/upload', {
+      method: 'POST',
+      body: JSON.stringify({
+        transferId: '123',
+        files: [{ filename: 'test.txt', size: 100, mimeType: 'text/plain', id: 'f1', storagePath: 'test.txt' }],
+        config: { expiry: '30' },
+        totalSize: 100,
+        accessToken: 'fake-token'
+      }),
+    })
+
+    mockSupabase.auth = {
+      getUser: jest.fn().mockResolvedValue({ data: { user: { id: 'user-1' } } })
+    }
+
+    const res = await POST(req)
+    expect(res.status).toBe(201)
+
+    // Verify it was capped at 7 days
+    const insertCall = mockSupabase.insert.mock.calls[0][0]
+    const expiresAt = new Date(insertCall.expires_at)
+    const now = new Date()
+    const diffDays = Math.round((expiresAt.getTime() - now.getTime()) / (1000 * 3600 * 24))
+    expect(diffDays).toBe(7)
+  })
+
+  it('allows pro user up to 90 days expiry', async () => {
+    mockSupabase.insert.mockResolvedValue({ error: null })
+    mockSupabase.select = jest.fn().mockImplementation((selectArg) => {
+      if (selectArg === 'total_size') {
+        return { eq: jest.fn().mockResolvedValue({ data: [], error: null }) };
+      }
+      return {
+        eq: jest.fn().mockReturnValue({
+          single: jest.fn().mockResolvedValue({ data: { plan: 'pro' }, error: null })
+        })
+      };
+    })
+
+    mockSupabase.from = jest.fn().mockReturnValue({
+      select: mockSupabase.select,
+      insert: mockSupabase.insert,
+      eq: jest.fn().mockReturnThis(),
+      delete: jest.fn().mockReturnThis(),
+    })
+
+    const req = new NextRequest('http://localhost/api/upload', {
+      method: 'POST',
+      body: JSON.stringify({
+        transferId: '123',
+        files: [{ filename: 'test.txt', size: 100, mimeType: 'text/plain', id: 'f1', storagePath: 'test.txt' }],
+        config: { expiry: '90' },
+        totalSize: 100,
+        accessToken: 'fake-token'
+      }),
+    })
+
+    mockSupabase.auth = {
+      getUser: jest.fn().mockResolvedValue({ data: { user: { id: 'user-1' } } })
+    }
+
+    const res = await POST(req)
+    expect(res.status).toBe(201)
+
+    // Verify it allowed 90 days
+    const insertCall = mockSupabase.insert.mock.calls[0][0]
+    const expiresAt = new Date(insertCall.expires_at)
+    const now = new Date()
+    const diffDays = Math.round((expiresAt.getTime() - now.getTime()) / (1000 * 3600 * 24))
+    expect(diffDays).toBe(90)
+  })
+
   it('creates transfer and files in database', async () => {
     mockSupabase.insert.mockResolvedValue({ error: null })
 
@@ -149,11 +244,22 @@ describe('Upload API', () => {
     const currentStorage = 240 * 1024 * 1024
     const newFileSize = 11 * 1024 * 1024
 
-    mockSupabase.select = jest.fn().mockReturnValue({
-      eq: jest.fn().mockResolvedValue({
-        data: [{ total_size: currentStorage }],
-        error: null
-      })
+    mockSupabase.select = jest.fn().mockImplementation((selectArg) => {
+      if (selectArg === 'total_size') {
+        return { eq: jest.fn().mockResolvedValue({ data: [{ total_size: currentStorage }], error: null }) };
+      }
+      return {
+        eq: jest.fn().mockReturnValue({
+          single: jest.fn().mockResolvedValue({ data: { plan: 'free' }, error: null })
+        })
+      };
+    })
+
+    mockSupabase.from = jest.fn().mockReturnValue({
+      select: mockSupabase.select,
+      insert: mockSupabase.insert,
+      eq: jest.fn().mockReturnThis(),
+      delete: jest.fn().mockReturnThis(),
     })
 
     const req = new NextRequest('http://localhost/api/upload', {

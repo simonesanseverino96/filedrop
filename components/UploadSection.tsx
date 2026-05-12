@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { useTranslations } from 'next-intl'
 import { formatBytes } from '@/lib/utils'
@@ -38,6 +38,32 @@ export default function UploadSection() {
   const [transferToken, setTransferToken] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const startTimeRef = useRef<Record<string, number>>({})
+  const [userPlan, setUserPlan] = useState<string>('free')
+  const [customExpiryWarning, setCustomExpiryWarning] = useState<string | null>(null)
+
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then(res => res.json())
+      .then(data => {
+        if (data?.user?.plan) {
+          setUserPlan(data.user.plan)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  const handleExpiryChange = (val: string | number) => {
+    const numVal = typeof val === 'string' ? parseInt(val) : val;
+    if (userPlan === 'free' && numVal > 7) {
+      setCustomExpiryWarning('Free users are limited to max 7 days. Upgrade to Pro/Business for up to 90 days.');
+      setConfig(c => ({ ...c, expiry: '7' }));
+    } else {
+      setCustomExpiryWarning(null);
+      const maxAllowed = (userPlan === 'pro' || userPlan === 'business') ? 90 : 7;
+      const finalVal = Math.min(numVal || 1, maxAllowed);
+      setConfig(c => ({ ...c, expiry: finalVal.toString() }));
+    }
+  }
 
   const onDrop = useCallback((accepted: File[], rejected: any[]) => {
     if (rejected.length > 0) setError(t('error.tooLarge', { limit: formatBytes(MAX_SIZE) }))
@@ -282,14 +308,25 @@ export default function UploadSection() {
             <div className="mt-3 bg-surface border border-white/5 rounded-xl p-5 space-y-4 animate-fade-up">
               <div>
                 <label className="text-xs text-muted mb-2 block font-body">{t('options.expiry')}</label>
-                <div className="flex gap-2">
-                  {(['1', '7', '30'] as const).map(d => (
-                    <button key={d} onClick={() => setConfig(c => ({ ...c, expiry: d }))}
+                <div className="flex gap-2 mb-2 flex-wrap">
+                  {(['1', '3', '7', '14', '30'] as const).map(d => (
+                    <button key={d} onClick={() => handleExpiryChange(d)}
                       className={`flex-1 py-2 rounded-lg text-sm font-body transition-all ${config.expiry === d ? 'bg-accent text-ink font-500' : 'bg-surface-2 text-muted hover:text-paper border border-white/5'}`}>
-                      {d === '1' ? t('options.expiry1') : d === '7' ? t('options.expiry7') : t('options.expiry30')}
+                      {d === '1' ? t('options.expiry1') : d === '7' ? t('options.expiry7') : d === '30' ? t('options.expiry30') : `${d} days`}
                     </button>
                   ))}
                 </div>
+                {(userPlan === 'pro' || userPlan === 'business') && (
+                  <div className="flex items-center gap-2">
+                    <input type="number" min="1" max="90" placeholder="Custom (max 90 days)"
+                      value={config.expiry}
+                      onChange={e => handleExpiryChange(e.target.value)}
+                      className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
+                  </div>
+                )}
+                {customExpiryWarning && (
+                  <p className="text-xs text-red-400 mt-1 font-body">{customExpiryWarning}</p>
+                )}
               </div>
               <div>
                 <label className="text-xs text-muted mb-2 block font-body">{t('options.maxDownloads')}</label>

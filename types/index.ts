@@ -26,7 +26,7 @@ export interface TransferWithFiles extends Transfer {
 }
 
 export interface UploadConfig {
-  expiry: '1' | '7' | '30'
+  expiry: string | number
   maxDownloads: number | null
   password: string
   message: string

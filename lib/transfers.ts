@@ -47,9 +47,19 @@ export async function finalizeTransfer(options: FinalizeTransferOptions) {
   }
 
   const transferId = options.transferId || uuidv4()
-  const expiresAt = addDays(new Date(), parseInt(expiry.toString())).toISOString()
-
   const supabase = supabaseAdmin()
+
+  let maxDaysExpiry = 7
+  if (userId) {
+    const { data: profile } = await supabase.from('profiles').select('plan').eq('id', userId).single()
+    if (profile?.plan === 'pro' || profile?.plan === 'business') {
+      maxDaysExpiry = 90
+    }
+  }
+
+  const requestedExpiry = parseInt(expiry.toString())
+  const finalExpiry = Math.min(requestedExpiry, maxDaysExpiry)
+  const expiresAt = addDays(new Date(), finalExpiry).toISOString()
 
   let storageFiles: any[] = []
   // Se options.transferId è stato fornito, significa che il client ha già caricato i file
