@@ -208,19 +208,21 @@ export default function UploadSection() {
       <div
         {...getRootProps()}
         className={`relative border-2 border-dashed rounded-2xl p-12 cursor-pointer transition-all duration-300 ${
-          isDragActive ? 'border-accent bg-accent/5 drop-active' : 'border-white/10 bg-surface hover:border-accent/40 hover:bg-surface-2'
+          isDragActive
+            ? 'border-accent bg-accent/5 drop-active'
+            : 'border-gray-200 dark:border-white/10 bg-white dark:bg-surface hover:border-accent/40 hover:bg-gray-50 dark:hover:bg-surface-2'
         }`}
       >
         <input {...getInputProps()} />
         <div className="flex flex-col items-center gap-4">
-          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${isDragActive ? 'bg-accent' : 'bg-surface-2'}`}>
+          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${isDragActive ? 'bg-accent' : 'bg-gray-100 dark:bg-surface-2'}`}>
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={isDragActive ? '#0a0a0f' : '#00e5a0'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
               <path d="M12 12v9"/><path d="m16 16-4-4-4 4"/>
             </svg>
           </div>
           <div>
-            <p className="font-display text-lg font-600 text-paper mb-1">
+            <p className="font-display text-lg font-600 text-gray-900 dark:text-paper mb-1">
               {isDragActive ? t('dropzone.active') : t('dropzone.idle')}
             </p>
             <p className="text-muted text-sm font-body">
@@ -233,17 +235,17 @@ export default function UploadSection() {
       {files.length > 0 && (
         <div className="mt-4 space-y-2">
           {files.map(({ file, id, progress, speed, timeLeft, status }) => (
-            <div key={id} className="stagger-item bg-surface border border-white/5 rounded-xl px-4 py-3">
+            <div key={id} className="stagger-item bg-white dark:bg-surface border border-gray-100 dark:border-white/5 rounded-xl px-4 py-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-surface-2 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-gray-100 dark:bg-surface-2 flex items-center justify-center flex-shrink-0">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                     <polyline points="14 2 14 8 20 8"/>
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-paper truncate font-body">{file.name}</p>
-                  <p className="text-xs text-muted font-body">{formatBytes(file.size)}</p>
+                  <p className="text-sm text-gray-900 dark:text-paper truncate font-body">{file.name}</p>
+                  <p className="text-xs text-gray-500 dark:text-muted font-body">{formatBytes(file.size)}</p>
                 </div>
                 {status === 'done' && <span className="text-xs text-accent font-body flex-shrink-0">{t('file.uploaded')}</span>}
                 {status === 'error' && <span className="text-xs text-red-400 font-body flex-shrink-0">{t('file.error')}</span>}
@@ -305,7 +307,7 @@ export default function UploadSection() {
           </button>
 
           {showOptions && (
-            <div className="mt-3 bg-surface border border-white/5 rounded-xl p-5 space-y-4 animate-fade-up">
+            <div className="mt-3 bg-white dark:bg-surface border border-gray-100 dark:border-white/5 rounded-xl p-5 space-y-4 animate-fade-up">
               <div>
                 <label className="text-xs text-muted mb-2 block font-body">{t('options.expiry')}</label>
                 <div className="flex gap-2 mb-2 flex-wrap">
@@ -321,7 +323,7 @@ export default function UploadSection() {
                     <input type="number" min="1" max="90" placeholder="Custom (max 90 days)"
                       value={config.expiry}
                       onChange={e => handleExpiryChange(e.target.value)}
-                      className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
+                      className="w-full bg-gray-50 dark:bg-surface-2 border border-gray-200 dark:border-white/5 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-paper placeholder-gray-400 dark:placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
                   </div>
                 )}
                 {customExpiryWarning && (
@@ -333,13 +335,13 @@ export default function UploadSection() {
                 <input type="number" min="1" max="100" placeholder={t('options.maxDownloadsPlaceholder')}
                   value={config.maxDownloads ?? ''}
                   onChange={e => setConfig(c => ({ ...c, maxDownloads: e.target.value ? parseInt(e.target.value) : null }))}
-                  className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
+                  className="w-full bg-gray-50 dark:bg-surface-2 border border-gray-200 dark:border-white/5 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-paper placeholder-gray-400 dark:placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
               </div>
               <div>
                 <label className="text-xs text-muted mb-2 block font-body">{t('options.password')}</label>
                 <input type="password" placeholder="••••••••" value={config.password}
                   onChange={e => setConfig(c => ({ ...c, password: e.target.value }))}
-                  className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
+                  className="w-full bg-gray-50 dark:bg-surface-2 border border-gray-200 dark:border-white/5 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-paper placeholder-gray-400 dark:placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
               </div>
               <div>
                 <label className="text-xs text-muted mb-2 block font-body">{t('options.message')}</label>
@@ -351,7 +353,7 @@ export default function UploadSection() {
                 <label className="text-xs text-muted mb-2 block font-body">{t('options.senderEmail')}</label>
                 <input type="email" placeholder={t('options.emailPlaceholder')} value={config.senderEmail}
                   onChange={e => setConfig(c => ({ ...c, senderEmail: e.target.value }))}
-                  className="w-full bg-surface-2 border border-white/5 rounded-lg px-3 py-2 text-sm text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
+                  className="w-full bg-gray-50 dark:bg-surface-2 border border-gray-200 dark:border-white/5 rounded-lg px-3 py-2 text-sm text-gray-900 dark:text-paper placeholder-gray-400 dark:placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors" />
               </div>
             </div>
           )}

@@ -177,8 +177,8 @@ export default function DownloadClient({ token }: { token: string }) {
           <p className="text-muted text-sm font-body">{t('protectedDesc')}</p>
         </div>
 
-        <div className="bg-surface border border-white/5 rounded-2xl p-6">
-          <label className="text-xs text-muted mb-2 block font-body uppercase tracking-widest">{t('passwordLabel')}</label>
+        <div className="bg-white dark:bg-surface border border-gray-100 dark:border-white/5 rounded-2xl p-6">
+          <label className="text-xs text-gray-500 dark:text-muted mb-2 block font-body uppercase tracking-widest">{t('passwordLabel')}</label>
           <input
             type="password"
             placeholder="••••••••"
@@ -186,7 +186,7 @@ export default function DownloadClient({ token }: { token: string }) {
             onChange={e => setPassword(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && verifyPassword()}
             autoFocus
-            className="w-full bg-surface-2 border border-white/5 rounded-xl px-4 py-3 text-paper placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors mb-3"
+            className="w-full bg-gray-50 dark:bg-surface-2 border border-gray-200 dark:border-white/5 rounded-xl px-4 py-3 text-gray-900 dark:text-paper placeholder-gray-400 dark:placeholder-muted font-body focus:outline-none focus:border-accent/50 transition-colors mb-3"
           />
           {passwordError && (
             <p className="text-red-400 text-xs mb-3 font-body">{passwordError}</p>
@@ -206,17 +206,17 @@ export default function DownloadClient({ token }: { token: string }) {
   // status === 'ready'
   return (
     <div className="animate-fade-up">
-      <div className="bg-surface border border-white/5 rounded-2xl p-6 mb-4">
+      <div className="bg-white dark:bg-surface border border-gray-100 dark:border-white/5 rounded-2xl p-6 mb-4">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <p className="text-xs text-muted font-body uppercase tracking-widest mb-1">{t('readyLabel')}</p>
-            <h2 className="font-display text-xl font-700 text-paper">
+            <p className="text-xs text-gray-500 dark:text-muted font-body uppercase tracking-widest mb-1">{t('readyLabel')}</p>
+            <h2 className="font-display text-xl font-700 text-gray-900 dark:text-paper">
               {transfer!.files.length} file{transfer!.files.length !== 1 ? 's' : ''}
             </h2>
           </div>
           <div className="text-right">
-            <p className="text-xs text-muted font-body">{t('totalSize')}</p>
-            <p className="text-sm font-display font-600 text-paper">{formatBytes(transfer!.totalSize)}</p>
+            <p className="text-xs text-gray-500 dark:text-muted font-body">{t('totalSize')}</p>
+            <p className="text-sm font-display font-600 text-gray-900 dark:text-paper">{formatBytes(transfer!.totalSize)}</p>
           </div>
         </div>
 
@@ -245,16 +245,16 @@ export default function DownloadClient({ token }: { token: string }) {
 
       <div className="space-y-2 mb-4">
         {transfer!.files.map((file) => (
-          <div key={file.id} className="stagger-item flex items-center gap-3 bg-surface border border-white/5 rounded-xl px-4 py-3 hover:border-accent/20 transition-colors">
-            <div className="w-9 h-9 rounded-lg bg-surface-2 flex items-center justify-center flex-shrink-0">
+          <div key={file.id} className="stagger-item flex items-center gap-3 bg-white dark:bg-surface border border-gray-100 dark:border-white/5 rounded-xl px-4 py-3 hover:border-accent/20 transition-colors">
+            <div className="w-9 h-9 rounded-lg bg-gray-100 dark:bg-surface-2 flex items-center justify-center flex-shrink-0">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
               </svg>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm text-paper truncate font-body">{file.filename}</p>
-              <p className="text-xs text-muted font-body">{formatBytes(file.size)}</p>
+              <p className="text-sm text-gray-900 dark:text-paper truncate font-body">{file.filename}</p>
+              <p className="text-xs text-gray-500 dark:text-muted font-body">{formatBytes(file.size)}</p>
             </div>
             <button
               onClick={() => downloadFile(file.id, file.filename)}

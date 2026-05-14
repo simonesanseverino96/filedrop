@@ -51,7 +51,7 @@ export default function Header() {
   }
 
   return (
-    <header className="relative z-[9999] border-b border-white/5">
+    <header className="relative z-[9999] border-b border-gray-200 dark:border-white/5 bg-white dark:bg-transparent">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
@@ -59,11 +59,11 @@ export default function Header() {
               <path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="#0a0a0f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <span className="font-display text-xl font-700 tracking-tight text-paper">VaultTransfer</span>
+          <span className="font-display text-xl font-700 tracking-tight text-gray-900 dark:text-paper">VaultTransfer</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="/pricing" className="text-sm text-muted hover:text-paper font-body transition-colors">
+          <Link href="/pricing" className="text-sm text-gray-500 dark:text-muted hover:text-gray-900 dark:hover:text-paper font-body transition-colors">
             {t('pricing')}
           </Link>
 
@@ -82,7 +82,7 @@ export default function Header() {
               <Menu as="div" className="relative">
                 {({ open }) => (
                   <>
-                    <MenuButton className="flex items-center gap-2 px-3 py-1.5 bg-surface border border-white/10 rounded-xl text-sm font-body text-paper hover:border-accent/30 transition-colors">
+                    <MenuButton className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-surface border border-gray-200 dark:border-white/10 rounded-xl text-sm font-body text-gray-900 dark:text-paper hover:border-accent/30 transition-colors">
                       <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center text-ink text-xs font-700">
                         {user.email[0].toUpperCase()}
                       </div>
@@ -95,7 +95,7 @@ export default function Header() {
 
                     <MenuItems
                       anchor="bottom end"
-                      className="w-48 bg-surface border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 outline-none mt-2"
+                      className="w-48 bg-white dark:bg-surface border border-gray-200 dark:border-white/10 rounded-xl shadow-xl overflow-hidden z-50 outline-none mt-2"
                     >
                       <MenuItem>
                         <Link href="/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-body text-paper data-[focus]:bg-white/5 transition-colors w-full">
@@ -161,7 +161,7 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-white/5 bg-surface px-6 py-4 space-y-3">
+        <div className="md:hidden border-t border-gray-200 dark:border-white/5 bg-white dark:bg-surface px-6 py-4 space-y-3">
           <Link href="/pricing" className="block text-sm text-muted hover:text-paper font-body py-2">
             {t('pricing')}
           </Link>
