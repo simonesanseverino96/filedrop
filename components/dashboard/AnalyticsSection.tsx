@@ -28,7 +28,7 @@ export default function AnalyticsSection({ plan, onUpgrade }: AnalyticsSectionPr
 
   useEffect(() => {
     if (!isFree) {
-      setLoading(true)
+      setLoading(true) // eslint-disable-line react-hooks/set-state-in-effect
       fetch('/api/auth/analytics')
         .then(res => res.json())
         .then(resData => {

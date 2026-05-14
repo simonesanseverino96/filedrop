@@ -238,7 +238,7 @@ export default function DownloadClient({ token }: { token: string }) {
 
         {transfer!.message && (
           <div className="mt-4 p-3 bg-surface-2 rounded-xl border-l-2 border-accent/50">
-            <p className="text-sm text-muted font-body italic">"{transfer!.message}"</p>
+            <p className="text-sm text-muted font-body italic">&quot;{transfer!.message}&quot;</p>
           </div>
         )}
       </div>

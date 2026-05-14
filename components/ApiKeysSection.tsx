@@ -24,8 +24,6 @@ export default function ApiKeysSection() {
   const [revealedKey, setRevealedKey] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
 
-  useEffect(() => { fetchKeys() }, [])
-
   const getToken = async () => {
     const { data: { session } } = await supabase.auth.getSession()
     return session?.access_token ?? null
@@ -46,6 +44,8 @@ export default function ApiKeysSection() {
     } catch {}
     setLoading(false)
   }
+
+  useEffect(() => { fetchKeys() }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const createKey = async () => {
     if (!newKeyName.trim()) return
