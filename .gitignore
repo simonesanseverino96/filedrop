@@ -30,7 +30,16 @@ yarn-error.log*
 # Vercel
 .vercel
 
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
 # Local tooling
 .claude/
+.claude-flow/
+.swarm/
 .hive-mind/
 .mcp.json
+.vscode/
+
+# Nested workspace
+Vaultransfer/
