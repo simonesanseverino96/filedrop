@@ -26,6 +26,7 @@ export async function GET(req: NextRequest) {
 
     let deletedFiles = 0
     let deletedTransfers = 0
+    const storageErrors: string[] = []
 
     // Elimina i file dallo Storage per ogni trasferimento scaduto
     for (const transfer of expired) {
@@ -37,28 +38,41 @@ export async function GET(req: NextRequest) {
             .from('filedrop')
             .remove(paths)
 
-          if (!storageError) deletedFiles += paths.length
+          if (storageError) {
+            storageErrors.push(`transfer ${transfer.id}: ${storageError.message}`)
+            console.error(`[cleanup] storage error for transfer ${transfer.id}:`, storageError.message)
+          } else {
+            deletedFiles += paths.length
+          }
         }
       }
     }
 
     // Elimina i record dal DB (CASCADE elimina anche transfer_files)
-    const { count } = await supabase
+    const { count, error: deleteError } = await supabase
       .from('transfers')
       .delete({ count: 'exact' })
       .lt('expires_at', new Date().toISOString())
 
+    if (deleteError) throw deleteError
+
     deletedTransfers = count || 0
 
-    console.log(`Cleanup: ${deletedTransfers} trasferimenti, ${deletedFiles} file eliminati`)
+    console.log(`[cleanup] done: ${deletedTransfers} transfers, ${deletedFiles} files deleted, ${storageErrors.length} storage errors`)
 
-    return NextResponse.json({
+    const response: Record<string, unknown> = {
       cleaned: deletedTransfers,
       filesDeleted: deletedFiles,
-      message: `Eliminati ${deletedTransfers} trasferimenti e ${deletedFiles} file`,
-    })
+    }
+    if (storageErrors.length > 0) {
+      response.storageErrors = storageErrors
+      response.warning = `${storageErrors.length} storage deletion(s) failed — DB records still removed`
+      return NextResponse.json(response, { status: 207 })
+    }
+
+    return NextResponse.json(response)
   } catch (err: any) {
-    console.error('Cleanup error:', err)
+    console.error('[cleanup] fatal error:', err)
     return NextResponse.json({ error: err.message }, { status: 500 })
   }
 }

@@ -46,7 +46,7 @@ export default function AnalyticsSection({ plan, onUpgrade }: AnalyticsSectionPr
         <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="relative z-10 flex flex-col items-center justify-center space-y-4">
           <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-2">
-            <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
@@ -78,7 +78,7 @@ export default function AnalyticsSection({ plan, onUpgrade }: AnalyticsSectionPr
   return (
     <div className="mt-8 space-y-6">
       <h3 className="font-display text-lg font-700 text-paper flex items-center gap-2">
-        <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
         {t('title')}
@@ -126,7 +126,7 @@ export default function AnalyticsSection({ plan, onUpgrade }: AnalyticsSectionPr
       {/* Chart */}
       <div className="bg-surface border border-white/5 rounded-2xl p-6">
         <h4 className="text-xs text-muted font-body mb-6 uppercase tracking-wider">{t('transfersPerDay')} <span className="lowercase normal-case opacity-60">({t('last30Days')})</span></h4>
-        <div className="h-32 flex items-end justify-between gap-1">
+        <div className="h-24 md:h-32 flex items-end justify-between gap-1">
           {data.chartData.map((d) => {
             const height = maxChartCount === 0 ? 0 : (d.count / maxChartCount) * 100
             return (

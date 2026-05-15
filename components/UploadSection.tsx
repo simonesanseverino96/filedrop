@@ -207,7 +207,11 @@ export default function UploadSection() {
     <div className="max-w-2xl mx-auto">
       <div
         {...getRootProps()}
-        className={`relative border-2 border-dashed rounded-2xl p-12 cursor-pointer transition-all duration-300 ${
+        role="button"
+        tabIndex={0}
+        aria-label="Upload files — click or drag and drop"
+        onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && e.currentTarget.click()}
+        className={`relative border-2 border-dashed rounded-2xl p-6 md:p-12 cursor-pointer transition-all duration-300 ${
           isDragActive
             ? 'border-accent bg-accent/5 drop-active'
             : 'border-gray-200 dark:border-white/10 bg-white dark:bg-surface hover:border-accent/40 hover:bg-gray-50 dark:hover:bg-surface-2'
@@ -250,7 +254,7 @@ export default function UploadSection() {
                 {status === 'done' && <span className="text-xs text-accent font-body flex-shrink-0">{t('file.uploaded')}</span>}
                 {status === 'error' && <span className="text-xs text-red-400 font-body flex-shrink-0">{t('file.error')}</span>}
                 {!isUploading && status === 'pending' && (
-                  <button onClick={() => removeFile(id)} className="text-muted hover:text-paper transition-colors p-1 flex-shrink-0">
+                  <button onClick={() => removeFile(id)} aria-label={`Remove ${file.name}`} className="text-muted hover:text-paper transition-colors p-1 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                     </svg>
@@ -376,8 +380,8 @@ export default function UploadSection() {
       )}
 
       {files.length > 0 && (
-        <button onClick={handleUpload} disabled={isUploading}
-          className={`mt-4 w-full py-4 rounded-xl font-display font-600 text-base transition-all duration-200 ${
+        <button onClick={handleUpload} disabled={isUploading} aria-busy={isUploading}
+          className={`mt-4 w-full py-4 rounded-xl font-display font-600 text-base transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
             isUploading ? 'bg-accent/50 text-ink/50 cursor-not-allowed' : 'bg-accent text-ink hover:bg-accent-dim active:scale-[0.98] shadow-lg shadow-accent/20'
           }`}>
           {isUploading ? (

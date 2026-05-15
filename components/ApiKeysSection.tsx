@@ -154,7 +154,15 @@ export default function ApiKeysSection() {
       {loading ? (
         <div className="h-20 bg-surface-2 rounded-xl animate-pulse" />
       ) : keys.length === 0 ? (
-        <p className="text-sm text-muted font-body text-center py-8">{t('noKeys')}</p>
+        <div className="flex flex-col items-center justify-center py-10 text-center">
+          <div className="w-12 h-12 rounded-full bg-surface-2 border border-white/10 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+            </svg>
+          </div>
+          <p className="text-sm text-paper font-body mb-1">{t('noKeys')}</p>
+          <p className="text-xs text-muted font-body">{t('noKeysHint', { defaultValue: 'Create your first key above to start using the API.' })}</p>
+        </div>
       ) : (
         <div className="space-y-2">
           {keys.map(key => (

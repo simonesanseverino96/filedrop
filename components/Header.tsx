@@ -150,8 +150,14 @@ export default function Header() {
           )}
         </nav>
 
-        <button className="md:hidden text-muted hover:text-paper" onClick={() => setMobileOpen(v => !v)}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <button
+          className="md:hidden text-muted hover:text-paper focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded p-1"
+          onClick={() => setMobileOpen(v => !v)}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             {mobileOpen
               ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
               : <><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></>
@@ -161,7 +167,7 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-gray-200 dark:border-white/5 bg-white dark:bg-surface px-6 py-4 space-y-3">
+        <div id="mobile-nav" className="md:hidden border-t border-gray-200 dark:border-white/5 bg-white dark:bg-surface px-6 py-4 space-y-3">
           <Link href="/pricing" className="block text-sm text-muted hover:text-paper font-body py-2">
             {t('pricing')}
           </Link>

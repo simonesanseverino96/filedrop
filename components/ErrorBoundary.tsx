@@ -32,7 +32,7 @@ export default class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="flex flex-col items-center justify-center p-8 bg-surface border border-red-500/20 rounded-2xl animate-fade-up">
+        <div className="flex flex-col items-center justify-center p-4 md:p-8 bg-surface border border-red-500/20 rounded-2xl animate-fade-up">
           <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-5">
             <AlertCircle className="w-8 h-8 text-red-500" />
           </div>
