@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { getBrowserClient } from '@/lib/supabase'
+import { useToast } from '@/components/Toast'
 
 const supabase = getBrowserClient()
 
@@ -17,6 +18,7 @@ interface ApiKey {
 
 export default function ApiKeysSection() {
   const t = useTranslations('apiKeys')
+  const { toast } = useToast()
   const [keys, setKeys] = useState<ApiKey[]>([])
   const [loading, setLoading] = useState(true)
   const [creating, setCreating] = useState(false)
@@ -65,6 +67,7 @@ export default function ApiKeysSection() {
         setRevealedKey(data.key)
         setNewKeyName('')
         fetchKeys()
+        toast('API key created — copy it now, it won\'t be shown again', 'info')
       }
     } catch {}
     setCreating(false)
@@ -74,7 +77,7 @@ export default function ApiKeysSection() {
     if (!confirm(t('revokeConfirm'))) return
     try {
       const token = await getToken()
-      if (!token) { alert(t('sessionExpired')); return }
+      if (!token) { toast(t('sessionExpired'), 'error'); return }
 
       const res = await fetch('/api/keys', {
         method: 'DELETE',
@@ -83,12 +86,13 @@ export default function ApiKeysSection() {
       })
       if (res.ok) {
         fetchKeys()
+        toast('API key revoked')
       } else {
         const data = await res.json()
-        alert(data.error ? t(`errors.${data.error}`) : t('revokeError'))
+        toast(data.error ? t(`errors.${data.error}`) : t('revokeError'), 'error')
       }
     } catch {
-      alert(t('connectionError'))
+      toast(t('connectionError'), 'error')
     }
   }
 
@@ -96,6 +100,7 @@ export default function ApiKeysSection() {
     if (!revealedKey) return
     await navigator.clipboard.writeText(revealedKey)
     setCopied(true)
+    toast('API key copied to clipboard!')
     setTimeout(() => setCopied(false), 2000)
   }
 

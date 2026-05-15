@@ -9,8 +9,11 @@ import ApiKeysSection from '@/components/ApiKeysSection'
 import AnalyticsSection from '@/components/dashboard/AnalyticsSection'
 import SubscriptionCard from '@/components/dashboard/SubscriptionCard'
 import NotificationPreferences from '@/components/dashboard/NotificationPreferences'
+import ReferralSection from '@/components/dashboard/ReferralSection'
+import TransferStatsModal from '@/components/dashboard/TransferStatsModal'
 import { Link } from '@/i18n/routing'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import { useToast } from '@/components/Toast'
 
 const supabase = getBrowserClient()
 
@@ -34,6 +37,7 @@ interface Transfer {
 
 export default function DashboardPage() {
   const t = useTranslations('dashboard')
+  const { toast } = useToast()
   const [profile, setProfile] = useState<Profile | null>(null)
   const [transfers, setTransfers] = useState<Transfer[]>([])
   const [loading, setLoading] = useState(true)
@@ -41,6 +45,7 @@ export default function DashboardPage() {
   const [transferPage, setTransferPage] = useState(0)
   const [hasMoreTransfers, setHasMoreTransfers] = useState(false)
   const [loadingMore, setLoadingMore] = useState(false)
+  const [statsTransfer, setStatsTransfer] = useState<Transfer | null>(null)
 
   useEffect(() => {
     loadData()
@@ -93,9 +98,9 @@ export default function DashboardPage() {
       })
       const data = await res.json()
       if (data.url) window.location.href = data.url
-      else alert(data.error ? t(`errors.${data.error}`) : 'Error during checkout')
+      else toast(data.error ? t(`errors.${data.error}`) : 'Error during checkout', 'error')
     } catch {
-      alert('Connection error')
+      toast('Connection error', 'error')
     } finally {
       setCheckoutLoading(null)
     }
@@ -190,7 +195,19 @@ export default function DashboardPage() {
                     </p>
                   </div>
                   <button
-                    onClick={() => navigator.clipboard.writeText(`${window.location.origin}/download/${tr.token}`)}
+                    onClick={() => setStatsTransfer(tr)}
+                    className="flex-shrink-0 px-3 py-1.5 bg-surface-2 hover:bg-white/10 text-muted hover:text-paper border border-white/5 rounded-lg text-xs font-body transition-all"
+                    title="View analytics"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                  </button>
+                  <button
+                    onClick={async () => {
+                      await navigator.clipboard.writeText(`${window.location.origin}/download/${tr.token}`)
+                      toast('Link copied!')
+                    }}
                     className="flex-shrink-0 px-3 py-1.5 bg-accent/10 hover:bg-accent text-accent hover:text-ink border border-accent/20 hover:border-accent rounded-lg text-xs font-display font-600 transition-all"
                   >
                     {t('copyLink')}
@@ -215,11 +232,18 @@ export default function DashboardPage() {
         {/* Email notification preferences */}
         <NotificationPreferences />
 
+        {/* Referral system */}
+        <ReferralSection />
+
         {/* API Keys — solo piano Business */}
         {plan === 'business' && <ApiKeysSection />}
 
       </div>
       </ErrorBoundary>
+
+      {statsTransfer && (
+        <TransferStatsModal transfer={statsTransfer} onClose={() => setStatsTransfer(null)} />
+      )}
     </main>
   )
 }

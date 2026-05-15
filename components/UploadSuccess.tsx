@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { UploadConfig } from '@/types'
 import { formatBytes } from '@/lib/utils'
+import { useToast } from '@/components/Toast'
 
 interface Props {
   token: string
@@ -14,11 +15,13 @@ interface Props {
 export default function UploadSuccess({ token, config, files }: Props) {
   const t = useTranslations('uploadSuccess')
   const [copied, setCopied] = useState(false)
+  const { toast } = useToast()
   const link = `${typeof window !== 'undefined' ? window.location.origin : ''}/download/${token}`
 
   const copyLink = async () => {
     await navigator.clipboard.writeText(link)
     setCopied(true)
+    toast('Link copied to clipboard!')
     setTimeout(() => setCopied(false), 2000)
   }
 

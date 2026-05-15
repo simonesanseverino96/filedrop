@@ -5,6 +5,123 @@ import { useRouter, Link } from '@/i18n/routing'
 import { getBrowserClient } from '@/lib/supabase'
 import { useTranslations } from 'next-intl'
 
+const COMPARISON_ROWS = [
+  { label: 'Max upload size',         free: '2 GB',       pro: '50 GB',      business: '200 GB' },
+  { label: 'Link expiry',             free: '7 days',     pro: '30 days',    business: 'No limit' },
+  { label: 'Max downloads per link',  free: 'Unlimited',  pro: 'Unlimited',  business: 'Unlimited' },
+  { label: 'Ads',                     free: true,         pro: false,        business: false },
+  { label: 'Password-protected links',free: false,        pro: false,        business: true },
+  { label: 'Download statistics',     free: false,        pro: true,         business: true },
+  { label: 'Custom expiry dates',     free: false,        pro: true,         business: true },
+  { label: 'Priority support',        free: false,        pro: false,        business: true },
+  { label: 'Public API access',       free: false,        pro: false,        business: true },
+  { label: 'API key management',      free: false,        pro: false,        business: true },
+]
+
+const FAQS = [
+  {
+    q: 'Can I cancel my subscription at any time?',
+    a: 'Yes — cancel any time from your dashboard. You keep access until the end of the current billing period, with no penalties.',
+  },
+  {
+    q: 'What happens to my files after they expire?',
+    a: 'Expired transfers and their files are automatically deleted from our servers. Make sure your recipients download before the expiry date.',
+  },
+  {
+    q: 'Is there a free trial for paid plans?',
+    a: 'We offer a 30-day money-back guarantee on all paid plans. If you\'re not satisfied, contact support for a full refund.',
+  },
+  {
+    q: 'How is the 2 GB limit calculated on the free plan?',
+    a: 'The 2 GB limit applies per transfer, not per account. You can create multiple transfers as a free user.',
+  },
+  {
+    q: 'Can I use VaultTransfer for commercial purposes?',
+    a: 'Absolutely. All plans, including free, allow commercial use. The Business plan adds API access and higher limits for professional workflows.',
+  },
+  {
+    q: 'Are my files encrypted?',
+    a: 'All transfers are sent over HTTPS (TLS). Files are stored encrypted at rest on Supabase-managed infrastructure. Password-protected links add an extra layer for the download step.',
+  },
+]
+
+function ComparisonTable() {
+  const Check = () => (
+    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 text-violet-400 mx-auto" aria-label="Yes">
+      <path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+  const Cross = () => (
+    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 text-white/15 mx-auto" aria-label="No">
+      <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  )
+
+  const Cell = ({ val }: { val: string | boolean }) =>
+    typeof val === 'boolean' ? (val ? <Check /> : <Cross />) : (
+      <span className="text-sm text-white/70">{val}</span>
+    )
+
+  return (
+    <div className="overflow-x-auto mb-16">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="border-b border-white/10">
+            <th className="text-left py-3 pr-4 text-xs text-white/30 font-body uppercase tracking-widest w-1/2">Feature</th>
+            <th className="text-center py-3 px-4 text-sm text-white/50 font-body w-[16.6%]">Free</th>
+            <th className="text-center py-3 px-4 text-sm text-violet-400 font-body w-[16.6%]">Pro</th>
+            <th className="text-center py-3 px-4 text-sm text-amber-400 font-body w-[16.6%]">Business</th>
+          </tr>
+        </thead>
+        <tbody>
+          {COMPARISON_ROWS.map((row, i) => (
+            <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+              <td className="py-3 pr-4 text-sm text-white/60 font-body">{row.label}</td>
+              <td className="py-3 px-4 text-center"><Cell val={row.free} /></td>
+              <td className="py-3 px-4 text-center"><Cell val={row.pro} /></td>
+              <td className="py-3 px-4 text-center"><Cell val={row.business} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+function FaqAccordion() {
+  const [open, setOpen] = useState<number | null>(null)
+  return (
+    <div className="max-w-2xl mx-auto mb-16">
+      <h2 className="text-2xl font-bold tracking-tight text-center mb-8">Frequently asked questions</h2>
+      <div className="space-y-2">
+        {FAQS.map((faq, i) => (
+          <div key={i} className="border border-white/10 rounded-xl overflow-hidden">
+            <button
+              onClick={() => setOpen(open === i ? null : i)}
+              className="w-full flex items-center justify-between px-5 py-4 text-left text-sm text-white/80 hover:text-white transition-colors font-body"
+              aria-expanded={open === i}
+            >
+              <span>{faq.q}</span>
+              <svg
+                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                className={`flex-shrink-0 ml-4 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            {open === i && (
+              <div className="px-5 pb-4 text-sm text-white/40 font-body leading-relaxed border-t border-white/5">
+                <p className="pt-3">{faq.a}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function PricingClient() {
   const supabase = getBrowserClient()
   const t = useTranslations('pricing')
@@ -236,6 +353,13 @@ export default function PricingClient() {
             </div>
           ))}
         </div>
+
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold tracking-tight text-center mb-8">Compare plans</h2>
+          <ComparisonTable />
+        </div>
+
+        <FaqAccordion />
 
         <div className="text-center text-white/30 text-sm flex items-center justify-center gap-6 flex-wrap">
           <span className="flex items-center gap-2">
