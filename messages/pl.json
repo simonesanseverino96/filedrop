@@ -1,0 +1,551 @@
+{
+  "common": {
+    "appName": "VaultTransfer",
+    "secureConnection": "Bezpieczne połączenie"
+  },
+  "header": {
+    "pricing": "Ceny",
+    "login": "Zaloguj się",
+    "register": "Zarejestruj się za darmo",
+    "dashboard": "Pulpit nawigacyjny",
+    "upgradeToPro": "Przejdź na wersję Pro",
+    "logout": "Wyloguj się",
+    "planFree": "Za darmo",
+    "planPro": "⭐ Dla",
+    "planBusiness": "🏢 Biznes"
+  },
+  "footer": {
+    "tagline": "Szybki i bezpieczny transfer plików. Zgodność z RODO, serwery w Europie.",
+    "sections": {
+      "product": "Produkt",
+      "legal": "Informacje prawne",
+      "contact": "Kontakt"
+    },
+    "links": {
+      "pricing": "Ceny",
+      "faq": "Najczęściej zadawane pytania",
+      "dashboard": "Pulpit nawigacyjny",
+      "privacy": "Polityka prywatności",
+      "terms": "Warunki korzystania z serwisu"
+    },
+    "copyright": "© {year} VaultTransfer. Wszelkie prawa zastrzeżone.",
+    "badge": "🇪🇺 Serwery w Europie · Zgodność z RODO · TLS 1.3"
+  },
+  "home": {
+    "badge": "Nie trzeba zakładać konta · Do 2 GB za darmo",
+    "headline": "Udostępniaj pliki",
+    "headlineAccent": "bez żadnych kompromisów.",
+    "description": "Szyfrowane linki z automatycznym wygasaniem, ochroną hasłem i limitami pobrań. Twoje pliki są bezpieczne — i znikają, kiedy tylko zechcesz.",
+    "securityTagline": "Bezpieczeństwo od samego początku",
+    "featuresHeadline": "Stworzone dla tych, którzy nie chcą iść na kompromisy"
+  },
+  "upload": {
+    "dropzone": {
+      "active": "Przeciągnij pliki tutaj",
+      "idle": "Przeciągnij pliki tutaj",
+      "browse": "przeglądaj",
+      "hint": "lub {browse} z twojego urządzenia · maks. 2 GB · 20 plików"
+    },
+    "file": {
+      "uploaded": "✓ Przesłano",
+      "error": "✗ Błąd",
+      "remaining": "{time} pozostało",
+      "completed": "Zakończone"
+    },
+    "options": {
+      "toggle": "Opcje zabezpieczeń",
+      "expiry": "Wygasanie linku",
+      "expiry1": "24 godziny",
+      "expiry7": "7 dni",
+      "expiry30": "30 dni",
+      "maxDownloads": "Maksymalna liczba pobrań (opcjonalnie)",
+      "maxDownloadsPlaceholder": "Bez ograniczeń",
+      "password": "Hasło zabezpieczające (opcjonalnie)",
+      "message": "Wiadomość dla odbiorcy",
+      "messagePlaceholder": "Dodaj wiadomość...",
+      "senderEmail": "Twój adres e-mail (opcjonalnie)",
+      "emailPlaceholder": "you@example.com"
+    },
+    "button": {
+      "uploading": "Przesyłanie...",
+      "upload": "Prześlij plik i wygeneruj link →"
+    },
+    "summary": "{count} pliki · {size} ogółem",
+    "error": {
+      "tooLarge": "Niektóre pliki przekraczają limit {limit}.",
+      "blocked": "Plik niedozwolony.",
+      "maxFiles": "Pliki Max {max}.",
+      "upload": "Błąd podczas przesyłania",
+      "transfer": "Błąd podczas tworzenia przelewu"
+    }
+  },
+  "uploadSuccess": {
+    "title": "Gotowe do przesłania!",
+    "subtitle": "Plik {count} ({size}) · wygasa za {expiry}{password}",
+    "passwordSuffix": " · chronione hasłem",
+    "linkLabel": "Twój link",
+    "copy": "Skopiuj",
+    "copied": "✓ Skopiowano",
+    "badges": {
+      "https": "Zabezpieczone protokołem HTTPS",
+      "expiry": "Wygasają za {expiry}",
+      "password": "Wymagane hasło",
+      "maxDownloads": "Max {count} – pliki do pobrania"
+    },
+    "newTransfer": "Nowy transfer →",
+    "expiry1": "24 godziny",
+    "expiry7": "7 dni",
+    "expiry30": "30 dni"
+  },
+  "download": {
+    "secureDownload": "🔒 Bezpieczne pobieranie przez podpisany link · ważny przez 60 sekund",
+    "downloading": "Pobieranie...",
+    "downloadFile": "Pobierz plik →",
+    "downloadAll": "Pobierz wszystkie pliki →",
+    "downloadInProgress": "Trwa pobieranie...",
+    "loading": "Przenoszenie danych w toku...",
+    "expiredTitle": "Termin transferu minął",
+    "expiredDesc": "Ten link stracił ważność lub osiągnięto limit pobrań. Poproś nadawcę o ponowne przesłanie plików.",
+    "newTransfer": "Utwórz nowy przelew",
+    "errorTitle": "Nie znaleziono transferu",
+    "errorDesc": "Link może być nieprawidłowy albo plik nie istnieje.",
+    "backHome": "Powrót do strony głównej",
+    "protectedTitle": "Bezpieczny transfer",
+    "protectedDesc": "Wpisz hasło, aby uzyskać dostęp do plików",
+    "passwordLabel": "Hasło",
+    "passwordError": "Nieprawidłowe hasło, spróbuj jeszcze raz.",
+    "passwordVerifyError": "Błąd podczas sprawdzania hasła",
+    "accessFiles": "Przejdź do plików →",
+    "readyLabel": "Gotowe do przesłania",
+    "totalSize": "Całkowita wielkość",
+    "expiresIn": "⏱ Wygasają za {expiry}",
+    "downloadCount": "📥 Pobrania {count}/{max}",
+    "scarica": "Pobierz"
+  },
+  "adBanner": {
+    "label": "Reklama",
+    "removePro": "Przejdź na wersję Pro, aby usunąć reklamy"
+  },
+  "apiKeys": {
+    "title": "Klucze API",
+    "subtitle": "Użyj kluczy API, aby zintegrować VaultTransfer ze swoim kodem",
+    "warning": "⚠️ Skopiuj ten klucz teraz — już go nie zobaczysz!",
+    "copied": "✓ Skopiowano",
+    "copy": "Skopiuj",
+    "saved": "Zapisałem klucz, zamknij →",
+    "placeholder": "Nazwa klucza (np. Produkcja)",
+    "create": "+ Utwórz klucz",
+    "creating": "...",
+    "neverUsed": "Nigdy nie używany",
+    "lastUsed": "Używane w {date}",
+    "revoke": "Cofnij",
+    "noKeys": "Nie masz jeszcze klucza API? Utwórz go!",
+    "revokeConfirm": "Czy na pewno chcesz cofnąć ten klucz API?",
+    "sessionExpired": "Sesja wygasła. Zaloguj się ponownie.",
+    "revokeError": "Wystąpił błąd podczas unieważniania. Spróbuj ponownie.",
+    "connectionError": "Błąd połączenia.",
+    "docsTitle": "Krótka instrukcja",
+    "docsUpload": "POST /api/v1/upload — Utwórz transfer",
+    "docsTransfers": "GET /api/v1/transfers — Wyświetl listę przelewów"
+  },
+  "features": {
+    "items": {
+      "encrypted": {
+        "title": "Szyfrowane podczas przesyłania",
+        "desc": "Wszystkie przesyłane dane są przesyłane przez protokół HTTPS z wykorzystaniem TLS 1.3. Twoje pliki nigdy nie są odczytywane."
+      },
+      "expiry": {
+        "title": "Automatyczne wygaśnięcie",
+        "desc": "Wybierz 24 godziny, 7 lub 30 dni. Po upływie tego czasu pliki zostaną trwale usunięte."
+      },
+      "password": {
+        "title": "Ochrona hasłem",
+        "desc": "Ustaw hasło: jego skrót jest przechowywany przy użyciu algorytmu bcrypt. Hasło nigdy nie jest zapisywane w postaci zwykłego tekstu."
+      },
+      "downloadLimit": {
+        "title": "Limit pobierania",
+        "desc": "Ustaw maksymalną liczbę pobrań. Po osiągnięciu limitu link zostanie automatycznie wyłączony."
+      },
+      "noAccount": {
+        "title": "Konta z zerowym saldem",
+        "desc": "Bez rejestracji. Nie trzeba podawać adresu e-mail. Anonimowe i błyskawiczne przesyłanie plików."
+      },
+      "gdpr": {
+        "title": "Zgodne z RODO",
+        "desc": "Żadnego śledzenia. Żadnego profilowania. Dane pozostają w Europie."
+      }
+    }
+  },
+  "report": {
+    "button": "🚨 Zgłoś nieodpowiednią treść",
+    "title": "Zgłoś nielegalne lub nieodpowiednie treści",
+    "reasonLabel": "Powód zgłoszenia *",
+    "reasonPlaceholder": "Wybierz powód...",
+    "reasons": {
+      "csam": "Materiały przedstawiające wykorzystywanie seksualne dzieci (CSAM)",
+      "malware": "Złośliwe oprogramowanie lub wirus",
+      "copyright": "Naruszenie praw autorskich",
+      "illegal": "Nielegalne treści",
+      "phishing": "Phishing czy oszustwo",
+      "other": "Inne"
+    },
+    "emailLabel": "Twój adres e-mail (opcjonalnie, do otrzymywania aktualności)",
+    "submit": "Prześlij zgłoszenie",
+    "submitting": "Przesyłam...",
+    "cancel": "Anuluj",
+    "notice": "Zgłoszenia są rozpatrywane w ciągu 72 godzin. W nagłych przypadkach napisz na adres",
+    "sent": "✓ Zgłoszenie wysłane. Dziękujemy za pomoc w zapewnieniu bezpieczeństwa serwisu."
+  },
+  "login": {
+    "title": "Zaloguj się",
+    "subtitle": "Wyślemy Ci magiczny link na e-mail – nie musisz pamiętać żadnego hasła.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Wyślij link →",
+    "submitting": "Wysyłam...",
+    "noAccount": "Nie masz konta? Zostanie ono utworzone automatycznie.",
+    "backHome": "← Powrót do strony głównej",
+    "checkEmail": {
+      "title": "Sprawdź swoją skrzynkę!",
+      "message": "Wysłaliśmy Ci link do {email}. Kliknij ten link, żeby się zalogować — zostaniesz automatycznie przekierowany."
+    },
+    "errors": {
+      "rate_limit": "Zbyt wiele żądań. Spróbuj ponownie później.",
+      "invalid_credentials": "Nieprawidłowy adres e-mail.",
+      "default": "Wystąpił błąd podczas logowania. Spróbuj ponownie."
+    }
+  },
+  "pricing": {
+    "badge": "Prosty i przejrzysty cennik",
+    "title": "Wybierz plan, który Ci odpowiada",
+    "subtitle": "Zacznij za darmo. Przejdź na wyższy plan, gdy potrzebujesz więcej miejsca, dłuższych linków lub dostępu do API.",
+    "monthly": "Co miesiąc",
+    "annual": "Roczny",
+    "savePercent": "Zaoszczędź nawet 33%",
+    "annualSavings": "Wersja Pro pozwala zaoszczędzić {proSave} € rocznie · Wersja biznesowa pozwala zaoszczędzić {bizSave} € rocznie",
+    "perMonth": "/miesiąc",
+    "perMonthLabel": "miesięcznie",
+    "billedAnnually": "{amount} rozliczane rocznie",
+    "volumePricing": "ceny hurtowe",
+    "custom": "Na zamówienie",
+    "forever": "na zawsze",
+    "loading": "Ładowanie…",
+    "error": "Błąd sieci. Spróbuj ponownie.",
+    "plans": {
+      "free": {
+        "name": "Za darmo",
+        "desc": "Wysyłaj pliki szybko, bez konieczności rejestracji.",
+        "cta": "Zacznij za darmo",
+        "feature0": "2 GB na transfer",
+        "feature1": "Linki tracą ważność po 7 dniach",
+        "feature2": "Nieograniczona liczba pobrań",
+        "feature3": "Uwagi dotyczące transferu",
+        "feature4": "E-mail przy pierwszym pobraniu"
+      },
+      "pro": {
+        "name": "Dla",
+        "desc": "Więcej miejsca, dłuższe linki i zero reklam.",
+        "badge": "Najpopularniejsze",
+        "cta": "Start Pro",
+        "feature0": "50 GB na transfer",
+        "feature1": "Linki tracą ważność po 30 dniach",
+        "feature2": "Bez reklam",
+        "feature3": "Statystyki pobrań",
+        "feature4": "Niestandardowe daty ważności",
+        "feature5": "Pomoc techniczna przez e-mail"
+      },
+      "business": {
+        "name": "Biznes",
+        "desc": "Bezterminowa ważność, dostęp do API i zaawansowane zabezpieczenia.",
+        "cta": "Rozpocznij działalność",
+        "feature0": "200 GB na transfer",
+        "feature1": "Bez terminu ważności",
+        "feature2": "Linki chronione hasłem",
+        "feature3": "Publiczny interfejs API REST i klucze",
+        "feature4": "Wsparcie priorytetowe",
+        "feature5": "Wszystko w wersji Pro"
+      },
+      "enterprise": {
+        "name": "Przedsiębiorstwo",
+        "desc": "Indywidualne limity, SSO, dedykowana obsługa klienta i umowy SLA.",
+        "cta": "Skontaktuj się z działem sprzedaży",
+        "feature0": "Niestandardowe limity przestrzeni dyskowej",
+        "feature1": "Webhooki i domena własna",
+        "feature2": "SSO / SAML",
+        "feature3": "Osobisty opiekun klienta",
+        "feature4": "SLA na zamówienie",
+        "feature5": "Wszystko o biznesie"
+      }
+    },
+    "comparison": {
+      "title": "Porównaj wszystkie funkcje",
+      "subtitle": "Wszystko, co obejmuje każdy plan, w jednym zestawieniu.",
+      "col": {
+        "free": "Za darmo",
+        "pro": "Dla",
+        "business": "Biznes",
+        "enterprise": "Przedsiębiorstwo"
+      },
+      "val": {
+        "2gb": "2 GB",
+        "50gb": "50 GB",
+        "200gb": "Dwieście gigabajtów",
+        "custom": "Na zamówienie",
+        "7days": "7 dni",
+        "30days": "30 dni",
+        "noLimit": "Bez ograniczeń",
+        "unlimited": "Bez ograniczeń"
+      },
+      "sec": {
+        "storage": "Przechowywanie i transfery",
+        "features": "Funkcje",
+        "developer": "Programiści i API",
+        "support": "Pomoc"
+      },
+      "row": {
+        "maxUpload": "Maksymalny rozmiar pliku do przesłania",
+        "linkExpiry": "Wygasanie linku",
+        "maxDownloads": "Maksymalna liczba pobrań na link",
+        "simultaneous": "Przelewy równoczesne",
+        "adsFree": "Korzystaj bez reklam",
+        "passwordLinks": "Linki chronione hasłem",
+        "downloadStats": "Statystyki pobrań",
+        "customExpiry": "Niestandardowe daty ważności",
+        "transferNotes": "Notatki i wiadomości dotyczące przelewów",
+        "emailDownload": "E-mail przy pierwszym pobraniu",
+        "restApi": "Publiczny interfejs API REST",
+        "apiKeys": "Zarządzanie kluczami API",
+        "webhooks": "Zdarzenia webhooków",
+        "customDomain": "Własna domena",
+        "community": "Wsparcie społeczności",
+        "emailSupport": "Pomoc techniczna przez e-mail",
+        "priority": "Wsparcie priorytetowe",
+        "dedicated": "Osobisty opiekun klienta",
+        "sla": "SLA na zamówienie",
+        "sso": "SSO / SAML"
+      }
+    },
+    "faq": {
+      "title": "Najczęściej zadawane pytania",
+      "notFound": "Nie możesz znaleźć odpowiedzi?",
+      "emailSupport": "Napisz do naszego zespołu pomocy technicznej.",
+      "items": {
+        "cancel": {
+          "q": "Czy mogę w dowolnym momencie zrezygnować z subskrypcji?",
+          "a": "Tak — możesz zrezygnować w dowolnym momencie z poziomu panelu użytkownika jednym kliknięciem. Pełny dostęp zachowasz do końca bieżącego okresu rozliczeniowego. Bez żadnych opłat i bez zbędnych pytań."
+        },
+        "filesExpire": {
+          "q": "Co stanie się z moimi plikami, gdy link straci ważność?",
+          "a": "Po wygaśnięciu linku do pobrania pliki są trwale usuwane z naszych serwerów. Wysyłamy przypomnienie o wygaśnięciu z 24-godzinnym wyprzedzeniem, aby Twoi odbiorcy mieli czas na pobranie plików."
+        },
+        "trial": {
+          "q": "Czy są dostępne bezpłatne wersje próbne płatnych planów?",
+          "a": "Wszystkie płatne plany objęte są 30-dniową gwarancją zwrotu pieniędzy. Jeśli w ciągu pierwszego miesiąca VaultTransfer nie spełni Twoich oczekiwań, skontaktuj się z obsługą klienta, aby otrzymać pełny zwrot kosztów – bez żadnych warunków."
+        },
+        "freeLimit": {
+          "q": "Jak działa limit 2 GB w planie Free?",
+          "a": "Limit 2 GB dotyczy pojedynczego przesyłania, a nie całkowitego wykorzystania limitu na koncie. Możesz utworzyć dowolną liczbę przesyłek; każda z nich może mieć rozmiar do 2 GB."
+        },
+        "changePlan": {
+          "q": "Czy mogę później zmienić plan na wyższy lub niższy?",
+          "a": "Oczywiście. W każdej chwili możesz zmienić plan w sekcji „Rozliczenia” na swoim panelu użytkownika. Przejście na wyższy plan zaczyna obowiązywać od razu, a przejście na niższy plan – od następnej daty odnowienia."
+        },
+        "payment": {
+          "q": "Jakie formy płatności akceptujecie?",
+          "a": "Akceptujemy wszystkie popularne karty kredytowe i debetowe (Visa, Mastercard, Amex), a także Apple Pay i Google Pay – wszystkie transakcje są bezpiecznie przetwarzane przez Stripe."
+        },
+        "security": {
+          "q": "Czy moje pliki są zaszyfrowane i bezpieczne?",
+          "a": "Wszystkie dane są przesyłane przez protokół HTTPS (TLS 1.3). Pliki są przechowywane w postaci zaszyfrowanej przy użyciu algorytmu AES-256 na infrastrukturze zarządzanej przez Supabase. Linki chronione hasłem zapewniają dodatkową warstwę kontroli dostępu podczas pobierania."
+        },
+        "enterprisePlan": {
+          "q": "Czym jest plan Enterprise?",
+          "a": "Pakiet Enterprise to oferta dostosowana do potrzeb dużych organizacji, które potrzebują większej przestrzeni dyskowej, dedykowanego wsparcia technicznego, niestandardowych umów SLA, funkcji SSO/SAML, integracji z webhookami oraz hostingu z własną domeną. Skontaktuj się z naszym zespołem sprzedaży, aby omówić swoje wymagania."
+        },
+        "commercial": {
+          "q": "Czy mogę wykorzystać VaultTransfer do celów komercyjnych?",
+          "a": "Tak. Wszystkie plany, w tym plan bezpłatny, pozwalają na wykorzystanie komercyjne. Plany Business i Enterprise są specjalnie zaprojektowane z myślą o profesjonalnych procesach pracy i oferują dostęp do API, funkcje zespołowe oraz zaawansowane zabezpieczenia."
+        },
+        "annualDiscount": {
+          "q": "Czy oferujecie zniżki przy rozliczeniu rocznym?",
+          "a": "Tak — przejście na rozliczenie roczne pozwala zaoszczędzić nawet 33% w porównaniu z ceną miesięczną. Rabat zostanie naliczony automatycznie, gdy przed sfinalizowaniem zamówienia wybierzesz opcję „Roczna”."
+        }
+      }
+    },
+    "trust": {
+      "stripe": "Płatności zabezpieczone przez Stripe",
+      "guarantee": "30-dniowa gwarancja zwrotu pieniędzy",
+      "cancel": "Możesz zrezygnować w dowolnym momencie",
+      "fullFaq": "Pełna lista często zadawanych pytań"
+    }
+  },
+  "faq": {
+    "badge": "Najczęściej zadawane pytania",
+    "title": "Wszystko, co",
+    "titleAccent": "chcesz wiedzieć",
+    "contact": "Nie możesz znaleźć odpowiedzi?",
+    "contactLink": "Skontaktuj się z nami",
+    "cta": {
+      "ready": "Gotowy, żeby zacząć?",
+      "seePlans": "Zobacz plany"
+    },
+    "categories": {
+      "general": "Ogólne",
+      "security": "Bezpieczeństwo",
+      "plans": "Plany i płatności",
+      "technical": "Techniczne",
+      "developer": "API i programiści"
+    },
+    "items": {
+      "whatIs": {
+        "q": "Co to jest VaultTransfer?",
+        "a": "VaultTransfer to usługa bezpiecznego przesyłania plików. Możesz wysyłać duże pliki do dowolnych osób za pomocą zabezpieczonego linku, a odbiorca nie musi mieć konta."
+      },
+      "register": {
+        "q": "Czy muszę się zarejestrować, żeby z tego skorzystać?",
+        "a": "Nie. Możesz wysyłać pliki za darmo bez rejestracji. Założenie konta daje Ci dostęp do zaawansowanych funkcji, takich jak przesyłanie plików o wielkości do 50 GB, statystyki pobrań, linki chronione hasłem, analizy transferów oraz program poleceń."
+      },
+      "expiry": {
+        "q": "Jak długo moje pliki będą dostępne?",
+        "a": "W planie Free linki tracą ważność po 7 dniach. W planie Pro – po 30 dniach. W planie Business możesz ustawić własne daty wygaśnięcia lub przechowywać pliki bezterminowo. Plany Enterprise obsługują również linki bezterminowe."
+      },
+      "referral": {
+        "q": "Jak działa program poleceń?",
+        "a": "Możesz zaprosić znajomych i współpracowników do VaultTransfer za pomocą swojego unikalnego linku polecającego. Gdy ktoś zarejestruje się i wykupi wyższy plan za pośrednictwem Twojego linku, zarówno Ty, jak i nowy użytkownik otrzymacie korzyści. Znajdziesz swój link polecający w Panelu użytkownika w sekcji „Zaproś i zarabiaj”."
+      },
+      "safe": {
+        "q": "Czy moje pliki są bezpieczne?",
+        "a": "Tak. Wszystkie przesyłane dane są przesyłane przez protokół HTTPS z wykorzystaniem TLS 1.3. Pliki są automatycznie usuwane po wygaśnięciu linku. Serwery znajdują się w Europie, a my w pełni przestrzegamy przepisów RODO."
+      },
+      "whoCanSee": {
+        "q": "Kto może przeglądać moje pliki?",
+        "a": "Dostęp do plików mają tylko osoby posiadające link. W ramach planu Business możesz ustawić hasło dla dodatkowego zabezpieczenia — jego skrót jest przechowywany przy użyciu algorytmu bcrypt, a hasło nigdy nie jest zapisywane w postaci zwykłego tekstu. Nasi pracownicy nigdy nie mają wglądu w zawartość plików."
+      },
+      "scanned": {
+        "q": "Czy pliki są analizowane czy skanowane?",
+        "a": "Przeprowadzamy automatyczne skanowanie antywirusowe, aby chronić odbiorców, ale nie analizujemy zawartości plików w celach komercyjnych ani reklamowych."
+      },
+      "passwordTransfer": {
+        "q": "Jak działają przelewy chronione hasłem?",
+        "a": "Podczas tworzenia przesyłki możesz ustawić hasło, które odbiorcy muszą wprowadzić, aby uzyskać dostęp do plików lub je pobrać. Hasło jest szyfrowane za pomocą algorytmu bcrypt i nigdy nie jest przechowywane w postaci zwykłego tekstu. Ochrona hasłem jest dostępna w planach Business i Enterprise."
+      },
+      "payment": {
+        "q": "Jakie formy płatności akceptujecie?",
+        "a": "Akceptujemy wszystkie popularne karty kredytowe i debetowe (Visa, Mastercard, American Express) za pośrednictwem Stripe. Płatności są bezpieczne, a my nie przechowujemy danych kart. Obsługujemy również Apple Pay i Google Pay."
+      },
+      "changePlan": {
+        "q": "Czy mogę zmienić plan w dowolnym momencie?",
+        "a": "Tak, w każdej chwili możesz przejść na wyższy lub niższy plan. W przypadku przejścia na wyższy plan różnica w cenie jest obliczana proporcjonalnie do pozostałego okresu. W przypadku przejścia na niższy plan obecny plan pozostaje aktywny do końca opłaconego okresu."
+      },
+      "annualDiscount": {
+        "q": "Jak działa ta roczna zniżka?",
+        "a": "Rozliczenie roczne pozwala znacznie zaoszczędzić w porównaniu z rozliczeniem miesięcznym: plan Pro kosztuje 45 € rocznie (w porównaniu z 59,88 € rocznie przy rozliczeniu miesięcznym – oszczędność 14,88 €), a plan Business kosztuje 120 € rocznie (w porównaniu z 179,88 € rocznie przy rozliczeniu miesięcznym – oszczędność 59,88 €). Płatność to jednorazowa opłata z góry, a plan pozostaje aktywny przez 12 miesięcy."
+      },
+      "annualBilling": {
+        "q": "Jaka jest różnica między rozliczeniem miesięcznym a rocznym?",
+        "a": "W przypadku rozliczenia miesięcznego opłaty naliczane są co miesiąc, a subskrypcję możesz anulować w dowolnym momencie bez żadnych dodatkowych kosztów. Rozliczenie roczne polega na jednorazowej płatności z góry za 12 miesięcy po obniżonej cenie (do 33% zniżki). Obie opcje obejmują te same funkcje — jedyną różnicą jest cykl rozliczeniowy i wysokość zniżki."
+      },
+      "refund": {
+        "q": "Czy mogę poprosić o zwrot pieniędzy?",
+        "a": "Jeśli nie jesteś zadowolony, oferujemy pełny zwrot kosztów w ciągu 30 dni od daty zakupu. Po upływie 30 dni częściowy zwrot kosztów nie jest możliwy. Skontaktuj się z nami pod adresem support@vaultransfer.com, aby zlecić zwrot kosztów."
+      },
+      "maxSize": {
+        "q": "Jaki jest maksymalny rozmiar pliku?",
+        "a": "Plan bezpłatny: 2 GB na transfer. Plan Pro: 50 GB na transfer. Plan Business: 200 GB na transfer. Plan Enterprise: limity dostosowane do potrzeb. Nie ma ograniczeń co do liczby transferów, które możesz utworzyć."
+      },
+      "formats": {
+        "q": "Jakie formaty plików są obsługiwane?",
+        "a": "Obsługujemy większość formatów: dokumenty, obrazy, filmy, archiwa ZIP, pliki projektów itp. Ze względów bezpieczeństwa blokowane są pliki wykonywalne (.exe, .msi, .bat, .sh), skrypty (.ps1, .vbs, .js), makra pakietu Office (.docm, .xlsm, .pptm), pakiety aplikacji (.apk, .ipa, .deb) oraz inne potencjalnie szkodliwe formaty."
+      },
+      "devices": {
+        "q": "Czy ta usługa działa na wszystkich urządzeniach?",
+        "a": "Tak. VaultTransfer działa na każdym urządzeniu z nowoczesną przeglądarką: na komputerach PC i Mac, smartfonach z systemem Android i iOS oraz tabletach. Nie potrzebujesz żadnej aplikacji."
+      },
+      "analyticsStats": {
+        "q": "Jakie dane analityczne i statystyki są dostępne?",
+        "a": "Subskrybenci planów Pro i Business mają dostęp do szczegółowych statystyk w panelu: łączna liczba utworzonych transferów, łączna ilość przesłanych danych (GB), łączna liczba pobrań, aktywne i wygasłe transfery oraz wykres dzienny transferów z ostatnich 30 dni. Statystyki są aktualizowane na bieżąco."
+      },
+      "apiAccess": {
+        "q": "Jak uzyskać dostęp do interfejsu API VaultTransfer?",
+        "a": "VaultTransfer udostępnia publiczny interfejs API REST dla użytkowników planów Business i Enterprise. Możesz programowo tworzyć, wyświetlać listę i zarządzać przelewami. Pełna dokumentacja API oraz spis punktów końcowych są dostępne w Twoim panelu użytkownika w sekcji „Klucze API”."
+      },
+      "apiKeys": {
+        "q": "Jak utworzyć klucze API i zarządzać nimi?",
+        "a": "Klucze API tworzy się w sekcji „Klucze API” na pulpicie nawigacyjnym. Nadaj każdemu kluczowi opisową nazwę (np. „Produkcja”). Klucze są wyświetlane tylko raz podczas tworzenia — skopiuj je i przechowuj w bezpiecznym miejscu. Możesz sprawdzić datę ostatniego użycia każdego klucza oraz w dowolnym momencie cofnąć dowolny klucz."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "description": "Strona, której szukasz, nie istnieje lub została przeniesiona. Może szukasz nieaktualnego linku do pobrania?",
+    "backHome": "Powrót do strony głównej →",
+    "seePlans": "Zobacz plany",
+    "help": "Potrzebujesz pomocy?"
+  },
+  "cookie": {
+    "message": "Używamy plików cookie, aby poprawić komfort korzystania z naszej strony i wyświetlać odpowiednie reklamy. Czy wyrażasz na to zgodę?",
+    "accept": "Zgadzam się",
+    "decline": "Odrzuć"
+  },
+  "metadata": {
+    "titleDefault": "VaultTransfer — Wysyłaj pliki bezpiecznie i za darmo",
+    "description": "Przesyłaj pliki o wielkości do 2 GB za darmo. Szyfrowane linki z automatycznym wygaśnięciem, ochroną hasłem i limitami pobierania. Nie musisz zakładać konta. Zgodne z RODO.",
+    "keywords": [
+      "bezpieczny transfer plików",
+      "wysyłaj pliki za darmo",
+      "udostępniaj pliki online",
+      "wysyłaj duże pliki",
+      "bezpieczne udostępnianie plików",
+      "przesyłaj zaszyfrowane pliki",
+      "link do pobrania wygasł",
+      "wysyłaj pliki bez rejestracji",
+      "alternatywy dla WeTransfer",
+      "wysyłaj pliki chronione hasłem"
+    ]
+  },
+  "dashboard": {
+    "currentPlan": "Obecny plan",
+    "free": "Za darmo",
+    "perMonth": "€/miesiąc",
+    "upgradePro": "Przejdź na wersję Pro →",
+    "upgradeProPrice": "Przejdź na wersję Pro — 4,99 € miesięcznie →",
+    "upgradeBusiness": "Przejdź na wersję Business →",
+    "manageSubscription": "Zarządzaj subskrypcją",
+    "loading": "Ładowanie...",
+    "maxUpload": "Maksymalny rozmiar pliku do przesłania",
+    "maxExpiry": "Maksymalny okres ważności",
+    "maxDownloads": "Maksymalna liczba pobrań",
+    "unlimited": "Bez ograniczeń",
+    "ads": "Reklamy",
+    "yes": "Tak",
+    "no": "Od",
+    "days": "{count} dni",
+    "wantMore": "Chcesz mieć więcej miejsca na dane i dostęp do API?",
+    "transfers": "Twoje przelewy",
+    "newTransfer": "+ Nowość",
+    "transfersProOnly": "Historia transferów jest dostępna w planie Pro.",
+    "noTransfers": "Na razie nie ma żadnych udostępnień. Zacznij udostępniać!",
+    "uploadFirst": "Prześlij swój pierwszy plik →",
+    "expired": "Wygasło",
+    "copyLink": "Skopiuj link",
+    "transferDate": "Przeniesienie {date}",
+    "transferMeta": "{size} · {downloads} pobrań · wygasa za {expiry}"
+  },
+  "analytics": {
+    "title": "Analizy",
+    "totalTransfers": "Łączna liczba transferów",
+    "totalGb": "Przekazane dane",
+    "totalDownloads": "Łączna liczba pobrań",
+    "activeVsExpired": "Aktywne vs. wygasłe",
+    "last30Days": "Ostatnie 30 dni",
+    "upgradeTitle": "Odblokuj funkcje analityczne",
+    "upgradeDesc": "Przejdź na plan Pro lub Business, aby uzyskać dostęp do szczegółowych danych analitycznych dotyczących transferów oraz statystyk użytkowania.",
+    "upgradeButton": "Przejdź na wersję Pro",
+    "transfersPerDay": "Liczba transferów dziennie",
+    "allTime": "Wszystkie czasy",
+    "active": "Aktywne",
+    "expired": "Wygasło",
+    "loading": "Ładowanie statystyk...",
+    "error": "Nie udało się załadować danych analitycznych"
+  }
+}

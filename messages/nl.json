@@ -1,0 +1,551 @@
+{
+  "common": {
+    "appName": "VaultTransfer",
+    "secureConnection": "Beveiligde verbinding"
+  },
+  "header": {
+    "pricing": "Prijzen",
+    "login": "Inloggen",
+    "register": "Meld je gratis aan",
+    "dashboard": "Dashboard",
+    "upgradeToPro": "Upgrade naar Pro",
+    "logout": "Uitloggen",
+    "planFree": "Gratis",
+    "planPro": "⭐ Voor",
+    "planBusiness": "🏢 Zakelijk"
+  },
+  "footer": {
+    "tagline": "Snelle en veilige bestandsoverdracht. Voldoet aan de AVG, Europese servers.",
+    "sections": {
+      "product": "Product",
+      "legal": "Juridisch",
+      "contact": "Contact"
+    },
+    "links": {
+      "pricing": "Prijzen",
+      "faq": "Veelgestelde vragen",
+      "dashboard": "Dashboard",
+      "privacy": "Privacybeleid",
+      "terms": "Gebruiksvoorwaarden"
+    },
+    "copyright": "© {year} VaultTransfer. Alle rechten voorbehouden.",
+    "badge": "🇪🇺 Europese servers · Voldoet aan de AVG · TLS 1.3"
+  },
+  "home": {
+    "badge": "Geen account nodig · Gratis tot 2 GB",
+    "headline": "Bestanden delen",
+    "headlineAccent": "zonder concessies.",
+    "description": "Versleutelde links met automatische vervaltermijn, wachtwoordbeveiliging en downloadlimieten. Je bestanden worden veilig verzonden — en verdwijnen wanneer jij dat wilt.",
+    "securityTagline": "Beveiliging vanaf het ontwerp",
+    "featuresHeadline": "Gemaakt voor wie geen concessies wil doen"
+  },
+  "upload": {
+    "dropzone": {
+      "active": "Sleep je bestanden hierheen",
+      "idle": "Sleep bestanden hierheen",
+      "browse": "rondkijken",
+      "hint": "of {browse} vanaf je apparaat · max. 2 GB · 20 bestanden"
+    },
+    "file": {
+      "uploaded": "✓ Geüpload",
+      "error": "✗ Fout",
+      "remaining": "{time} resterend",
+      "completed": "Voltooid"
+    },
+    "options": {
+      "toggle": "Beveiligingsopties",
+      "expiry": "Verloopdatum van de link",
+      "expiry1": "24 uur",
+      "expiry7": "7 dagen",
+      "expiry30": "30 dagen",
+      "maxDownloads": "Max. aantal downloads (optioneel)",
+      "maxDownloadsPlaceholder": "Onbeperkt",
+      "password": "Beveiligingswachtwoord (optioneel)",
+      "message": "Bericht voor de ontvanger",
+      "messagePlaceholder": "Voeg een bericht toe...",
+      "senderEmail": "Je e-mailadres (optioneel)",
+      "emailPlaceholder": "you@example.com"
+    },
+    "button": {
+      "uploading": "Bezig met uploaden...",
+      "upload": "Uploaden en link genereren →"
+    },
+    "summary": "{count} bestanden · {size} totaal",
+    "error": {
+      "tooLarge": "Sommige bestanden overschrijden de {limit}-limiet.",
+      "blocked": "Bestand niet toegestaan.",
+      "maxFiles": "Max {max}-bestanden.",
+      "upload": "Fout tijdens het uploaden",
+      "transfer": "Fout bij het aanmaken van de overboeking"
+    }
+  },
+  "uploadSuccess": {
+    "title": "Klaar voor de transfer!",
+    "subtitle": "{count}-bestand ({size}) · verloopt over {expiry}{password}",
+    "passwordSuffix": " · beveiligd met een wachtwoord",
+    "linkLabel": "Je link",
+    "copy": "Kopiëren",
+    "copied": "✓ Gekopieerd",
+    "badges": {
+      "https": "HTTPS-versleuteld",
+      "expiry": "Verloopt over {expiry}",
+      "password": "Wachtwoord vereist",
+      "maxDownloads": "Max {count} downloads"
+    },
+    "newTransfer": "Nieuwe transfer →",
+    "expiry1": "24 uur",
+    "expiry7": "7 dagen",
+    "expiry30": "30 dagen"
+  },
+  "download": {
+    "secureDownload": "🔒 Veilig downloaden via een ondertekende link · 60 seconden geldig",
+    "downloading": "Bezig met downloaden...",
+    "downloadFile": "Bestand downloaden →",
+    "downloadAll": "Alle bestanden downloaden →",
+    "downloadInProgress": "Bezig met downloaden...",
+    "loading": "Beeld wordt geladen...",
+    "expiredTitle": "De overdracht is verlopen",
+    "expiredDesc": "Deze link is verlopen of de downloadlimiet is bereikt. Vraag de afzender om de bestanden opnieuw te sturen.",
+    "newTransfer": "Maak een nieuwe overschrijving aan",
+    "errorTitle": "Overdracht niet gevonden",
+    "errorDesc": "De link is mogelijk onjuist of de overdracht bestaat niet.",
+    "backHome": "Terug naar de startpagina",
+    "protectedTitle": "Beveiligde overdracht",
+    "protectedDesc": "Voer het wachtwoord in om toegang te krijgen tot de bestanden",
+    "passwordLabel": "Wachtwoord",
+    "passwordError": "Verkeerd wachtwoord, probeer het nog eens.",
+    "passwordVerifyError": "Fout bij het controleren van het wachtwoord",
+    "accessFiles": "Bestanden openen →",
+    "readyLabel": "Klaar voor de transfer",
+    "totalSize": "Totale grootte",
+    "expiresIn": "⏱ Verloopt over {expiry}",
+    "downloadCount": "📥 {count}/{max} downloads",
+    "scarica": "Downloaden"
+  },
+  "adBanner": {
+    "label": "Advertentie",
+    "removePro": "Upgrade naar Pro om advertenties te verwijderen"
+  },
+  "apiKeys": {
+    "title": "API-sleutels",
+    "subtitle": "Gebruik API-sleutels om VaultTransfer in je code te integreren",
+    "warning": "⚠️ Kopieer deze sleutel nu — hij wordt daarna niet meer weergegeven!",
+    "copied": "✓ Gekopieerd",
+    "copy": "Kopiëren",
+    "saved": "Ik heb de sleutel opgeslagen, sluiten →",
+    "placeholder": "Sleutelnamen (bijv. Productie)",
+    "create": "+ Sleutel aanmaken",
+    "creating": "...",
+    "neverUsed": "Nooit gebruikt",
+    "lastUsed": "Gebruikt op {date}",
+    "revoke": "Intrekken",
+    "noKeys": "Je hebt nog geen API-sleutels. Maak er een aan!",
+    "revokeConfirm": "Weet je zeker dat je deze API-sleutel wilt intrekken?",
+    "sessionExpired": "Je sessie is verlopen. Log alsjeblieft opnieuw in.",
+    "revokeError": "Er is een fout opgetreden tijdens het intrekken. Probeer het nog eens.",
+    "connectionError": "Verbindingsfout.",
+    "docsTitle": "Beknopte handleiding",
+    "docsUpload": "POST /api/v1/upload — Overdracht aanmaken",
+    "docsTransfers": "GET /api/v1/transfers — Overzichten van overboekingen"
+  },
+  "features": {
+    "items": {
+      "encrypted": {
+        "title": "Versleuteld tijdens verzending",
+        "desc": "Alle gegevensoverdrachten verlopen via HTTPS met TLS 1.3. Je bestanden worden nooit ingezien."
+      },
+      "expiry": {
+        "title": "Automatisch verlopen",
+        "desc": "Kies 24 uur, 7 of 30 dagen. Na afloop worden de bestanden definitief verwijderd."
+      },
+      "password": {
+        "title": "Wachtwoordbeveiliging",
+        "desc": "Voeg een wachtwoord toe: de hash wordt opgeslagen met bcrypt. Het wachtwoord wordt nooit in leesbare tekst opgeslagen."
+      },
+      "downloadLimit": {
+        "title": "Downloadlimiet",
+        "desc": "Stel het maximale aantal downloads in. Zodra de limiet is bereikt, wordt de link automatisch gedeactiveerd."
+      },
+      "noAccount": {
+        "title": "Nulrekeningen",
+        "desc": "Geen registratie. Geen e-mailadres nodig. Anoniem en direct uploaden."
+      },
+      "gdpr": {
+        "title": "Voldoet aan de AVG",
+        "desc": "Geen tracking. Geen profilering. Gegevens blijven in Europa."
+      }
+    }
+  },
+  "report": {
+    "button": "🚨 Meld ongepaste inhoud",
+    "title": "Meld illegale of ongepaste inhoud",
+    "reasonLabel": "Reden voor de melding *",
+    "reasonPlaceholder": "Kies een reden...",
+    "reasons": {
+      "csam": "Materiaal met seksueel misbruik van kinderen (CSAM)",
+      "malware": "Malware of virus",
+      "copyright": "Schending van het auteursrecht",
+      "illegal": "Illegale inhoud",
+      "phishing": "Phishing of oplichting",
+      "other": "Overige"
+    },
+    "emailLabel": "Je e-mailadres (optioneel, voor updates)",
+    "submit": "Melding indienen",
+    "submitting": "Bezig met verzenden...",
+    "cancel": "Annuleren",
+    "notice": "Meldingen worden binnen 72 uur bekeken. Neem in noodgevallen contact op via",
+    "sent": "✓ Melding verzonden. Bedankt dat je ons helpt de dienst veilig te houden."
+  },
+  "login": {
+    "title": "Inloggen",
+    "subtitle": "We sturen je een magische link via e-mail — je hoeft geen wachtwoord te onthouden.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Stuur magische link →",
+    "submitting": "Bezig met verzenden...",
+    "noAccount": "Geen account? Er wordt automatisch een aangemaakt.",
+    "backHome": "← Terug naar de startpagina",
+    "checkEmail": {
+      "title": "Kijk even in je e-mail!",
+      "message": "We hebben een magische link naar {email} gestuurd. Klik op de link om in te loggen — je wordt automatisch doorgestuurd."
+    },
+    "errors": {
+      "rate_limit": "Te veel verzoeken. Probeer het later nog eens.",
+      "invalid_credentials": "Ongeldig e-mailadres.",
+      "default": "Er is een fout opgetreden tijdens het inloggen. Probeer het nog eens."
+    }
+  },
+  "pricing": {
+    "badge": "Eenvoudige, transparante prijzen",
+    "title": "Kies het abonnement dat bij je past",
+    "subtitle": "Begin gratis. Upgrade als je meer ruimte, langere links of API-toegang nodig hebt.",
+    "monthly": "Maandelijks",
+    "annual": "Jaarlijks",
+    "savePercent": "Bespaar tot 33%",
+    "annualSavings": "Particulieren besparen €{proSave} per jaar · Bedrijven besparen €{bizSave} per jaar",
+    "perMonth": "/maand",
+    "perMonthLabel": "per maand",
+    "billedAnnually": "€{amount} wordt jaarlijks gefactureerd",
+    "volumePricing": "volumekorting",
+    "custom": "Op maat",
+    "forever": "voor altijd",
+    "loading": "Bezig met laden…",
+    "error": "Netwerkfout. Probeer het nog eens.",
+    "plans": {
+      "free": {
+        "name": "Gratis",
+        "desc": "Bestanden snel versturen, zonder dat je je hoeft aan te melden.",
+        "cta": "Ga gratis aan de slag",
+        "feature0": "2 GB per overdracht",
+        "feature1": "Links vervallen na 7 dagen",
+        "feature2": "Onbeperkt downloaden",
+        "feature3": "Overdrachtnotities",
+        "feature4": "E-mail bij de eerste download"
+      },
+      "pro": {
+        "name": "Voor",
+        "desc": "Meer ruimte, langere links en geen advertenties.",
+        "badge": "Meest populair",
+        "cta": "Start Pro",
+        "feature0": "50 GB per overdracht",
+        "feature1": "Links vervallen na 30 dagen",
+        "feature2": "Geen advertenties",
+        "feature3": "Downloadstatistieken",
+        "feature4": "Aangepaste vervaldata",
+        "feature5": "E-mailondersteuning"
+      },
+      "business": {
+        "name": "Zakelijk",
+        "desc": "Onbeperkte geldigheidsduur, API-toegang en geavanceerde beveiliging.",
+        "cta": "Een bedrijf starten",
+        "feature0": "200 GB per overdracht",
+        "feature1": "Geen vervaldatum",
+        "feature2": "Met een wachtwoord beveiligde links",
+        "feature3": "Openbare REST API & sleutels",
+        "feature4": "Prioritaire ondersteuning",
+        "feature5": "Alles in Pro"
+      },
+      "enterprise": {
+        "name": "Bedrijf",
+        "desc": "Aangepaste limieten, SSO, speciale ondersteuning en SLA’s.",
+        "cta": "Neem contact op met de verkoopafdeling",
+        "feature0": "Aangepaste opslaglimieten",
+        "feature1": "Webhooks en een eigen domein",
+        "feature2": "SSO / SAML",
+        "feature3": "Toegewijde accountmanager",
+        "feature4": "Custom SLA",
+        "feature5": "Alles over het bedrijfsleven"
+      }
+    },
+    "comparison": {
+      "title": "Vergelijk alle functies",
+      "subtitle": "Alles wat in elk abonnement zit, naast elkaar.",
+      "col": {
+        "free": "Gratis",
+        "pro": "Voor",
+        "business": "Zakelijk",
+        "enterprise": "Bedrijf"
+      },
+      "val": {
+        "2gb": "2 GB",
+        "50gb": "50 GB",
+        "200gb": "Tweehonderd gigabyte",
+        "custom": "Op maat",
+        "7days": "7 dagen",
+        "30days": "30 dagen",
+        "noLimit": "Geen limiet",
+        "unlimited": "Onbeperkt"
+      },
+      "sec": {
+        "storage": "Opslag en overboekingen",
+        "features": "Kenmerken",
+        "developer": "Ontwikkelaars & API",
+        "support": "Ondersteuning"
+      },
+      "row": {
+        "maxUpload": "Maximale bestandsgrootte",
+        "linkExpiry": "Verloopdatum van de link",
+        "maxDownloads": "Max. aantal downloads per link",
+        "simultaneous": "Gelijktijdige overboekingen",
+        "adsFree": "Een advertentievrije ervaring",
+        "passwordLinks": "Met een wachtwoord beveiligde links",
+        "downloadStats": "Downloadstatistieken",
+        "customExpiry": "Aangepaste vervaldata",
+        "transferNotes": "Notities en berichten doorsturen",
+        "emailDownload": "E-mail bij de eerste download",
+        "restApi": "Openbare REST-API",
+        "apiKeys": "Beheer van API-sleutels",
+        "webhooks": "Webhook-gebeurtenissen",
+        "customDomain": "Eigen domein",
+        "community": "Steun van de gemeenschap",
+        "emailSupport": "E-mailondersteuning",
+        "priority": "Prioritaire ondersteuning",
+        "dedicated": "Toegewijde accountmanager",
+        "sla": "Custom SLA",
+        "sso": "SSO / SAML"
+      }
+    },
+    "faq": {
+      "title": "Veelgestelde vragen",
+      "notFound": "Vind je het antwoord niet?",
+      "emailSupport": "Stuur een e-mail naar ons supportteam.",
+      "items": {
+        "cancel": {
+          "q": "Kan ik mijn abonnement op elk moment opzeggen?",
+          "a": "Ja — je kunt op elk moment met één klik opzeggen via je dashboard. Je behoudt volledige toegang tot het einde van je huidige factureringsperiode. Geen boetes, geen vragen."
+        },
+        "filesExpire": {
+          "q": "Wat gebeurt er met mijn bestanden als een link verloopt?",
+          "a": "Zodra een downloadlink verloopt, worden de bestanden definitief van onze servers verwijderd. We sturen 24 uur van tevoren een herinnering, zodat je ontvangers nog tijd hebben om de bestanden te downloaden."
+        },
+        "trial": {
+          "q": "Is er een gratis proefperiode voor betaalde abonnementen?",
+          "a": "Alle betaalde abonnementen hebben een geld-terug-garantie van 30 dagen. Als VaultTransfer in de eerste maand niet aan je verwachtingen voldoet, neem dan contact op met de klantenservice voor een volledige terugbetaling — zonder voorwaarden."
+        },
+        "freeLimit": {
+          "q": "Hoe werkt de limiet van 2 GB bij het gratis abonnement?",
+          "a": "De limiet van 2 GB geldt per afzonderlijke overdracht, niet voor je totale accountgebruik. Je kunt zoveel overdrachten aanmaken als je wilt; elke overdracht mag maximaal 2 GB groot zijn."
+        },
+        "changePlan": {
+          "q": "Kan ik mijn abonnement later upgraden of downgraden?",
+          "a": "Absoluut. Je kunt op elk moment van abonnement wisselen via het gedeelte ‘Facturering’ op je dashboard. Een upgrade gaat direct in; een downgrade wordt pas bij de volgende verlengingsdatum doorgevoerd."
+        },
+        "payment": {
+          "q": "Welke betaalmethoden accepteren jullie?",
+          "a": "We accepteren alle gangbare creditcards en betaalkaarten (Visa, Mastercard, Amex), evenals Apple Pay en Google Pay. Alle betalingen worden veilig verwerkt via Stripe."
+        },
+        "security": {
+          "q": "Zijn mijn bestanden versleuteld en veilig?",
+          "a": "Alle gegevens worden via HTTPS (TLS 1.3) verzonden. Bestanden worden in rust versleuteld opgeslagen met AES-256 op de door Supabase beheerde infrastructuur. Met een wachtwoord beveiligde links zorgen voor een extra beveiligingslaag bij het downloaden."
+        },
+        "enterprisePlan": {
+          "q": "Wat is het Enterprise-abonnement?",
+          "a": "Enterprise is een op maat gemaakt pakket voor grote organisaties die behoefte hebben aan meer opslagruimte, speciale ondersteuning, aangepaste SLA’s, SSO/SAML, webhook-integraties en hosting met een eigen domeinnaam. Neem contact op met ons verkoopteam om je wensen te bespreken."
+        },
+        "commercial": {
+          "q": "Mag ik VaultTransfer voor commerciële doeleinden gebruiken?",
+          "a": "Ja. Alle abonnementen, inclusief het gratis abonnement, staan commercieel gebruik toe. De Business- en Enterprise-abonnementen zijn speciaal ontworpen voor professionele werkprocessen en bieden API-toegang, teamfuncties en geavanceerde beveiliging."
+        },
+        "annualDiscount": {
+          "q": "Bieden jullie korting bij jaarlijkse facturering?",
+          "a": "Ja — als je overstapt op jaarfacturering, bespaar je tot wel 33% ten opzichte van de maandelijkse prijs. De korting wordt automatisch toegepast als je vóór het afrekenen de optie ‘Jaarlijks’ selecteert."
+        }
+      }
+    },
+    "trust": {
+      "stripe": "Betalingen beveiligd door Stripe",
+      "guarantee": "30 dagen geld-terug-garantie",
+      "cancel": "Je kunt op elk moment opzeggen",
+      "fullFaq": "Volledige FAQ"
+    }
+  },
+  "faq": {
+    "badge": "Veelgestelde vragen",
+    "title": "Alles wat je",
+    "titleAccent": "wil je weten",
+    "contact": "Vind je het antwoord niet?",
+    "contactLink": "Neem contact met ons op",
+    "cta": {
+      "ready": "Klaar om te beginnen?",
+      "seePlans": "Bekijk de plattegronden"
+    },
+    "categories": {
+      "general": "Algemeen",
+      "security": "Beveiliging",
+      "plans": "Abonnementen & Betalingen",
+      "technical": "Technisch",
+      "developer": "API & Ontwikkelaars"
+    },
+    "items": {
+      "whatIs": {
+        "q": "Wat is VaultTransfer?",
+        "a": "VaultTransfer is een beveiligde dienst voor het verzenden van bestanden. Je kunt via een beveiligde link grote bestanden naar iedereen sturen, zonder dat de ontvanger een account nodig heeft."
+      },
+      "register": {
+        "q": "Moet ik me aanmelden om het te kunnen gebruiken?",
+        "a": "Nee. Je kunt gratis bestanden versturen zonder je te registreren. Als je een account aanmaakt, krijg je toegang tot geavanceerde functies zoals uploads tot 50 GB, downloadstatistieken, met een wachtwoord beveiligde links, overdrachtsstatistieken en het aanbevelingsprogramma."
+      },
+      "expiry": {
+        "q": "Hoe lang blijven mijn bestanden beschikbaar?",
+        "a": "Bij het Free-abonnement vervallen links na 7 dagen. Bij Pro na 30 dagen. Bij Business kun je zelf een vervaldatum instellen of bestanden voor onbepaalde tijd bewaren. Enterprise-abonnementen bieden ook links zonder vervaldatum."
+      },
+      "referral": {
+        "q": "Hoe werkt het aanbevelingsprogramma?",
+        "a": "Je kunt vrienden en collega’s uitnodigen voor VaultTransfer via je unieke uitnodigingslink. Als iemand zich via jouw link aanmeldt en een upgrade uitvoert, profiteren zowel jij als de nieuwe gebruiker van voordelen. Je vindt je uitnodigingslink in het Dashboard onder 'Uitnodigen & Verdienen'."
+      },
+      "safe": {
+        "q": "Zijn mijn bestanden veilig?",
+        "a": "Ja. Alle overdrachten verlopen via HTTPS met TLS 1.3. Bestanden worden automatisch verwijderd zodra de link verloopt. De servers staan in Europa en we voldoen volledig aan de AVG."
+      },
+      "whoCanSee": {
+        "q": "Wie kan mijn bestanden zien?",
+        "a": "Alleen degenen die de link hebben, hebben toegang tot de bestanden. Met het Business-abonnement kun je een wachtwoord instellen voor extra beveiliging — de hash wordt opgeslagen met bcrypt en het wachtwoord wordt nooit in leesbare tekst bewaard. Onze medewerkers hebben nooit toegang tot de inhoud."
+      },
+      "scanned": {
+        "q": "Worden bestanden geanalyseerd of gescand?",
+        "a": "We voeren automatische antivirusscans uit om ontvangers te beschermen, maar we analyseren de inhoud van bestanden niet voor commerciële of reclamedoeleinden."
+      },
+      "passwordTransfer": {
+        "q": "Hoe werken met een wachtwoord beveiligde overboekingen?",
+        "a": "Wanneer je een overdracht aanmaakt, kun je een wachtwoord instellen dat ontvangers moeten invoeren voordat ze de bestanden kunnen openen of downloaden. Het wachtwoord wordt met bcrypt gehasht en nooit in leesbare tekst opgeslagen. Wachtwoordbeveiliging is beschikbaar in de Business- en Enterprise-abonnementen."
+      },
+      "payment": {
+        "q": "Welke betaalmethoden accepteren jullie?",
+        "a": "We accepteren alle gangbare creditcards en betaalkaarten (Visa, Mastercard, American Express) via Stripe. Betalingen zijn veilig en we slaan geen kaartgegevens op. Apple Pay en Google Pay worden ook ondersteund."
+      },
+      "changePlan": {
+        "q": "Kan ik op elk moment van abonnement wisselen?",
+        "a": "Ja, je kunt op elk moment upgraden of downgraden. Bij een upgrade wordt het prijsverschil evenredig berekend voor de resterende periode. Bij een downgrade blijft het huidige abonnement actief tot het einde van de betaalde periode."
+      },
+      "annualDiscount": {
+        "q": "Hoe werkt de jaarlijkse korting?",
+        "a": "Met jaarlijkse facturering bespaar je aanzienlijk ten opzichte van maandelijkse facturering: het Pro-abonnement kost € 45 per jaar (tegenover € 59,88 per jaar bij maandelijkse betaling — een besparing van € 14,88), en het Business-abonnement kost € 120 per jaar (tegenover € 179,88 per jaar bij maandelijkse betaling — een besparing van € 59,88). Je betaalt eenmalig vooraf en het abonnement blijft 12 maanden geldig."
+      },
+      "annualBilling": {
+        "q": "Wat is het verschil tussen maandelijkse en jaarlijkse facturering?",
+        "a": "Bij maandelijkse facturering betaal je elke maand, en je kunt op elk moment opzeggen zonder extra kosten. Bij jaarlijkse facturering betaal je eenmalig vooraf voor 12 maanden tegen een gereduceerd tarief (tot 33% korting). Beide opties bieden dezelfde functies — het enige verschil is de factureringscyclus en de korting."
+      },
+      "refund": {
+        "q": "Kan ik mijn geld terugvragen?",
+        "a": "Als je niet tevreden bent, krijg je binnen 30 dagen na aankoop het volledige aankoopbedrag terug. Na 30 dagen is een gedeeltelijke terugbetaling niet meer mogelijk. Neem contact op met support@vaultransfer.com om een terugbetaling aan te vragen."
+      },
+      "maxSize": {
+        "q": "Wat is de maximale bestandsgrootte?",
+        "a": "Gratis abonnement: 2 GB per overdracht. Pro-abonnement: 50 GB per overdracht. Business-abonnement: 200 GB per overdracht. Enterprise: limieten op maat. Er gelden geen beperkingen voor het aantal overdrachten dat je kunt aanmaken."
+      },
+      "formats": {
+        "q": "Welke bestandsformaten worden ondersteund?",
+        "a": "We ondersteunen de meeste bestandsformaten: documenten, afbeeldingen, video’s, ZIP-archieven, projectbestanden, enz. Om veiligheidsredenen worden uitvoerbare bestanden (.exe, .msi, .bat, .sh), scripts (.ps1, .vbs, .js), Office-macro’s (.docm, .xlsm, .pptm), app-pakketten (.apk, .ipa, .deb) en andere potentieel schadelijke formaten geblokkeerd."
+      },
+      "devices": {
+        "q": "Werkt de dienst op alle apparaten?",
+        "a": "Ja. VaultTransfer werkt op elk apparaat met een moderne browser: pc, Mac, Android- en iOS-smartphones en tablets. Je hebt geen app nodig."
+      },
+      "analyticsStats": {
+        "q": "Welke analyses en statistieken zijn er beschikbaar?",
+        "a": "Pro- en Business-abonnees hebben in het Dashboard toegang tot gedetailleerde statistieken: totaal aantal aangemaakte overdrachten, totaal overgedragen data (GB), totaal aantal downloads, actieve versus verlopen overdrachten, en een grafiek met het dagelijkse aantal overdrachten van de afgelopen 30 dagen. De statistieken worden in realtime bijgewerkt."
+      },
+      "apiAccess": {
+        "q": "Hoe krijg ik toegang tot de VaultTransfer API?",
+        "a": "VaultTransfer biedt een openbare REST-API aan voor abonnees van het Business- en Enterprise-abonnement. Je kunt overboekingen via een API aanmaken, weergeven en beheren. De volledige API-documentatie en het overzicht van de eindpunten vind je in je dashboard onder 'API-sleutels'."
+      },
+      "apiKeys": {
+        "q": "Hoe maak ik API-sleutels aan en hoe beheer ik ze?",
+        "a": "API-sleutels maak je aan via het gedeelte 'API-sleutels' in je dashboard. Geef elke sleutel een duidelijke naam (bijv. 'Productie'). Sleutels worden slechts één keer weergegeven op het moment dat je ze aanmaakt — kopieer ze en bewaar ze op een veilige plek. Je kunt voor elke sleutel zien wanneer deze voor het laatst is gebruikt en je kunt elke sleutel op elk moment intrekken."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die je zoekt, bestaat niet of is verplaatst. Misschien ben je op zoek naar een verlopen downloadlink?",
+    "backHome": "Terug naar de startpagina →",
+    "seePlans": "Bekijk de plattegronden",
+    "help": "Hulp nodig?"
+  },
+  "cookie": {
+    "message": "We gebruiken cookies om je ervaring te verbeteren en relevante advertenties te tonen. Ga je hiermee akkoord?",
+    "accept": "Accepteren",
+    "decline": "Afwijzen"
+  },
+  "metadata": {
+    "titleDefault": "VaultTransfer — Bestanden veilig en gratis versturen",
+    "description": "Verzend gratis bestanden tot 2 GB. Versleutelde links met automatische vervaltermijn, wachtwoordbeveiliging en downloadlimieten. Geen account nodig. Voldoet aan de AVG.",
+    "keywords": [
+      "veilige bestandsoverdracht",
+      "bestanden gratis versturen",
+      "bestanden online delen",
+      "grote bestanden versturen",
+      "veilig bestanden delen",
+      "versleutelde bestanden verzenden",
+      "vervaldatum downloadlink",
+      "bestanden versturen zonder je te registreren",
+      "alternatieven voor WeTransfer",
+      "bestanden met wachtwoordbeveiliging versturen"
+    ]
+  },
+  "dashboard": {
+    "currentPlan": "Huidig plan",
+    "free": "Gratis",
+    "perMonth": "€ per maand",
+    "upgradePro": "Upgrade naar Pro →",
+    "upgradeProPrice": "Upgrade naar Pro — € 4,99/maand →",
+    "upgradeBusiness": "Upgrade naar Business →",
+    "manageSubscription": "Abonnement beheren",
+    "loading": "Bezig met laden...",
+    "maxUpload": "Maximale uploadgrootte",
+    "maxExpiry": "Max. geldigheidsduur",
+    "maxDownloads": "Max. aantal downloads",
+    "unlimited": "Onbeperkt",
+    "ads": "Advertenties",
+    "yes": "Ja",
+    "no": "Van",
+    "days": "{count} dagen",
+    "wantMore": "Wil je meer opslagruimte en toegang tot de API?",
+    "transfers": "Je overschrijvingen",
+    "newTransfer": "+ Nieuw",
+    "transfersProOnly": "De overdrachtsgeschiedenis is beschikbaar vanaf het Pro-abonnement.",
+    "noTransfers": "Nog geen shares. Begin met delen!",
+    "uploadFirst": "Upload je eerste bestand →",
+    "expired": "Verlopen",
+    "copyLink": "Link kopiëren",
+    "transferDate": "Overdracht van {date}",
+    "transferMeta": "{size} · {downloads} downloads · verloopt over {expiry}"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "totalTransfers": "Totaal aantal transfers",
+    "totalGb": "Overgedragen gegevens",
+    "totalDownloads": "Totaal aantal downloads",
+    "activeVsExpired": "Actief versus verlopen",
+    "last30Days": "De afgelopen 30 dagen",
+    "upgradeTitle": "Ontgrendel Analytics",
+    "upgradeDesc": "Upgrade naar een Pro- of Business-abonnement om je gedetailleerde overzichten en gebruiksstatistieken te bekijken.",
+    "upgradeButton": "Upgrade naar Pro",
+    "transfersPerDay": "Aantal transfers per dag",
+    "allTime": "Ooit",
+    "active": "Actief",
+    "expired": "Verlopen",
+    "loading": "Analyses worden geladen...",
+    "error": "Analytics kan niet worden geladen"
+  }
+}

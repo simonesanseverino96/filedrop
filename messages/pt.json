@@ -1,95 +1,95 @@
 {
   "common": {
     "appName": "VaultTransfer",
-    "secureConnection": "Ligação segura"
+    "secureConnection": "Conexão segura"
   },
   "header": {
     "pricing": "Preços",
-    "login": "Iniciar sessão",
-    "register": "Inscrever-se gratuitamente",
-    "dashboard": "Dashboard",
-    "upgradeToPro": "Atualizar para Pro",
-    "logout": "Terminar sessão",
-    "planFree": "Free",
-    "planPro": "⭐ Pro",
-    "planBusiness": "🏢 Business"
+    "login": "Entrar",
+    "register": "Cadastre-se gratuitamente",
+    "dashboard": "Painel",
+    "upgradeToPro": "Atualiza para a versão Pro",
+    "logout": "Sair",
+    "planFree": "Grátis",
+    "planPro": "⭐ Para",
+    "planBusiness": "🏢 Negócios"
   },
   "footer": {
-    "tagline": "Transferência de ficheiros rápida e segura. compatível com GDPR, servidores europeus.",
+    "tagline": "Transferência rápida e segura de arquivos. Em conformidade com o GDPR, servidores na Europa.",
     "sections": {
       "product": "Produto",
-      "legal": "Jurídico",
-      "contact": "Contacto"
+      "legal": "Legal",
+      "contact": "Contato"
     },
     "links": {
       "pricing": "Preços",
-      "faq": "FAQ",
-      "dashboard": "Dashboard",
-      "privacy": "Política de privacidade",
-      "terms": "Termos do serviço"
+      "faq": "Perguntas frequentes",
+      "dashboard": "Painel",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço"
     },
     "copyright": "© {year} VaultTransfer. Todos os direitos reservados.",
-    "badge": "🇪🇺 Servidores europeus - GDPR Compatível - TLS 1.3"
+    "badge": "🇪🇺 Servidores na Europa · Em conformidade com o GDPR · TLS 1.3"
   },
   "home": {
-    "badge": "Não é necessária conta - Free até 2GB",
-    "headline": "Partilhar ficheiros",
-    "headlineAccent": "sem compromisso.",
-    "description": "Ligações encriptadas com expiração automática, proteção por palavra-passe, limites de descarregamento. Os seus ficheiros viajam em segurança - e desaparecem quando você decidir.",
-    "securityTagline": "Segurança desde a conceção",
-    "featuresHeadline": "Concebido para quem não quer compromissos"
+    "badge": "Não é preciso criar uma conta · Grátis até 2 GB",
+    "headline": "Compartilhar arquivos",
+    "headlineAccent": "sem concessões.",
+    "description": "Links criptografados com validade automática, proteção por senha e limites de download. Seus arquivos viajam em segurança — e desaparecem quando você decidir.",
+    "securityTagline": "Segurança desde a concepção",
+    "featuresHeadline": "Feito para quem não quer abrir mão de nada"
   },
   "upload": {
     "dropzone": {
-      "active": "Deixar ficheiros aqui",
-      "idle": "Arrastar ficheiros para aqui",
+      "active": "Arraste os arquivos para cá",
+      "idle": "Arraste os arquivos para cá",
       "browse": "navegar",
-      "hint": "ou {browse} do seu dispositivo - máx. 2GB - 20 ficheiros"
+      "hint": "ou {browse} do seu dispositivo · até 2 GB · 20 arquivos"
     },
     "file": {
-      "uploaded": "✓ Carregado",
-      "error": "erro",
+      "uploaded": "✓ Enviado",
+      "error": "✗ Erro",
       "remaining": "{time} restante",
       "completed": "Concluído"
     },
     "options": {
       "toggle": "Opções de segurança",
-      "expiry": "Expiração da ligação",
+      "expiry": "Validade do link",
       "expiry1": "24 horas",
       "expiry7": "7 dias",
       "expiry30": "30 dias",
-      "maxDownloads": "Máximo de descarregamentos (opcional)",
+      "maxDownloads": "Número máximo de downloads (opcional)",
       "maxDownloadsPlaceholder": "Ilimitado",
-      "password": "Palavra-passe de proteção (opcional)",
+      "password": "Senha de proteção (opcional)",
       "message": "Mensagem para o destinatário",
-      "messagePlaceholder": "Adicionar uma mensagem...",
-      "senderEmail": "O seu e-mail (opcional)",
+      "messagePlaceholder": "Escreva uma mensagem...",
+      "senderEmail": "Seu e-mail (opcional)",
       "emailPlaceholder": "you@example.com"
     },
     "button": {
       "uploading": "Carregando...",
-      "upload": "Carregar e gerar ligação →"
+      "upload": "Carregar e gerar link →"
     },
-    "summary": "{count} ficheiros - {size} total",
+    "summary": "{count} arquivos · {size} total",
     "error": {
-      "tooLarge": "Alguns ficheiros excedem o limite de {limit}.",
-      "blocked": "Ficheiro não permitido.",
-      "maxFiles": "Máximo de ficheiros {max}.",
-      "upload": "Erro durante o carregamento",
-      "transfer": "Erro ao criar transferência"
+      "tooLarge": "Alguns arquivos ultrapassam o limite {limit}.",
+      "blocked": "Arquivo não permitido.",
+      "maxFiles": "Arquivos Max {max}.",
+      "upload": "Erro durante o upload",
+      "transfer": "Erro ao criar a transferência"
     }
   },
   "uploadSuccess": {
-    "title": "Transferência pronta!",
-    "subtitle": "ficheiro {count} ({size}) - expira em {expiry}{password}",
-    "passwordSuffix": " - protegido por palavra-passe",
-    "linkLabel": "A sua ligação",
-    "copy": "Cópia",
+    "title": "Pronto para a transferência!",
+    "subtitle": "Arquivo {count} ({size}) · expira em {expiry}{password}",
+    "passwordSuffix": " · protegido por senha",
+    "linkLabel": "Seu link",
+    "copy": "Copiar",
     "copied": "✓ Copiado",
     "badges": {
-      "https": "HTTPS encriptado",
-      "expiry": "Expira em {expiry}",
-      "password": "Palavra-passe necessária",
+      "https": "Criptografado por HTTPS",
+      "expiry": "Vence em {expiry}",
+      "password": "É necessária uma senha",
       "maxDownloads": "Max {count} downloads"
     },
     "newTransfer": "Nova transferência →",
@@ -98,193 +98,198 @@
     "expiry30": "30 dias"
   },
   "download": {
-    "secureDownload": "descarregamento seguro através de uma ligação assinada - válido por 60 segundos",
-    "downloading": "Descarregar...",
-    "downloadFile": "Descarregar ficheiro →",
-    "downloadAll": "Descarregar todos os ficheiros →",
-    "downloadInProgress": "Transferência em curso...",
-    "loading": "Transferência de carga...",
-    "expiredTitle": "Transferência expirada",
-    "expiredDesc": "Esta ligação expirou ou atingiu o limite de transferências. Peça ao remetente para reenviar os ficheiros.",
+    "secureDownload": "🔒 Download seguro por meio de link assinado · válido por 60 segundos",
+    "downloading": "Baixando...",
+    "downloadFile": "Baixar arquivo →",
+    "downloadAll": "Baixar todos os arquivos →",
+    "downloadInProgress": "Download em andamento...",
+    "loading": "Carregando transferência...",
+    "expiredTitle": "A transferência expirou",
+    "expiredDesc": "Este link expirou ou atingiu o limite de downloads. Pede ao remetente para reenviar os arquivos.",
     "newTransfer": "Criar uma nova transferência",
     "errorTitle": "Transferência não encontrada",
-    "errorDesc": "A ligação pode estar incorrecta ou a transferência não existe.",
-    "backHome": "Voltar ao início",
+    "errorDesc": "O link pode estar incorreto ou a transferência não existe.",
+    "backHome": "Voltar à página inicial",
     "protectedTitle": "Transferência protegida",
-    "protectedDesc": "Introduzir a palavra-passe para aceder aos ficheiros",
-    "passwordLabel": "Palavra-passe",
-    "passwordError": "Palavra-passe errada, tente novamente.",
-    "passwordVerifyError": "Erro ao verificar a palavra-passe",
-    "accessFiles": "Aceder aos ficheiros →",
-    "readyLabel": "Transferência pronta",
+    "protectedDesc": "Digite a senha para acessar os arquivos",
+    "passwordLabel": "Senha",
+    "passwordError": "Senha incorreta. Tente novamente.",
+    "passwordVerifyError": "Erro ao verificar a senha",
+    "accessFiles": "Acessar arquivos →",
+    "readyLabel": "Pronto para transferência",
     "totalSize": "Tamanho total",
-    "expiresIn": "expira em {expiry}",
+    "expiresIn": "⏱ Vence em {expiry}",
     "downloadCount": "📥 {count}/{max} downloads",
-    "scarica": "Descarregar"
+    "scarica": "Baixar"
   },
   "adBanner": {
-    "label": "Publicidade",
-    "removePro": "Atualizar para Pro para remover anúncios"
+    "label": "Anúncio",
+    "removePro": "Atualiza para a versão Pro para remover os anúncios"
   },
   "apiKeys": {
-    "title": "API Chaves",
-    "subtitle": "Utilizar chaves API para integrar VaultTransfer no seu código",
-    "warning": "⚠️ Copiar esta chave agora - não voltará a ser visível!",
+    "title": "Chaves de API",
+    "subtitle": "Use chaves de API para integrar o VaultTransfer ao seu código",
+    "warning": "⚠️ Copia essa chave agora — ela não vai aparecer de novo!",
     "copied": "✓ Copiado",
-    "copy": "Cópia",
-    "saved": "Guardei a chave, fechar →",
+    "copy": "Copiar",
+    "saved": "Salvei a chave, fechar →",
     "placeholder": "Nome da chave (por exemplo, Produção)",
     "create": "+ Criar chave",
     "creating": "...",
-    "neverUsed": "Nunca utilizado",
-    "lastUsed": "Utilizado em {date}",
+    "neverUsed": "Nunca foi usado",
+    "lastUsed": "Usado em {date}",
     "revoke": "Revogar",
-    "noKeys": "Ainda não existem chaves API. Cria uma!",
-    "revokeConfirm": "Tem a certeza que quer revogar esta chave API?",
-    "sessionExpired": "A sessão expirou. Por favor, inicie sessão novamente.",
-    "revokeError": "Erro durante a revogação. Por favor, tente novamente.",
-    "connectionError": "Erro de ligação.",
+    "noKeys": "Ainda não há chaves de API. Cria uma!",
+    "revokeConfirm": "Tem certeza de que quer revogar essa chave de API?",
+    "sessionExpired": "A sessão expirou. Faça login novamente.",
+    "revokeError": "Ocorreu um erro durante a revogação. Tenta de novo.",
+    "connectionError": "Erro de conexão.",
     "docsTitle": "Documentação rápida",
-    "docsUpload": "POST /api/v1/upload - Criar transferência",
-    "docsTransfers": "GET /api/v1/transfers - Lista de transferências"
+    "docsUpload": "POST /api/v1/upload — Criar transferência",
+    "docsTransfers": "GET /api/v1/transfers — Listar transferências"
   },
   "features": {
     "items": {
       "encrypted": {
-        "title": "Encriptado em trânsito",
-        "desc": "Todas as transferências são efectuadas em HTTPS com TLS 1.3. Os seus ficheiros nunca são lidos."
+        "title": "Criptografado durante a transmissão",
+        "desc": "Todas as transferências são feitas por HTTPS com TLS 1.3. Seus arquivos nunca são lidos."
       },
       "expiry": {
-        "title": "Expiração automática",
-        "desc": "Escolha entre 24 horas, 7 ou 30 dias. No final do prazo, os ficheiros são eliminados permanentemente."
+        "title": "Caducidade automática",
+        "desc": "Escolha entre 24 horas, 7 ou 30 dias. Ao expirar, os arquivos são excluídos permanentemente."
       },
       "password": {
-        "title": "Proteção por palavra-passe",
-        "desc": "Adicionar uma palavra-passe: o hash é guardado com bcrypt. A palavra-passe nunca é guardada em texto simples."
+        "title": "Proteção por senha",
+        "desc": "Adicione uma senha: o hash é armazenado com o bcrypt. A senha nunca é salva em texto simples."
       },
       "downloadLimit": {
-        "title": "Limite de descarregamento",
-        "desc": "Defina o número máximo de descarregamentos. Quando o limite for atingido, a ligação é automaticamente desactivada."
+        "title": "Limite de download",
+        "desc": "Defina o número máximo de downloads. Quando o limite for atingido, o link será desativado automaticamente."
       },
       "noAccount": {
-        "title": "Zero contas",
-        "desc": "Sem registo. Não é necessário correio eletrónico. Carregamento anónimo e instantâneo."
+        "title": "Contas com saldo zero",
+        "desc": "Sem cadastro. Não é preciso e-mail. Upload anônimo e instantâneo."
       },
       "gdpr": {
-        "title": "GDPR Compatível",
-        "desc": "Sem rastreio. Sem definição de perfis. Os dados permanecem na Europa."
+        "title": "Em conformidade com o GDPR",
+        "desc": "Sem rastreamento. Sem criação de perfis. Os dados ficam na Europa."
       }
     }
   },
   "report": {
-    "button": "🚨 Comunicar conteúdo inadequado",
-    "title": "Comunicar conteúdos ilegais ou inadequados",
-    "reasonLabel": "Motivo do relatório *",
-    "reasonPlaceholder": "Selecionar um motivo...",
+    "button": "🚨 Denunciar conteúdo impróprio",
+    "title": "Denuncia conteúdo ilegal ou impróprio",
+    "reasonLabel": "Motivo da denúncia *",
+    "reasonPlaceholder": "Escolha um motivo...",
     "reasons": {
-      "csam": "Material de abuso sexual de crianças (CSAM)",
+      "csam": "Material de abuso sexual infantil (CSAM)",
       "malware": "Malware ou vírus",
-      "copyright": "Violação dos direitos de autor",
+      "copyright": "Violação de direitos autorais",
       "illegal": "Conteúdo ilegal",
-      "phishing": "Phishing ou burla",
+      "phishing": "Phishing ou golpe",
       "other": "Outros"
     },
-    "emailLabel": "O seu e-mail (opcional, para actualizações)",
+    "emailLabel": "Seu e-mail (opcional, para receber atualizações)",
     "submit": "Enviar relatório",
-    "submitting": "Enviar...",
+    "submitting": "Enviando...",
     "cancel": "Cancelar",
-    "notice": "Os relatórios são analisados no prazo de 72 horas. Em caso de emergência, escrever para",
-    "sent": "relatório enviado. Obrigado por nos ajudar a manter o serviço seguro."
+    "notice": "As denúncias são analisadas em até 72 horas. Em caso de emergência, escreve para",
+    "sent": "✓ Denúncia enviada. Obrigado por nos ajudar a manter o serviço seguro."
   },
   "login": {
-    "title": "Iniciar sessão",
-    "subtitle": "Enviamos-lhe uma ligação mágica por correio eletrónico - não precisa de se lembrar da palavra-passe.",
-    "emailLabel": "Correio eletrónico",
+    "title": "Entrar",
+    "subtitle": "Enviamos um link mágico por e-mail — sem precisar lembrar de nenhuma senha.",
+    "emailLabel": "E-mail",
     "emailPlaceholder": "you@example.com",
-    "submit": "Enviar ligação mágica →",
+    "submit": "Enviar link mágico →",
     "submitting": "Enviando...",
-    "noAccount": "Não tem conta? Será criada uma automaticamente.",
-    "backHome": "← Voltar ao início",
+    "noAccount": "Não tem conta? Uma será criada automaticamente.",
+    "backHome": "← Voltar à página inicial",
     "checkEmail": {
-      "title": "Verifique o seu correio eletrónico!",
-      "message": "Enviámos uma ligação mágica para {email}. Clique na ligação para iniciar sessão - será redireccionado automaticamente."
+      "title": "Dá uma olhada no teu e-mail!",
+      "message": "Enviamos um link mágico para {email}. Clique no link para fazer login — você será redirecionado automaticamente."
+    },
+    "errors": {
+      "rate_limit": "Excesso de solicitações. Tenta de novo mais tarde.",
+      "invalid_credentials": "Endereço de e-mail inválido.",
+      "default": "Ocorreu um erro durante o login. Tenta de novo."
     }
   },
   "pricing": {
     "badge": "Preços simples e transparentes",
-    "title": "Escolha o plano certo para si",
-    "subtitle": "Comece gratuitamente. Faça upgrade quando precisar de mais espaço, links mais longos ou acesso API.",
+    "title": "Escolhe o plano que melhor se adapta a ti",
+    "subtitle": "Comece de graça. Faça o upgrade quando precisar de mais espaço, links mais longos ou acesso à API.",
     "monthly": "Mensal",
     "annual": "Anual",
-    "savePercent": "Poupe até 33%",
-    "annualSavings": "Pro poupa €{proSave}/ano · Business poupa €{bizSave}/ano",
+    "savePercent": "Economize até 33%",
+    "annualSavings": "Pessoas físicas economizam €{proSave}/ano · Empresas economizam €{bizSave}/ano",
     "perMonth": "/mês",
     "perMonthLabel": "por mês",
-    "billedAnnually": "€{amount} faturado anualmente",
+    "billedAnnually": "€{amount} cobrado anualmente",
     "volumePricing": "preços por volume",
     "custom": "Personalizado",
     "forever": "para sempre",
-    "loading": "A carregar…",
-    "error": "Erro de rede. Tente novamente.",
+    "loading": "Carregando…",
+    "error": "Erro de rede. Tenta de novo.",
     "plans": {
       "free": {
-        "name": "Free",
-        "desc": "Envie ficheiros rapidamente, sem registo.",
-        "cta": "Começar gratuitamente",
+        "name": "Grátis",
+        "desc": "Envie arquivos rapidamente, sem precisar se cadastrar.",
+        "cta": "Comece de graça",
         "feature0": "2 GB por transferência",
-        "feature1": "Links expiram após 7 dias",
+        "feature1": "Os links expiram após 7 dias",
         "feature2": "Downloads ilimitados",
         "feature3": "Notas de transferência",
-        "feature4": "Email no primeiro download"
+        "feature4": "E-mail no primeiro download"
       },
       "pro": {
-        "name": "Pro",
-        "desc": "Mais espaço, links mais longos e zero publicidade.",
-        "badge": "Mais popular",
-        "cta": "Começar com Pro",
+        "name": "Para",
+        "desc": "Mais espaço, links mais longos e sem anúncios.",
+        "badge": "Mais populares",
+        "cta": "Início Pro",
         "feature0": "50 GB por transferência",
-        "feature1": "Links expiram após 30 dias",
-        "feature2": "Sem publicidade",
+        "feature1": "Os links expiram após 30 dias",
+        "feature2": "Sem anúncios",
         "feature3": "Estatísticas de download",
-        "feature4": "Datas de expiração personalizadas",
-        "feature5": "Suporte por email"
+        "feature4": "Datas de validade personalizadas",
+        "feature5": "Suporte por e-mail"
       },
       "business": {
-        "name": "Business",
-        "desc": "Expiração ilimitada, acesso API e segurança avançada.",
-        "cta": "Começar com Business",
+        "name": "Negócios",
+        "desc": "Validade ilimitada, acesso à API e segurança avançada.",
+        "cta": "Começar um negócio",
         "feature0": "200 GB por transferência",
-        "feature1": "Sem limite de expiração",
-        "feature2": "Links protegidos por password",
-        "feature3": "REST API pública e chaves",
+        "feature1": "Sem prazo de validade",
+        "feature2": "Links protegidos por senha",
+        "feature3": "API REST pública e chaves",
         "feature4": "Suporte prioritário",
-        "feature5": "Tudo incluído no Pro"
+        "feature5": "Tudo no Pro"
       },
       "enterprise": {
-        "name": "Enterprise",
+        "name": "Empresa",
         "desc": "Limites personalizados, SSO, suporte dedicado e SLAs.",
-        "cta": "Contactar vendas",
+        "cta": "Entre em contato com o departamento de vendas",
         "feature0": "Limites de armazenamento personalizados",
         "feature1": "Webhooks e domínio personalizado",
         "feature2": "SSO / SAML",
-        "feature3": "Gestor de conta dedicado",
+        "feature3": "Gerente de contas dedicado",
         "feature4": "SLA personalizado",
-        "feature5": "Tudo incluído no Business"
+        "feature5": "Tudo sobre negócios"
       }
     },
     "comparison": {
-      "title": "Comparar todas as funcionalidades",
-      "subtitle": "Tudo incluído em cada plano, lado a lado.",
+      "title": "Compare todos os recursos",
+      "subtitle": "Tudo o que está incluído em cada plano, lado a lado.",
       "col": {
-        "free": "Free",
-        "pro": "Pro",
-        "business": "Business",
-        "enterprise": "Enterprise"
+        "free": "Grátis",
+        "pro": "Para",
+        "business": "Negócios",
+        "enterprise": "Empresa"
       },
       "val": {
         "2gb": "2 GB",
         "50gb": "50 GB",
-        "200gb": "200 GB",
+        "200gb": "Duzentos gigabytes",
         "custom": "Personalizado",
         "7days": "7 dias",
         "30days": "30 dias",
@@ -293,254 +298,254 @@
       },
       "sec": {
         "storage": "Armazenamento e transferências",
-        "features": "Funcionalidades",
-        "developer": "Desenvolvedor e API",
+        "features": "Recursos",
+        "developer": "Desenvolvedores e API",
         "support": "Suporte"
       },
       "row": {
         "maxUpload": "Tamanho máximo de upload",
-        "linkExpiry": "Expiração do link",
-        "maxDownloads": "Downloads máx. por link",
+        "linkExpiry": "Validade do link",
+        "maxDownloads": "Número máximo de downloads por link",
         "simultaneous": "Transferências simultâneas",
-        "adsFree": "Experiência sem publicidade",
-        "passwordLinks": "Links protegidos por password",
+        "adsFree": "Experiência sem anúncios",
+        "passwordLinks": "Links protegidos por senha",
         "downloadStats": "Estatísticas de download",
-        "customExpiry": "Datas de expiração personalizadas",
-        "transferNotes": "Notas e mensagens de transferência",
-        "emailDownload": "Email no primeiro download",
-        "restApi": "REST API pública",
-        "apiKeys": "Gestão de chaves API",
-        "webhooks": "Eventos webhook",
+        "customExpiry": "Datas de validade personalizadas",
+        "transferNotes": "Transferir notas e mensagens",
+        "emailDownload": "E-mail no primeiro download",
+        "restApi": "API REST pública",
+        "apiKeys": "Gerenciamento de chaves de API",
+        "webhooks": "Eventos de webhook",
         "customDomain": "Domínio personalizado",
-        "community": "Suporte comunitário",
-        "emailSupport": "Suporte por email",
+        "community": "Apoio da comunidade",
+        "emailSupport": "Suporte por e-mail",
         "priority": "Suporte prioritário",
-        "dedicated": "Gestor de conta dedicado",
+        "dedicated": "Gerente de contas dedicado",
         "sla": "SLA personalizado",
         "sso": "SSO / SAML"
       }
     },
     "faq": {
       "title": "Perguntas frequentes",
-      "notFound": "Não encontra a resposta?",
-      "emailSupport": "Escreva à nossa equipa de suporte.",
+      "notFound": "Não consegues encontrar a resposta?",
+      "emailSupport": "Envie um e-mail para nossa equipe de suporte.",
       "items": {
         "cancel": {
-          "q": "Posso cancelar a minha subscrição a qualquer momento?",
-          "a": "Sim — cancele a qualquer momento a partir do seu painel com um clique. Mantém o acesso completo até ao final do seu período de faturação. Sem penalizações, sem perguntas."
+          "q": "Posso cancelar minha assinatura a qualquer momento?",
+          "a": "Sim — cancela a qualquer momento pelo teu painel de controle com um clique. Tu manténs acesso total até o final do teu período de cobrança atual. Sem multas, sem perguntas."
         },
         "filesExpire": {
-          "q": "O que acontece aos meus ficheiros quando um link expira?",
-          "a": "Quando um link de transferência expira, os ficheiros são eliminados permanentemente dos nossos servidores. Enviamos um lembrete de expiração 24 horas antes para que os seus destinatários tenham tempo de descarregar."
+          "q": "O que acontece com meus arquivos quando um link expira?",
+          "a": "Quando um link de transferência expira, os arquivos são excluídos permanentemente dos nossos servidores. Enviamos um lembrete de expiração com 24 horas de antecedência para que os destinatários tenham tempo de fazer o download."
         },
         "trial": {
-          "q": "Existe uma versão de teste gratuita para planos pagos?",
-          "a": "Todos os planos pagos incluem uma garantia de devolução de dinheiro de 30 dias. Se o VaultTransfer não satisfizer as suas necessidades no primeiro mês, contacte o suporte para um reembolso completo — sem condições."
+          "q": "Existe um período de teste gratuito para os planos pagos?",
+          "a": "Todos os planos pagos vêm com uma garantia de reembolso de 30 dias. Se o VaultTransfer não atender às tuas necessidades no primeiro mês, entra em contato com o suporte para receber um reembolso total — sem condições."
         },
         "freeLimit": {
-          "q": "Como funciona o limite de 2 GB no plano Free?",
-          "a": "O limite de 2 GB aplica-se por transferência individual, não ao uso total da conta. Pode criar tantas transferências quantas quiser; cada uma pode ter até 2 GB."
+          "q": "Como funciona o limite de 2 GB do plano Grátis?",
+          "a": "O limite de 2 GB se aplica a cada transferência individual, e não ao uso total da sua conta. Você pode criar quantas transferências quiser; cada uma pode ter até 2 GB."
         },
         "changePlan": {
-          "q": "Posso mudar de plano mais tarde?",
-          "a": "Absolutamente. Pode mudar de plano a qualquer momento na secção de Faturação do seu painel. Os upgrades têm efeito imediato; os downgrades aplicam-se na próxima data de renovação."
+          "q": "Posso mudar para um plano superior ou inferior mais tarde?",
+          "a": "Claro. Você pode mudar de plano a qualquer momento na seção \"Faturamento\" do seu painel. As atualizações entram em vigor imediatamente; as reduções de plano só valem na próxima data de renovação."
         },
         "payment": {
-          "q": "Que métodos de pagamento aceitam?",
-          "a": "Aceitamos todos os principais cartões de crédito e débito (Visa, Mastercard, Amex), bem como Apple Pay e Google Pay, todos processados de forma segura através do Stripe."
+          "q": "Quais formas de pagamento vocês aceitam?",
+          "a": "Aceitamos todos os principais cartões de crédito e débito (Visa, Mastercard, Amex), além do Apple Pay e do Google Pay, todos processados com segurança pelo Stripe."
         },
         "security": {
-          "q": "Os meus ficheiros estão encriptados e seguros?",
-          "a": "Todos os dados são transmitidos via HTTPS (TLS 1.3). Os ficheiros são armazenados encriptados em repouso com AES-256 na infraestrutura gerida pela Supabase. Os links protegidos por password adicionam uma camada adicional de controlo de acesso."
+          "q": "Meus arquivos estão criptografados e seguros?",
+          "a": "Todos os dados são transmitidos via HTTPS (TLS 1.3). Os arquivos são armazenados criptografados em repouso usando AES-256 na infraestrutura gerenciada pela Supabase. Links protegidos por senha oferecem uma camada adicional de controle de acesso no momento do download."
         },
         "enterprisePlan": {
           "q": "O que é o plano Enterprise?",
-          "a": "Enterprise é um plano personalizado para grandes organizações que necessitam de mais armazenamento, suporte dedicado, SLAs personalizados, SSO/SAML, integrações de webhooks e alojamento em domínio personalizado. Contacte a nossa equipa de vendas para discutir os seus requisitos."
+          "a": "O Enterprise é um plano personalizado para grandes organizações que precisam de mais espaço de armazenamento, suporte dedicado, SLAs personalizados, SSO/SAML, integrações com webhooks e hospedagem de domínios personalizados. Entra em contato com nossa equipe de vendas para discutir suas necessidades."
         },
         "commercial": {
           "q": "Posso usar o VaultTransfer para fins comerciais?",
-          "a": "Sim. Todos os planos, incluindo o Free, permitem uso comercial. Os planos Business e Enterprise são especificamente concebidos para fluxos de trabalho profissionais com acesso API, funcionalidades de equipa e segurança avançada."
+          "a": "Sim. Todos os planos, incluindo o Gratuito, permitem o uso comercial. Os planos Business e Enterprise foram criados especialmente para fluxos de trabalho profissionais, com acesso à API, recursos para equipes e segurança avançada."
         },
         "annualDiscount": {
-          "q": "Oferecem descontos para faturação anual?",
-          "a": "Sim — mudar para faturação anual poupa-lhe até 33% em comparação com os preços mensais. O desconto é aplicado automaticamente quando muda para Anual antes do pagamento."
+          "q": "Vocês oferecem descontos para pagamento anual?",
+          "a": "Sim — mudar para o plano anual te ajuda a economizar até 33% em comparação com o preço mensal. O desconto é aplicado automaticamente quando você seleciona a opção “Anual” antes de finalizar a compra."
         }
       }
     },
     "trust": {
-      "stripe": "Pagamentos seguros via Stripe",
-      "guarantee": "Garantia de devolução de 30 dias",
-      "cancel": "Cancele a qualquer momento",
-      "fullFaq": "FAQ completa"
+      "stripe": "Pagamentos processados pelo Stripe",
+      "guarantee": "Garantia de reembolso de 30 dias",
+      "cancel": "Cancela quando quiseres",
+      "fullFaq": "Perguntas frequentes completas"
     }
   },
   "faq": {
     "badge": "Perguntas frequentes",
-    "title": "Tudo o que",
-    "titleAccent": "quer saber",
-    "contact": "Não encontra uma resposta?",
-    "contactLink": "Contacte-nos",
+    "title": "Tudo o que você",
+    "titleAccent": "quero saber",
+    "contact": "Não consegues encontrar uma resposta?",
+    "contactLink": "Fale conosco",
     "cta": {
       "ready": "Pronto para começar?",
-      "seePlans": "Ver planos"
+      "seePlans": "Veja os planos"
     },
     "categories": {
       "general": "Geral",
       "security": "Segurança",
       "plans": "Planos e pagamentos",
       "technical": "Técnico",
-      "developer": "API e Desenvolvedor"
+      "developer": "API e Desenvolvedores"
     },
     "items": {
       "whatIs": {
-        "q": "O que é o VaultTransfer?",
-        "a": "O VaultTransfer é um serviço seguro de transferência de ficheiros. Pode enviar ficheiros de grandes dimensões a qualquer pessoa através de uma ligação protegida, sem que o destinatário precise de uma conta."
+        "q": "O que é VaultTransfer?",
+        "a": "O VaultTransfer é um serviço de transferência segura de arquivos. Você pode enviar arquivos grandes para qualquer pessoa por meio de um link protegido, sem que o destinatário precise ter uma conta."
       },
       "register": {
-        "q": "Preciso de me registar para o utilizar?",
-        "a": "Não. Pode enviar ficheiros gratuitamente sem registo. Criar uma conta dá-lhe acesso a funcionalidades avançadas como uploads até 50 GB, estatísticas de download, ligações protegidas por password, análises de transferências e o programa de referência."
+        "q": "Preciso me cadastrar para usar?",
+        "a": "Não. Você pode enviar arquivos gratuitamente sem precisar se cadastrar. Ao criar uma conta, você tem acesso a recursos avançados, como uploads de até 50 GB, estatísticas de download, links protegidos por senha, análises de transferência e o programa de indicação."
       },
       "expiry": {
-        "q": "Durante quanto tempo estão os meus ficheiros disponíveis?",
-        "a": "Com o plano Free, os links expiram ao fim de 7 dias. Com Pro após 30 dias. Com Business pode definir datas de expiração personalizadas ou manter os ficheiros indefinidamente. Os planos Enterprise também suportam links sem expiração."
+        "q": "Por quanto tempo meus arquivos ficam disponíveis?",
+        "a": "No plano Gratuito, os links expiram após 7 dias. No plano Pro, após 30 dias. No plano Business, você pode definir datas de validade personalizadas ou manter os arquivos por tempo indeterminado. Os planos Enterprise também oferecem links sem prazo de validade."
       },
       "referral": {
-        "q": "Como funciona o programa de referência?",
-        "a": "Pode convidar amigos e colegas para o VaultTransfer usando o seu link de referência único. Quando alguém se regista e faz upgrade através do seu link, ambos recebem benefícios. Encontre o seu link de referência no Dashboard em 'Convidar e Ganhar'."
+        "q": "Como funciona o programa de indicação?",
+        "a": "Você pode convidar amigos e colegas para o VaultTransfer usando seu link de indicação exclusivo. Quando alguém se cadastra e faz o upgrade pelo seu link, tanto você quanto o novo usuário recebem benefícios. Encontre seu link de indicação no Painel, na seção “Convide e Ganhe”."
       },
       "safe": {
-        "q": "Os meus ficheiros estão seguros?",
-        "a": "Sim. Todas as transferências são efetuadas em HTTPS com TLS 1.3. Os ficheiros são automaticamente eliminados quando a ligação expira. Os servidores estão na Europa e somos totalmente conformes com o RGPD."
+        "q": "Meus arquivos estão seguros?",
+        "a": "Sim. Todas as transferências são feitas por HTTPS com TLS 1.3. Os arquivos são excluídos automaticamente quando o link expira. Os servidores ficam na Europa e estamos em total conformidade com o GDPR."
       },
       "whoCanSee": {
-        "q": "Quem pode ver os meus ficheiros?",
-        "a": "Apenas quem tem a ligação pode aceder aos ficheiros. Com o plano Business pode adicionar uma password para proteção extra — o hash é armazenado com bcrypt e a password nunca é guardada em texto simples. O nosso pessoal nunca acede aos conteúdos."
+        "q": "Quem pode ver meus arquivos?",
+        "a": "Só quem tiver o link pode acessar os arquivos. Com o plano Business, você pode adicionar uma senha para proteção extra — o hash é armazenado com o bcrypt e a senha nunca é salva em texto simples. Nossa equipe nunca acessa o conteúdo."
       },
       "scanned": {
-        "q": "Os ficheiros são analisados ou verificados?",
-        "a": "Efetuamos uma verificação antivírus automática para proteger os destinatários, mas não analisamos o conteúdo dos ficheiros para fins comerciais ou publicitários."
+        "q": "Os arquivos são analisados ou verificados?",
+        "a": "Realizamos uma verificação antivírus automática para proteger os destinatários, mas não analisamos o conteúdo dos arquivos para fins comerciais ou publicitários."
       },
       "passwordTransfer": {
-        "q": "Como funcionam as transferências protegidas por password?",
-        "a": "Ao criar uma transferência pode definir uma password que os destinatários devem introduzir antes de aceder ou descarregar os ficheiros. A password é encriptada com bcrypt e nunca é armazenada em texto simples. A proteção por password está disponível nos planos Business e Enterprise."
+        "q": "Como funcionam as transferências protegidas por senha?",
+        "a": "Ao criar uma transferência, você pode definir uma senha que os destinatários devem digitar antes de acessar ou baixar os arquivos. A senha é criptografada com o bcrypt e nunca é armazenada em texto simples. A proteção por senha está disponível nos planos Business e Enterprise."
       },
       "payment": {
-        "q": "Que métodos de pagamento são aceites?",
-        "a": "Aceitamos todos os principais cartões de crédito e débito (Visa, Mastercard, American Express) via Stripe. Os pagamentos são seguros e não guardamos os dados do cartão. Apple Pay e Google Pay também são suportados."
+        "q": "Quais formas de pagamento vocês aceitam?",
+        "a": "Aceitamos todos os principais cartões de crédito e débito (Visa, Mastercard, American Express) através do Stripe. Os pagamentos são seguros e não armazenamos os dados dos cartões. Também aceitamos Apple Pay e Google Pay."
       },
       "changePlan": {
         "q": "Posso mudar de plano a qualquer momento?",
-        "a": "Sim, pode fazer upgrade ou downgrade a qualquer momento. Para upgrades, a diferença de preço é calculada proporcionalmente para o período restante. Para downgrades, o plano atual permanece ativo até ao final do período pago."
+        "a": "Sim, você pode fazer um upgrade ou downgrade a qualquer momento. No caso de upgrades, a diferença de preço é calculada proporcionalmente para o período restante. No caso de downgrades, o plano atual permanece ativo até o final do período pago."
       },
       "annualDiscount": {
         "q": "Como funciona o desconto anual?",
-        "a": "A faturação anual poupa-lhe consideravelmente em relação ao mensal: o plano Pro custa 45 €/ano (vs 59,88 €/ano mensalmente — poupança de 14,88 €), e o plano Business custa 120 €/ano (vs 179,88 €/ano mensalmente — poupança de 59,88 €). O pagamento é efetuado de uma só vez e o plano fica ativo durante 12 meses."
+        "a": "O faturamento anual oferece uma economia significativa em comparação com o mensal: o plano Pro custa € 45/ano (contra € 59,88/ano no faturamento mensal — uma economia de € 14,88), e o plano Business custa € 120/ano (contra € 179,88/ano no faturamento mensal — uma economia de € 59,88). O pagamento é feito em uma única parcela antecipada e o plano permanece ativo por 12 meses."
       },
       "annualBilling": {
-        "q": "Qual é a diferença entre faturação mensal e anual?",
-        "a": "A faturação mensal cobra-lhe todos os meses e pode cancelar a qualquer momento sem encargos adicionais. A faturação anual realiza um único pagamento antecipado por 12 meses a uma taxa reduzida (até 33% de desconto). Ambas as opções incluem as mesmas funcionalidades — a única diferença é o ciclo de faturação e o desconto."
+        "q": "Qual é a diferença entre faturamento mensal e anual?",
+        "a": "Na cobrança mensal, o pagamento é feito todo mês, e você pode cancelar a qualquer momento sem custos adicionais. Na cobrança anual, é cobrado um único pagamento antecipado para 12 meses com desconto (de até 33%). Ambas as opções incluem os mesmos recursos — a única diferença é o ciclo de cobrança e o desconto."
       },
       "refund": {
         "q": "Posso pedir um reembolso?",
-        "a": "Oferecemos um reembolso total nos 30 dias seguintes à compra se não ficar satisfeito. Após 30 dias não são possíveis reembolsos parciais. Contacte support@vaultransfer.com para iniciar um reembolso."
+        "a": "Oferecemos reembolso total em até 30 dias após a compra, caso você não fique satisfeito. Após 30 dias, não é possível solicitar reembolso parcial. Entre em contato com support@vaultransfer.com para solicitar o reembolso."
       },
       "maxSize": {
-        "q": "Qual é o tamanho máximo de transferência?",
-        "a": "Plano Free: 2 GB por transferência. Plano Pro: 50 GB por transferência. Plano Business: 200 GB por transferência. Enterprise: limites personalizados. Não há limites para o número de transferências que pode criar."
+        "q": "Qual é o tamanho máximo do arquivo?",
+        "a": "Plano Gratuito: 2 GB por transferência. Plano Pro: 50 GB por transferência. Plano Business: 200 GB por transferência. Enterprise: limites personalizados. Não há limites para o número de transferências que você pode criar."
       },
       "formats": {
-        "q": "Que formatos de ficheiro são suportados?",
-        "a": "Suportamos a maioria dos formatos: documentos, imagens, vídeos, arquivos ZIP, ficheiros de projeto, etc. Por motivos de segurança, os executáveis (.exe, .msi, .bat, .sh), scripts (.ps1, .vbs, .js), macros do Office (.docm, .xlsm, .pptm), pacotes de aplicações (.apk, .ipa, .deb) e outros formatos potencialmente nocivos estão bloqueados."
+        "q": "Quais formatos de arquivo são compatíveis?",
+        "a": "Aceitamos a maioria dos formatos: documentos, imagens, vídeos, arquivos ZIP, arquivos de projeto, etc. Por motivos de segurança, arquivos executáveis (.exe, .msi, .bat, .sh), scripts (.ps1, .vbs, .js), macros do Office (.docm, .xlsm, .pptm), pacotes de aplicativos (.apk, .ipa, .deb) e outros formatos potencialmente perigosos são bloqueados."
       },
       "devices": {
         "q": "O serviço funciona em todos os dispositivos?",
-        "a": "Sim. O VaultTransfer funciona em qualquer dispositivo com um navegador moderno: PC, Mac, smartphones e tablets Android e iOS. Não é necessária nenhuma aplicação."
+        "a": "Sim. O VaultTransfer funciona em qualquer dispositivo com um navegador moderno: PC, Mac, smartphones Android e iOS, tablets. Não é necessário instalar nenhum aplicativo."
       },
       "analyticsStats": {
         "q": "Que análises e estatísticas estão disponíveis?",
-        "a": "Os subscritores Pro e Business podem aceder a análises detalhadas no Dashboard: total de transferências criadas, dados totais transferidos (GB), total de downloads, transferências ativas vs. expiradas e um gráfico diário de transferências dos últimos 30 dias. As análises são atualizadas em tempo real."
+        "a": "Os assinantes dos planos Pro e Business podem acessar análises detalhadas no Painel: total de transferências criadas, total de dados transferidos (GB), total de downloads, transferências ativas versus expiradas e um gráfico diário das transferências dos últimos 30 dias. As análises são atualizadas em tempo real."
       },
       "apiAccess": {
-        "q": "Como acedo à API do VaultTransfer?",
-        "a": "O VaultTransfer disponibiliza uma REST API pública para subscritores dos planos Business e Enterprise. Pode criar, listar e gerir transferências de forma programática. A documentação completa da API e a referência de endpoints estão disponíveis no seu Dashboard em Chaves API."
+        "q": "Como faço para acessar a API VaultTransfer?",
+        "a": "VaultTransfer oferece uma API REST pública disponível para assinantes dos planos Business e Enterprise. Você pode criar, listar e gerenciar transferências por meio de programação. A documentação completa da API e a referência de endpoints estão disponíveis no seu Painel, na seção Chaves de API."
       },
       "apiKeys": {
-        "q": "Como crio e giro as chaves API?",
-        "a": "As chaves API são criadas na secção Chaves API do seu Dashboard. Dê a cada chave um nome descritivo (ex. 'Produção'). As chaves são apresentadas apenas uma vez na criação — copie e guarde-as de forma segura. Pode ver a data de último uso de cada chave e revogar qualquer chave a qualquer momento."
+        "q": "Como faço para criar e gerenciar chaves de API?",
+        "a": "As chaves de API são criadas na seção \"Chaves de API\" do seu painel. Dê a cada chave um nome descritivo (por exemplo, \"Produção\"). As chaves são exibidas apenas uma vez no momento da criação — copie-as e guarde-as em um local seguro. Você pode ver a data da última utilização de cada chave e revogar qualquer chave a qualquer momento."
       }
     }
   },
   "notFound": {
     "title": "Página não encontrada",
-    "description": "A página que procura não existe ou foi transferida. Talvez esteja à procura de uma ligação de transferência expirada?",
-    "backHome": "Voltar ao início →",
-    "seePlans": "Ver planos",
+    "description": "A página que você está procurando não existe ou foi movida. Talvez você esteja procurando um link de download que já expirou?",
+    "backHome": "Voltar à página inicial →",
+    "seePlans": "Veja os planos",
     "help": "Precisa de ajuda?"
   },
   "cookie": {
-    "message": "Utilizamos cookies para melhorar a sua experiência e apresentar anúncios relevantes. Aceita?",
+    "message": "Usamos cookies para melhorar a sua experiência e exibir anúncios relevantes. Você aceita?",
     "accept": "Aceitar",
-    "decline": "Declínio"
+    "decline": "Recusar"
   },
   "metadata": {
-    "titleDefault": "VaultTransfer - Enviar ficheiros de forma segura e gratuita",
-    "description": "Transfira ficheiros até 2 GB gratuitamente. Ligações encriptadas com expiração automática, proteção por palavra-passe e limites de transferência. Não é necessária uma conta. compatível com GDPR.",
+    "titleDefault": "VaultTransfer — Envie arquivos com segurança e de graça",
+    "description": "Transfere arquivos de até 2 GB de graça. Links criptografados com validade automática, proteção por senha e limites de download. Não é preciso criar uma conta. Em conformidade com o GDPR.",
     "keywords": [
-      "secure file transfer",
-      "send files free",
-      "share files online",
-      "send large files",
-      "secure file sharing",
-      "transfer encrypted files",
-      "expiry download link",
-      "send files without registration",
-      "wetransfer alternative",
-      "send password protected files"
+      "transferência segura de arquivos",
+      "enviar arquivos de graça",
+      "compartilhar arquivos online",
+      "enviar arquivos grandes",
+      "compartilhamento seguro de arquivos",
+      "transferir arquivos criptografados",
+      "link de download expirado",
+      "enviar arquivos sem precisar se cadastrar",
+      "alternativas ao WeTransfer",
+      "enviar arquivos protegidos por senha"
     ]
   },
   "dashboard": {
     "currentPlan": "Plano atual",
-    "free": "Free",
+    "free": "Grátis",
     "perMonth": "€/mês",
-    "upgradePro": "Atualização para Pro →",
-    "upgradeProPrice": "Atualização para Pro - 4,99 €/mês →",
-    "upgradeBusiness": "Atualização para Business →",
-    "manageSubscription": "Gerir a subscrição",
+    "upgradePro": "Atualizar para a versão Pro →",
+    "upgradeProPrice": "Atualiza para a versão Pro — €4,99/mês →",
+    "upgradeBusiness": "Atualizar para o plano Business →",
+    "manageSubscription": "Gerenciar assinatura",
     "loading": "Carregando...",
-    "maxUpload": "Carregamento máximo",
+    "maxUpload": "Tamanho máximo do arquivo para upload",
     "maxExpiry": "Prazo máximo de validade",
-    "maxDownloads": "Máximo de transferências",
+    "maxDownloads": "Número máximo de downloads",
     "unlimited": "Ilimitado",
     "ads": "Anúncios",
     "yes": "Sim",
-    "no": "Não",
+    "no": "De",
     "days": "{count} dias",
-    "wantMore": "Pretende mais armazenamento e acesso API?",
-    "transfers": "As suas transferências",
+    "wantMore": "Quer mais espaço de armazenamento e acesso à API?",
+    "transfers": "Tuas transferências",
     "newTransfer": "+ Novo",
     "transfersProOnly": "O histórico de transferências está disponível no plano Pro.",
-    "noTransfers": "Ainda não há transferências. Comece a partilhar!",
-    "uploadFirst": "Carregue o seu primeiro ficheiro →",
-    "expired": "Expirado",
-    "copyLink": "Copiar ligação",
+    "noTransfers": "Ainda não há compartilhamentos. Começa a compartilhar!",
+    "uploadFirst": "Carregue seu primeiro arquivo →",
+    "expired": "Vencido",
+    "copyLink": "Copiar link",
     "transferDate": "Transferência de {date}",
-    "transferMeta": "{size} - {downloads} transferências - expira em {expiry}"
+    "transferMeta": "{size} · {downloads} downloads · expira em {expiry}"
   },
   "analytics": {
-    "title": "Analytics",
-    "totalTransfers": "Total Transfers",
-    "totalGb": "Data Transferred",
+    "title": "Análise",
+    "totalTransfers": "Total de transferências",
+    "totalGb": "Dados transferidos",
     "totalDownloads": "Total Downloads",
-    "activeVsExpired": "Active vs Expired",
-    "last30Days": "Last 30 Days",
-    "upgradeTitle": "Unlock Analytics",
-    "upgradeDesc": "Upgrade to a Pro or Business plan to view your detailed transfer analytics and usage statistics.",
-    "upgradeButton": "Upgrade to Pro",
-    "transfersPerDay": "Transfers per day",
-    "allTime": "All time",
-    "active": "Active",
-    "expired": "Expired",
-    "loading": "Loading analytics...",
-    "error": "Failed to load analytics"
+    "activeVsExpired": "Ativo vs. Expirado",
+    "last30Days": "Últimos 30 dias",
+    "upgradeTitle": "Desbloqueia o Analytics",
+    "upgradeDesc": "Atualiza para um plano Pro ou Business para ver suas análises detalhadas de transferências e estatísticas de uso.",
+    "upgradeButton": "Atualiza para a versão Pro",
+    "transfersPerDay": "Transfers por dia",
+    "allTime": "De todos os tempos",
+    "active": "Ativo",
+    "expired": "Vencido",
+    "loading": "Carregando as estatísticas...",
+    "error": "Não foi possível carregar os dados analíticos"
   }
 }
