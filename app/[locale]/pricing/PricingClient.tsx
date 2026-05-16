@@ -79,38 +79,6 @@ function ComparisonTable({ sections, colHeaders }: {
   )
 }
 
-function FaqAccordion({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
-  const [open, setOpen] = useState<number | null>(null)
-  return (
-    <div className="space-y-2">
-      {faqs.map((faq, i) => (
-        <div key={i} className="border border-white/8 rounded-2xl overflow-hidden bg-white/[0.02]">
-          <button
-            onClick={() => setOpen(open === i ? null : i)}
-            className="w-full flex items-start justify-between px-6 py-5 text-left gap-4 group"
-            aria-expanded={open === i}
-          >
-            <span className="text-sm text-white/80 group-hover:text-white transition-colors font-body leading-relaxed">{faq.q}</span>
-            <svg
-              width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-              strokeLinecap="round" strokeLinejoin="round"
-              className={`flex-shrink-0 mt-0.5 text-white/30 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
-              aria-hidden="true"
-            >
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </button>
-          {open === i && (
-            <div className="px-6 pb-5 text-sm text-white/40 font-body leading-relaxed border-t border-white/5">
-              <p className="pt-4">{faq.a}</p>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  )
-}
-
 // ─── Main component ──────────────────────────────────────────────────────────
 
 export default function PricingClient() {
@@ -212,12 +180,6 @@ export default function PricingClient() {
     t('comparison.col.business'),
     t('comparison.col.enterprise'),
   ]
-
-  const faqKeys = ['cancel', 'filesExpire', 'trial', 'freeLimit', 'changePlan', 'payment', 'security', 'enterprisePlan', 'commercial', 'annualDiscount'] as const
-  const faqs = faqKeys.map(key => ({
-    q: t(`faq.items.${key}.q` as never),
-    a: t(`faq.items.${key}.a` as never),
-  }))
 
   const plans = [
     {
@@ -426,20 +388,6 @@ export default function PricingClient() {
           <div className="bg-white/[0.02] border border-white/8 rounded-2xl px-6 py-4">
             <ComparisonTable sections={comparisonSections} colHeaders={colHeaders} />
           </div>
-        </div>
-
-        {/* ── FAQ ── */}
-        <div className="max-w-2xl mx-auto mb-20">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-display font-700 tracking-tight mb-3">{t('faq.title')}</h2>
-            <p className="text-white/40 text-sm font-body">
-              {t('faq.notFound')}{' '}
-              <a href="mailto:support@vaultransfer.com" className="text-accent hover:underline">
-                {t('faq.emailSupport')}
-              </a>
-            </p>
-          </div>
-          <FaqAccordion faqs={faqs} />
         </div>
 
         {/* ── Trust bar ── */}
